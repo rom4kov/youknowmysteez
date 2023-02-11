@@ -1,36 +1,36 @@
 import "./categories.styles.scss";
 import Banner from "./components/banner/banner.component";
-import img0 from "./assets/images/daoudi-aissa-yojlXQ7RN2w-unsplash.jpg";
-import img1 from "./assets/images/jc-gellidon-81fEanp-xXc-unsplash.jpg";
-import img2 from "./assets/images/richard-ciraulo-BlI3VVVfP3Y-unsplash.jpg";
-import img3 from "./assets/images/judeus-samson-NqzPPiRP5ew-unsplash.jpg";
-import img4 from "./assets/images/daniel-adesina-GrfS-LxyWeI-unsplash.jpg";
+import img0 from "./assets/images/shirts.jpg";
+import img1 from "./assets/images/jackets.jpg";
+import img2 from "./assets/images/sneakers.jpg";
+import img3 from "./assets/images/womens.jpg";
+import img4 from "./assets/images/mens.jpg";
 
 const App = () => {
   const categories = [
     {
       id: 1,
-      title: "Tees",
+      title: "TEES",
       imageUrl: img0,
     },
     {
       id: 2,
-      title: "Jacken",
+      title: "JACKETS",
       imageUrl: img1,
     },
     {
       id: 3,
-      title: "Sneakers",
+      title: "SNEAKERS",
       imageUrl: img2,
     },
     {
       id: 4,
-      title: "Damen",
+      title: "WOMENS",
       imageUrl: img3,
     },
     {
       id: 5,
-      title: "Herren",
+      title: "MENS",
       imageUrl: img4,
     },
   ];
@@ -44,7 +44,7 @@ const App = () => {
             <div
               className="background-image"
               style={{
-                backgroundImage: `url(${imageUrl})`,
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url(${imageUrl})`,
               }}
             />
             <div className="category-body-container">

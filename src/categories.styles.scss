@@ -21,7 +21,8 @@
 
         & .background-image {
             scale: 1.1;
-            transition: scale 6s cubic-bezier(.25, .45, .45, .95);
+            filter: none;
+            transition: scale 3s cubic-bezier(.25, .45, .45, .95), filter .5s ease-out;
         }
 
         & .category-body-container {
@@ -45,7 +46,8 @@
         width: 100%;
         height: 100%;
         background-size: cover;
-        transition: scale 1s cubic-bezier(.25, .45, .45, .95);
+        filter: grayscale(1);
+        transition: scale 1s cubic-bezier(.25, .45, .45, .95), filter .2s ease-out;;
     }
 
     .category-body-container {

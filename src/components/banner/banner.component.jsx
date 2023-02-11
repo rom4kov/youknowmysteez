@@ -3,7 +3,7 @@ import video from "../../assets/videos/video.mp4";
 
 const Banner = () => (
   <div className="banner">
-    <video src={video} autoPlay loop muted></video>
+    <video src={video} muted></video>
     <div className="video-overlay">
       <p>ANMELDEN</p>
       <h1 className="title">you know my steez</h1>
