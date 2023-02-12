@@ -1,5 +1,5 @@
-import "./categories.styles.scss";
 import Banner from "./components/banner/banner.component";
+import Directory from "./components/directory/directory.component";
 import img0 from "./assets/images/shirts.jpg";
 import img1 from "./assets/images/jackets.jpg";
 import img2 from "./assets/images/sneakers.jpg";
@@ -38,7 +38,8 @@ const App = () => {
   return (
     <div>
       <Banner />
-      <categories categories={categories} />
+      {console.log(categories)}
+      <Directory categories={categories} />
     </div>
   );
 };
