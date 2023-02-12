@@ -38,11 +38,7 @@ const App = () => {
   return (
     <div>
       <Banner />
-      <div className="categories-container">
-        {categories.map(({ id, title, imageUrl }) => (
-
-        ))}
-      </div>
+      <categories categories={categories} />
     </div>
   );
 };

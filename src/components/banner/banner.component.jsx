@@ -6,7 +6,7 @@ const Banner = () => (
     <video src={video} muted></video>
     <div className="video-overlay">
       <p>ANMELDEN</p>
-      <h1 className="title">you know my steez</h1>
+      <h1 className="title">youknowmysteez</h1>
       <p>WARENKORB</p>
     </div>
   </div>
