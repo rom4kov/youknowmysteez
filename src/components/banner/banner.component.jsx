@@ -1,5 +1,5 @@
 import "./banner.styles.scss";
-import video from "../../assets/videos/video1.mp4";
+import video from "../../assets/videos/rakim_c.mp4";
 
 const Banner = () => (
   <div className="banner">
