@@ -1,5 +1,5 @@
 import "./banner.styles.scss";
-import video from "../../assets/videos/rakimfinal.webm";
+import video from "../../assets/videos/rakim.webm";
 
 const Banner = () => (
   <div className="banner">
