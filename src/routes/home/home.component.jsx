@@ -1,6 +1,7 @@
 import Banner from "../../components/banner/banner.component";
 import Directory from "../../components/directory/directory.component";
 import { Outlet } from "react-router-dom";
+import "./home.styles.scss";
 import img0 from "../../assets/images/shirts.jpg";
 import img1 from "../../assets/images/jackets.jpg";
 import img2 from "../../assets/images/sneakers.jpg";
@@ -40,6 +41,8 @@ const Home = () => {
     <div>
       <Outlet />
       <Banner />
+      <h3>HIER ZUM SPRINGSALE 2023</h3>
+      <p>BIS ZU 70% AUF JACKEN, JEANS UND SCHUHE</p>
       <Directory categories={categories} />
     </div>
   );
