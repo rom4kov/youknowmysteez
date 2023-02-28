@@ -1,25 +1,37 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import { Fragment } from "react";
+import { Outlet, Link } from "react-router-dom";
 import "./navigation.styles.scss";
 
 const Navigation = () => {
   return (
-    <div>
+    <Fragment>
       <div className="navigation">
         <div className="left-nav">
-          <p>SHOP</p>
-          <p>ABOUT</p>
-          <p>VERSAND</p>
+          <Link className="nav-link" to="/shop">
+            SHOP
+          </Link>
+          <Link className="nav-link" to="/about">
+            ABOUT
+          </Link>
+          <Link className="nav-link" to="/versand">
+            VERSAND
+          </Link>
         </div>
         <h1 className="title">youknowmysteez</h1>
         <div className="right-nav">
-          <p>KONTAKT</p>
-          <p>WARENKORB</p>
-          <p>ANMELDEN</p>
+          <Link className="nav-link" to="/kontakt">
+            KONTAKT
+          </Link>
+          <Link className="nav-link" to="/warenkorb">
+            WARENKORB
+          </Link>
+          <Link className="nav-link" to="/login">
+            ANMELDEN
+          </Link>
         </div>
       </div>
       <Outlet />
-    </div>
+    </Fragment>
   );
 };
 

@@ -26,15 +26,17 @@
     display: flex;
     justify-content: left;
     min-width: 25rem;
-    margin-left: 5rem;
+    margin-left: 4rem;
 
-    p {
+    .nav-link {
+      color: #fff;
       margin-top: 3.5rem;
       padding-right: 2rem;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-family: "Poppins";
       height: fit-content;
       text-align: left;
+      text-decoration: none;
       cursor: pointer;
     }
   }
@@ -54,15 +56,17 @@
     display: flex;
     justify-content: right;
     min-width: 25rem;
-    margin-right: 5rem;
+    margin-right: 4rem;
 
-    p {
+    .nav-link {
+      color: #fff;
       margin-top: 3.5rem;
       padding-left: 2rem;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-family: "Poppins";
       height: fit-content;
-      text-align: right;
+      text-align: left;
+      text-decoration: none;
       cursor: pointer;
     }
   }
