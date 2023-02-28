@@ -4,9 +4,17 @@ import "./navigation.styles.scss";
 const Navigation = () => {
   return (
     <div className="navigation">
-      <p>ANMELDEN</p>
+      <ul>
+        <li>SHOP</li>
+        <li>ABOUT</li>
+        <li>VERSAND</li>
+        <li>KONTAKT</li>
+      </ul>
       <h1 className="title">youknowmysteez</h1>
-      <p>WARENKORB</p>
+      <div className="right-nav">
+        <p>WARENKORB</p>
+        <p>ANMELDEN</p>
+      </div>
     </div>
   );
 };

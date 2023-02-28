@@ -1,40 +1,72 @@
 @font-face {
-    font-family: "Urban Starblues Demo";
-    src: local("Urban Starblues Demo"),
-     url("../../assets/fonts/Urban Starblues Demo.otf") format("opentype");
-    font-weight: bold;
+  font-family: "Urban Starblues Demo";
+  src: local("Urban Starblues Demo"),
+    url("../../assets/fonts/Urban Starblues Demo.otf") format("opentype");
+  font-weight: bold;
 }
 
 @font-face {
-    font-family: "Poppins";
-    src: local("Poppins-Bold"),
-     url("../../assets/fonts/Poppins-Bold.ttf") format("truetype");
-    font-weight: bold;
+  font-family: "Poppins";
+  src: local("Poppins-Bold"),
+    url("../../assets/fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: bold;
 }
 
 .navigation {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    z-index: 1;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #ffffff;
+
+  ul {
+    min-width: 25rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    color: #fff;
+    justify-content: space-between;
+    padding-top: 2.5rem;
+    padding-left: 0;
+    margin-left: 5rem;
+
+    li {
+      list-style: none;
+      margin-bottom: 3.5rem;
+      padding-right: 1rem;
+      font-size: 1.1rem;
+      font-family: "Poppins";
+      height: fit-content;
+      text-align: start;
+      cursor: pointer;
+    }
+  }
+
+  .title {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: "Urban Starblues Demo";
+    font-size: 3.25rem !important;
+    cursor: pointer;
+  }
+
+  .right-nav {
+    display: flex;
+    justify-content: end;
+    min-width: 25rem;
+    margin-right: 5rem;
 
     p {
-        margin-top: 3.5rem;
-        font-family: "Poppins";
-        height: fit-content;
-        cursor: pointer;
+      margin-top: 3.5rem;
+      padding-left: 2rem;
+      font-size: 1.1rem;
+      font-family: "Poppins";
+      height: fit-content;
+      text-align: end;
+      cursor: pointer;
     }
-    
-    .title {
-        position: relative;
-        width: 20rem;
-        display: inline-block;
-        font-family: "Urban Starblues Demo";
-        font-size: 3.25rem !important;
-        cursor: pointer;
-    }
+  }
 }
