@@ -36,20 +36,22 @@
       font-family: "Poppins";
       height: fit-content;
       text-align: left;
-      text-decoration: none;
       cursor: pointer;
     }
   }
 
-  .title {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    font-family: "Urban Starblues Demo";
-    font-size: 4rem !important;
-    margin-top: 1.5rem;
-    cursor: pointer;
+  .title-link {
+    .title {
+      color: #fff;
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      font-family: "Urban Starblues Demo";
+      font-size: 4rem !important;
+      margin-top: 1.5rem;
+      cursor: pointer;
+    }
   }
 
   .right-nav {
@@ -66,7 +68,6 @@
       font-family: "Poppins";
       height: fit-content;
       text-align: left;
-      text-decoration: none;
       cursor: pointer;
     }
   }

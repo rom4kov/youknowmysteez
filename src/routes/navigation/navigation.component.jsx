@@ -17,7 +17,9 @@ const Navigation = () => {
             VERSAND
           </Link>
         </div>
-        <h1 className="title">youknowmysteez</h1>
+        <Link className="title-link" to="/">
+          <h1 className="title">youknowmysteez</h1>
+        </Link>
         <div className="right-nav">
           <Link className="nav-link" to="/kontakt">
             KONTAKT
