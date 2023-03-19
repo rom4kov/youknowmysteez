@@ -39,6 +39,7 @@ const Home = () => {
 
   return (
     <div>
+      <div className="nav-intersection-root"></div>
       <Outlet />
       <Banner />
       <h3>HIER ZUM SPRINGSALE 2023</h3>
