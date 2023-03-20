@@ -45,6 +45,7 @@ const Home = () => {
       <h3>HIER ZUM SPRINGSALE 2023</h3>
       <p>BIS ZU 70% AUF JACKEN, JEANS UND SCHUHE</p>
       <Directory categories={categories} />
+      <footer>THIS IS THE FOOTER SECTION</footer>
     </div>
   );
 };
