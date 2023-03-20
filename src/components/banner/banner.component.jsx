@@ -3,7 +3,7 @@ import "./banner.styles.scss";
 import video from "../../assets/videos/rakim.webm";
 
 const Banner = () => {
-  const { ref, inView, entry } = useInView();
+  const { ref, inView } = useInView();
 
   return (
     <div className="banner" ref={ref}>

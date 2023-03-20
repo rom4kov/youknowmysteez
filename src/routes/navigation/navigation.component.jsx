@@ -1,8 +1,10 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import "./navigation.styles.scss";
 
 const Navigation = () => {
+  const [navColor, setNavColor] = useState("white");
+
   return (
     <Fragment>
       <div className="navigation">
@@ -18,7 +20,9 @@ const Navigation = () => {
           </Link>
         </div>
         <Link className="title-link" to="/">
-          <h1 className="title">youknowmysteez</h1>
+          <h1 className="title" style={{ color: `${navColor}` }}>
+            youknowmysteez
+          </h1>
         </Link>
         <div className="right-nav">
           <Link className="nav-link" to="/kontakt">
