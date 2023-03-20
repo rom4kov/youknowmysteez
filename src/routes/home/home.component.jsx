@@ -8,7 +8,7 @@ import img2 from "../../assets/images/sneakers.jpg";
 import img3 from "../../assets/images/womens.jpg";
 import img4 from "../../assets/images/mens.jpg";
 
-const Home = () => {
+const Home = ({ changeNavColor }) => {
   const categories = [
     {
       id: 1,
@@ -41,7 +41,7 @@ const Home = () => {
     <div>
       <div className="nav-intersection-root"></div>
       <Outlet />
-      <Banner />
+      <Banner changeNavColor={changeNavColor} />
       <h3>HIER ZUM SPRINGSALE 2023</h3>
       <p>BIS ZU 70% AUF JACKEN, JEANS UND SCHUHE</p>
       <Directory categories={categories} />
