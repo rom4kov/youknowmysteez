@@ -26,7 +26,7 @@ const Navigation = () => {
         </div>
         <Link className="title-link" to="/">
           <h1 className="title" style={{ color: `${navColor}` }}>
-            youknowmysteez
+            youknowmysteezah
           </h1>
         </Link>
         <div className="right-nav">
