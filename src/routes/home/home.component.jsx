@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import Banner from "../../components/banner/banner.component";
 import Directory from "../../components/directory/directory.component";
 import { Outlet } from "react-router-dom";
@@ -37,11 +38,17 @@ const Home = ({ changeNavColor }) => {
     },
   ];
 
+  const intersectObsRef = useRef();
+
+  useEffect(() => {
+    console.log();
+  }, []);
+
   return (
     <div>
       <div className="nav-intersection-root"></div>
       <Outlet />
-      <Banner changeNavColor={changeNavColor} />
+      <Banner changeNavColor={changeNavColor} ref={intersectObsRef} />
       <h3>HIER ZUM SPRINGSALE 2023</h3>
       <p>BIS ZU 70% AUF JACKEN, JEANS UND SCHUHE</p>
       <Directory categories={categories} />
