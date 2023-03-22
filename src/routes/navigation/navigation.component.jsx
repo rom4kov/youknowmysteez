@@ -4,11 +4,6 @@ import "./navigation.styles.scss";
 
 const Navigation = () => {
   const [navColor, setNavColor] = useState("white");
-  const changeNavColor = (navColor) => {
-    setNavColor(navColor);
-  };
-
-  console.log("navColor in navcomp", navColor);
 
   return (
     <Fragment>
@@ -26,7 +21,7 @@ const Navigation = () => {
         </div>
         <Link className="title-link" to="/">
           <h1 className="title" style={{ color: `${navColor}` }}>
-            youknowmysteezah
+            youknowmysteez
           </h1>
         </Link>
         <div className="right-nav">
@@ -41,7 +36,7 @@ const Navigation = () => {
           </Link>
         </div>
       </div>
-      <Outlet changeNavColor={changeNavColor} />
+      <Outlet />
     </Fragment>
   );
 };

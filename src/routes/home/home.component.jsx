@@ -1,4 +1,3 @@
-import { useRef, useEffect } from "react";
 import Banner from "../../components/banner/banner.component";
 import Directory from "../../components/directory/directory.component";
 import { Outlet } from "react-router-dom";
@@ -9,7 +8,7 @@ import img2 from "../../assets/images/sneakers.jpg";
 import img3 from "../../assets/images/womens.jpg";
 import img4 from "../../assets/images/mens.jpg";
 
-const Home = ({ changeNavColor }) => {
+const Home = ({ intObsRef }) => {
   const categories = [
     {
       id: 1,
@@ -38,17 +37,11 @@ const Home = ({ changeNavColor }) => {
     },
   ];
 
-  const intersectObsRef = useRef();
-
-  useEffect(() => {
-    console.log();
-  }, []);
-
   return (
     <div>
       <div className="nav-intersection-root"></div>
       <Outlet />
-      <Banner changeNavColor={changeNavColor} ref={intersectObsRef} />
+      <Banner ref={intObsRef} />
       <h3>HIER ZUM SPRINGSALE 2023</h3>
       <p>BIS ZU 70% AUF JACKEN, JEANS UND SCHUHE</p>
       <Directory categories={categories} />

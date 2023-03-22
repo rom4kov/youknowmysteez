@@ -1,32 +1,14 @@
-import { useInView } from "react-intersection-observer";
 import "./banner.styles.scss";
 import video from "../../assets/videos/rakim.webm";
+import { forwardRef } from "react";
 
-const Banner = ({ changeNavColor }) => {
-  const { ref, inView } = useInView();
-
-  let navCol = "";
-
-  if (inView === true) {
-    navCol = "white";
-  } else {
-    navCol = "black";
-  }
-
-  console.log(navCol);
-
+const Banner = forwardRef(({}, ref) => {
   return (
     <div className="banner" ref={ref}>
-      <input value={inView} onChange={() => alert("changed!")} />
-      <video
-        src={video}
-        autoPlay
-        loop
-        muted
-      >{`Banner inside viewport ${inView}.`}</video>
+      <video src={video} autoPlay loop muted></video>
       <div className="linear-gradient"></div>
     </div>
   );
-};
+});
 
 export default Banner;
