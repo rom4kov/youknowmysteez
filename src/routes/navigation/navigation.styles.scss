@@ -21,7 +21,7 @@
   flex-direction: row;
   justify-content: space-between;
   color: #ffffff;
-  transition: all 300ms ease-out;
+  transition: all 200ms ease-out;
 
   .left-nav {
     display: flex;
@@ -41,8 +41,16 @@
       cursor: pointer;
     }
 
-    .nav-link:hover {
-      color: rgb(222, 109, 190);
+    .nav-link:hover::after {
+      content: "";
+      display: block;
+      position: relative;
+      top: -0.8rem;
+      left: -0.2rem;
+      width: 100%;
+      height: 0.8rem;
+      background-color: #468a54c1;
+      animation: growNavline 300ms ease-in forwards;
     }
   }
 
@@ -75,12 +83,30 @@
       font-family: "Poppins";
       height: fit-content;
       text-align: left;
-      transition: all 300ms ease-out;
+      transition: all 300ms ease-in;
       cursor: pointer;
     }
 
-    .nav-link:hover {
-      color: rgb(222, 109, 190);
+    .nav-link:hover::after {
+      content: "";
+      display: block;
+      position: relative;
+      top: -0.8rem;
+      left: -0.2rem;
+      width: 100%;
+      height: 0.8rem;
+      background-color: #468a54c1;
+      animation: growNavline 300ms ease-out forwards;
+    }
+
+    @keyframes growNavline {
+      from {
+        scale: 1 0;
+      }
+
+      to {
+        scale: 1 0.8;
+      }
     }
   }
 }
