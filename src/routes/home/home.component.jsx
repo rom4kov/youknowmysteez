@@ -1,6 +1,6 @@
 import Banner from "../../components/banner/banner.component";
 import Directory from "../../components/directory/directory.component";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import "./home.styles.scss";
 import img0 from "../../assets/images/shirts.jpg";
 import img1 from "../../assets/images/jackets.jpg";

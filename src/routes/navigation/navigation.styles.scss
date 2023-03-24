@@ -21,6 +21,7 @@
   flex-direction: row;
   justify-content: space-between;
   color: #ffffff;
+  transition: all 300ms ease-out;
 
   .left-nav {
     display: flex;
@@ -36,6 +37,7 @@
       font-family: "Poppins";
       height: fit-content;
       text-align: left;
+      transition: all 300ms ease-out;
       cursor: pointer;
     }
 
@@ -54,6 +56,7 @@
       font-family: "Urban Starblues Demo";
       font-size: 4rem !important;
       margin-top: 1.5rem;
+      transition: all 300ms ease-out;
       cursor: pointer;
     }
   }
@@ -72,6 +75,7 @@
       font-family: "Poppins";
       height: fit-content;
       text-align: left;
+      transition: all 300ms ease-out;
       cursor: pointer;
     }
 
