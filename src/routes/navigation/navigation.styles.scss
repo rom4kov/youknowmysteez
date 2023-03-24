@@ -23,22 +23,31 @@
   color: #ffffff;
   transition: all 200ms ease-out;
 
+  .nav-wrapper {
+    width: 25rem;
+  }
+
   .left-nav {
     display: flex;
     justify-content: left;
-    min-width: 25rem;
     margin-left: 4rem;
+    margin-right: 6rem;
+    height: 1.5rem;
+    transition: all 200ms ease-in;
 
     .nav-link {
       color: #fff;
-      margin-top: 3.5rem;
-      padding-right: 2rem;
+      margin-right: 2rem;
       font-size: 1rem;
       font-family: "Poppins";
       height: fit-content;
       text-align: left;
       transition: all 200ms ease-out;
       cursor: pointer;
+    }
+
+    .nav-link:last-child {
+      margin-right: 0;
     }
   }
 
@@ -68,13 +77,13 @@
   .right-nav {
     display: flex;
     justify-content: right;
-    min-width: 25rem;
     margin-right: 4rem;
+    height: 1.5rem;
+    transition: all 200ms ease-in;
 
     .nav-link {
       color: #fff;
-      margin-top: 3.5rem;
-      padding-left: 2rem;
+      margin-left: 2rem;
       font-size: 1rem;
       font-family: "Poppins";
       height: fit-content;
@@ -83,8 +92,8 @@
       cursor: pointer;
     }
 
-    .nav-link:hover .navlink {
-      opacity: 0.3;
+    .nav-link:first-child {
+      margin-left: 0;
     }
 
     @keyframes growNavline {
@@ -96,5 +105,13 @@
         scale: 1 0.8;
       }
     }
+  }
+
+  .right-nav:hover > .nav-link {
+    opacity: 0.3;
+  }
+
+  .right-nav:hover > .nav-link:hover {
+    opacity: 1;
   }
 }

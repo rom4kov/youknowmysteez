@@ -9,11 +9,10 @@ const Navigation = ({ navColor }) => {
 
   const color = navColor === false || loc !== "/" ? "black" : "white";
   const background = navColor === false || loc !== "/" ? "#ddd" : "transparent";
-  const height = navColor === false || loc !== "/" ? "6rem" : "10rem";
-  const marginTopLinks =
-    navColor === false || loc !== "/" ? "2.25rem" : "3.5rem";
+  const height = navColor === false || loc !== "/" ? "5rem" : "10rem";
+  const marginTopNav = navColor === false || loc !== "/" ? "1.7rem" : "3.5rem";
   const marginBlockTitle =
-    navColor === false || loc !== "/" ? "0.5rem" : "1.5rem";
+    navColor === false || loc !== "/" ? "0.05rem" : "1.5rem";
 
   return (
     <Fragment>
@@ -24,28 +23,30 @@ const Navigation = ({ navColor }) => {
           height: `${height}`,
         }}
       >
-        <div className="left-nav">
-          <Link
-            className="nav-links nav-link"
-            to="/shop"
-            style={{ color: `${color}`, marginTop: `${marginTopLinks}` }}
-          >
-            SHOP
-          </Link>
-          <Link
-            className="nav-links nav-link"
-            to="/about"
-            style={{ color: `${color}`, marginTop: `${marginTopLinks}` }}
-          >
-            ABOUT
-          </Link>
-          <Link
-            className="nav-link"
-            to="/versand"
-            style={{ color: `${color}`, marginTop: `${marginTopLinks}` }}
-          >
-            VERSAND
-          </Link>
+        <div className="nav-wrapper">
+          <div className="left-nav" style={{ marginTop: `${marginTopNav}` }}>
+            <Link
+              className="nav-links nav-link"
+              to="/shop"
+              style={{ color: `${color}` }}
+            >
+              SHOP
+            </Link>
+            <Link
+              className="nav-links nav-link"
+              to="/about"
+              style={{ color: `${color}` }}
+            >
+              ABOUT
+            </Link>
+            <Link
+              className="nav-link"
+              to="/versand"
+              style={{ color: `${color}` }}
+            >
+              VERSAND
+            </Link>
+          </div>
         </div>
         <Link className="title-link" to="/">
           <h1
@@ -55,28 +56,30 @@ const Navigation = ({ navColor }) => {
             youknowmysteez
           </h1>
         </Link>
-        <div className="right-nav">
-          <Link
-            className="nav-link"
-            to="/kontakt"
-            style={{ color: `${color}`, marginTop: `${marginTopLinks}` }}
-          >
-            KONTAKT
-          </Link>
-          <Link
-            className="nav-link"
-            to="/warenkorb"
-            style={{ color: `${color}`, marginTop: `${marginTopLinks}` }}
-          >
-            WARENKORB
-          </Link>
-          <Link
-            className="nav-link"
-            to="/sign-in"
-            style={{ color: `${color}`, marginTop: `${marginTopLinks}` }}
-          >
-            ANMELDEN
-          </Link>
+        <div className="nav-wrapper">
+          <div className="right-nav" style={{ marginTop: `${marginTopNav}` }}>
+            <Link
+              className="nav-link"
+              to="/kontakt"
+              style={{ color: `${color}` }}
+            >
+              KONTAKT
+            </Link>
+            <Link
+              className="nav-link"
+              to="/warenkorb"
+              style={{ color: `${color}` }}
+            >
+              WARENKORB
+            </Link>
+            <Link
+              className="nav-link"
+              to="/sign-in"
+              style={{ color: `${color}` }}
+            >
+              ANMELDEN
+            </Link>
+          </div>
         </div>
       </div>
       <Outlet />
