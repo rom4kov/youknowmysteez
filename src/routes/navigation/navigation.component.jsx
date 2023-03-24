@@ -26,14 +26,14 @@ const Navigation = ({ navColor }) => {
       >
         <div className="left-nav">
           <Link
-            className="nav-link"
+            className="nav-links nav-link"
             to="/shop"
             style={{ color: `${color}`, marginTop: `${marginTopLinks}` }}
           >
             SHOP
           </Link>
           <Link
-            className="nav-link"
+            className="nav-links nav-link"
             to="/about"
             style={{ color: `${color}`, marginTop: `${marginTopLinks}` }}
           >

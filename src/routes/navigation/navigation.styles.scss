@@ -37,21 +37,17 @@
       font-family: "Poppins";
       height: fit-content;
       text-align: left;
-      transition: all 300ms ease-out;
+      transition: all 200ms ease-out;
       cursor: pointer;
     }
+  }
 
-    .nav-link:hover::after {
-      content: "";
-      display: block;
-      position: relative;
-      top: -0.8rem;
-      left: -0.2rem;
-      width: 100%;
-      height: 0.8rem;
-      background-color: #468a54c1;
-      animation: growNavline 300ms ease-in forwards;
-    }
+  .left-nav:hover > .nav-link {
+    opacity: 0.3;
+  }
+
+  .left-nav:hover > .nav-link:hover {
+    opacity: 1;
   }
 
   .title-link {
@@ -83,20 +79,12 @@
       font-family: "Poppins";
       height: fit-content;
       text-align: left;
-      transition: all 300ms ease-in;
+      transition: all 200ms ease-in;
       cursor: pointer;
     }
 
-    .nav-link:hover::after {
-      content: "";
-      display: block;
-      position: relative;
-      top: -0.8rem;
-      left: -0.2rem;
-      width: 100%;
-      height: 0.8rem;
-      background-color: #468a54c1;
-      animation: growNavline 300ms ease-out forwards;
+    .nav-link:hover .navlink {
+      opacity: 0.3;
     }
 
     @keyframes growNavline {
