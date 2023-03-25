@@ -1,7 +1,5 @@
-import { useLocation } from "react-router-dom";
 import {
   signInWithGooglePopup,
-  signInWithGoogleRedirect,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import "./sign-in.styles.scss";
@@ -13,16 +11,11 @@ const SignIn = () => {
     const userDocRef = await createUserDocumentFromAuth(user);
   };
 
-  const logGoogleRedirectUser = async () => {
-    const { user } = await signInWithGoogleRedirect();
-    console.log(user);
-  };
-
   return (
     <div className="sign-in">
       <h2>Sign In Page</h2>
       <button onClick={logGoogleUser}>Anmelden mit Google Popup</button>
-      <button onClick={logGoogleRedirectUser}>
+      <button onClick={signInWithGooglePopup}>
         Anmelden mit Google Redirect
       </button>
     </div>
