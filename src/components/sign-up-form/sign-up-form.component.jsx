@@ -16,19 +16,33 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
-  const handleSubmit = async (event) => {
-    console.log("email:", email);
-    console.log("password:", password);
-    // const email = formFields.email;
-    // const password = formFields.password;
-    event.preventDefault();
-    if (password !== confirmPassword) return;
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
+  };
 
-    const { user } = await createAuthUserWithEmailAndPassword(email, password);
-    console.log(user);
-    user.displayName = displayName;
-    console.log(user.displayName);
-    const userDocRef = await createUserDocumentFromAuth(user);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Die Passwörter stimmen nicht überein.");
+      return;
+    }
+    try {
+      const { user } = await createAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+      console.log(user);
+      // user.displayName = displayName;
+      await createUserDocumentFromAuth(user, { displayName });
+      resetFormFields();
+    } catch (error) {
+      if (error.code === "auth/email-already-in-use") {
+        alert("Die Email-Adresse ist bereits belegt.");
+        return;
+      } else {
+        console.log("There was an error:", error);
+      }
+    }
   };
 
   const handleChange = (event) => {
@@ -62,6 +76,7 @@ const SignUpForm = () => {
         <input
           type="password"
           name="password"
+          pattern=".{8,}"
           value={password}
           onChange={handleChange}
           required
@@ -71,6 +86,7 @@ const SignUpForm = () => {
         <input
           type="password"
           name="confirmPassword"
+          pattern=".{8,}"
           value={confirmPassword}
           onChange={handleChange}
           required
