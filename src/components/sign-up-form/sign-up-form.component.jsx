@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import FormInput from "../form-input/form-input.component";
+
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -40,7 +42,7 @@ const SignUpForm = () => {
         alert("Die Email-Adresse ist bereits belegt.");
         return;
       } else {
-        console.log("There was an error:", error);
+        console.log("Ein Fehler ist aufgetreten:", error);
       }
     }
   };
@@ -54,8 +56,8 @@ const SignUpForm = () => {
     <div>
       <h3>Melde dich mit Email und Passwort an</h3>
       <form onSubmit={handleSubmit}>
-        <label>Benutzer*innenname</label>
-        <input
+        <FormInput
+          label="Benutzer*innenname"
           type="text"
           name="displayName"
           value={displayName}
@@ -63,8 +65,8 @@ const SignUpForm = () => {
           required
         />
 
-        <label>Email</label>
-        <input
+        <FormInput
+          label="Email"
           type="email"
           name="email"
           value={email}
@@ -72,8 +74,8 @@ const SignUpForm = () => {
           required
         />
 
-        <label>Passwort</label>
-        <input
+        <FormInput
+          label="Passwort"
           type="password"
           name="password"
           pattern=".{8,}"
@@ -82,8 +84,8 @@ const SignUpForm = () => {
           required
         />
 
-        <label>Passwort bestätigen</label>
-        <input
+        <FormInput
+          label="Passwort bestätigen"
           type="password"
           name="confirmPassword"
           pattern=".{8,}"
