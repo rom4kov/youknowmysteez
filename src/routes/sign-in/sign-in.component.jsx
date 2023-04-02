@@ -16,12 +16,14 @@ const SignIn = () => {
 
   return (
     <div className="sign-in">
-      <h2>Anmelden</h2>
-      <button onClick={logGoogleUser}>Anmelden mit Google Popup</button>
-      <button onClick={signInWithGooglePopup}>
-        Anmelden mit Google Redirect
-      </button>
-      <SignUpForm />
+      <div className="login">
+        <h2>Anmelden</h2>
+        <button onClick={logGoogleUser}>Anmelden mit Google Popup</button>
+        <button onClick={signInWithGooglePopup}>
+          Anmelden mit Google Redirect
+        </button>
+      </div>
+      <SignUpForm className="sign-up" />
     </div>
   );
 };
