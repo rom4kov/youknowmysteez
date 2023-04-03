@@ -6,6 +6,7 @@ const FormInput = ({ label, ...otherProps }) => {
   return (
     <div className="group">
       <input className="form-input" {...otherProps} />
+      <div className="growing-underline"></div>
       {label && (
         <label
           className={`${

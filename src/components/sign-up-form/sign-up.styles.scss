@@ -1,12 +1,27 @@
-h3 {
-  font-size: 2rem;
-  margin-top: 0;
-}
-
-form {
-  height: 20rem;
+.sign-up-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  gap: 1rem;
+
+  h2 {
+    position: relative;
+    top: 0;
+    left: 0;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  span {
+    font-size: 1.2rem;
+  }
+
+  form {
+    height: 25rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 2rem;
+  }
 }
