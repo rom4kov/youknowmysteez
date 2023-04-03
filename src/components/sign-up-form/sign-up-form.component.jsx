@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import FormInput from "../form-input/form-input.component";
+import Button from "../button/button.component";
 
 import "./sign-up.styles.scss";
 
@@ -97,7 +98,7 @@ const SignUpForm = () => {
           required
         />
 
-        <button type="submit">Registrieren</button>
+        <Button type="submit">Account erstellen</Button>
       </form>
     </div>
   );
