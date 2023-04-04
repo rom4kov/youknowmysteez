@@ -72,11 +72,7 @@ const Navigation = ({ navColor }) => {
             >
               WARENKORB
             </Link>
-            <Link
-              className="nav-link"
-              to="/sign-in"
-              style={{ color: `${color}` }}
-            >
+            <Link className="nav-link" to="/auth" style={{ color: `${color}` }}>
               ANMELDEN
             </Link>
           </div>

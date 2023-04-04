@@ -1,24 +1,23 @@
 import { useState } from "react";
 
+import FormInput from "../form-input/form-input.component";
+import Button from "../button/button.component";
+
+import "./sign-in-form.styles.scss";
+
 import {
   signInWithEmailAndPasswordFunc,
+  displayUserData,
   signInWithGooglePopup,
   createUserDocumentFromAuth,
-  displayUserData,
 } from "../../utils/firebase/firebase.utils";
-
-import FormInput from "../../components/form-input/form-input.component";
-import Button from "../../components/button/button.component";
-import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
-
-import "./sign-in.styles.scss";
 
 const defaultFormFields = {
   email: "",
   password: "",
 };
 
-const SignIn = () => {
+const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const [userName, setUserName] = useState("");
@@ -54,7 +53,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="sign-in">
+    <div className="sign-in-container">
       <p className="username">{userName}</p>
       <div className="login">
         <h2>Anmelden</h2>
@@ -86,9 +85,8 @@ const SignIn = () => {
           </div>
         </form>
       </div>
-      <SignUpForm className="sign-up" />
     </div>
   );
 };
 
-export default SignIn;
+export default SignInForm;

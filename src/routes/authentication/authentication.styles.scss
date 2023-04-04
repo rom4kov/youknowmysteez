@@ -1,11 +1,19 @@
-.sign-in {
+.authentication {
   position: relative;
   margin-top: 12.5rem;
-  height: 25rem;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  padding: 3rem;
+  width: 62.5vw;
+  height: 37rem;
+  background-color: aliceblue;
+  border-radius: 3rem;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 3rem;
+  gap: 7rem;
 
   .username {
     position: absolute;
