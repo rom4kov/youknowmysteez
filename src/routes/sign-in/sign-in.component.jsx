@@ -60,11 +60,12 @@ const SignIn = () => {
             onChange={handleChange}
             required
           />
-
-          <Button type="submit">Anmelden</Button>
-          <Button onClick={logGoogleUser} buttonType="google">
-            Anmelden mit Google
-          </Button>
+          <div>
+            <Button type="submit">Anmelden</Button>
+            <Button onClick={logGoogleUser} buttonType="google">
+              Anmelden mit Google
+            </Button>
+          </div>
         </form>
       </div>
       <SignUpForm className="sign-up" />
