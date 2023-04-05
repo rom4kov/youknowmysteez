@@ -35,13 +35,21 @@ const SignInForm = () => {
     event.preventDefault();
     try {
       const { user } = await signInAuthUserEmailAndPassword(email, password);
-      console.log("user uid in component:", user.uid);
       const username = await displayUserData(user.uid);
       console.log("user data:", username);
       setUserName(username.displayName);
       resetFormFields();
     } catch (error) {
-      console.log("Ein Fehler ist aufgetreten:", error);
+      switch (error.code) {
+        case "auth/wrong-password":
+          alert("Falsches Passwort.");
+          break;
+        case "auth/user-not-found":
+          alert("Email nicht bekannt.");
+          break;
+        default:
+          console.log("Error:", error);
+      }
     }
   };
 
@@ -79,7 +87,7 @@ const SignInForm = () => {
           />
           <div className="buttons-container">
             <Button type="submit">Anmelden</Button>
-            <Button onClick={logGoogleUser} buttonType="google">
+            <Button type="button" onClick={logGoogleUser} buttonType="google">
               Anmelden mit Google
             </Button>
           </div>
