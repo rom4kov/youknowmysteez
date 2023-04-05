@@ -34,15 +34,6 @@ googleProvider.setCustomParameters({
 export const auth = getAuth();
 export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
-export const signInWithEmailAndPasswordFunc = async (email, password) => {
-  try {
-    return await signInWithEmailAndPassword(auth, email, password);
-  } catch (error) {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log("Error:", errorCode, "Message:", errorMessage);
-  }
-};
 
 export const db = getFirestore();
 
@@ -83,6 +74,12 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const signInAuthUserEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+
+  return await signInWithEmailAndPassword(auth, email, password);
 };
 
 export const displayUserData = async (uid) => {

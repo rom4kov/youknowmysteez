@@ -6,7 +6,7 @@ import Button from "../button/button.component";
 import "./sign-in-form.styles.scss";
 
 import {
-  signInWithEmailAndPasswordFunc,
+  signInAuthUserEmailAndPassword,
   displayUserData,
   signInWithGooglePopup,
   createUserDocumentFromAuth,
@@ -31,10 +31,10 @@ const SignInForm = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const signInWithCred = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { user } = await signInWithEmailAndPasswordFunc(email, password);
+      const { user } = await signInAuthUserEmailAndPassword(email, password);
       console.log("user uid in component:", user.uid);
       const username = await displayUserData(user.uid);
       console.log("user data:", username);
@@ -48,7 +48,7 @@ const SignInForm = () => {
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
     console.log(user);
-    const userDocRef = await createUserDocumentFromAuth(user);
+    await createUserDocumentFromAuth(user);
     resetFormFields();
   };
 
@@ -56,9 +56,9 @@ const SignInForm = () => {
     <div className="sign-in-container">
       <p className="username">{userName}</p>
       <div className="login">
-        <h2>Anmelden</h2>
+        <h2>Du hast einen Account?</h2>
         <span>Melde dich per Email und Passwort an</span>
-        <form onSubmit={signInWithCred} className="form-inputs">
+        <form onSubmit={handleSubmit} className="form-inputs">
           <FormInput
             label="Email"
             type="email"
@@ -77,7 +77,7 @@ const SignInForm = () => {
             onChange={handleChange}
             required
           />
-          <div>
+          <div className="buttons-container">
             <Button type="submit">Anmelden</Button>
             <Button onClick={logGoogleUser} buttonType="google">
               Anmelden mit Google
