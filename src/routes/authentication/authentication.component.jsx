@@ -5,9 +5,12 @@ import SignInForm from "../../components/sign-in-form/sign-in-form.component";
 
 const Authentication = () => {
   return (
-    <div className="authentication">
-      <SignInForm />
-      <SignUpForm className="sign-up" />
+    <div className="background">
+      <div className="authentication">
+        <SignInForm />
+        <div className="hyphen"></div>
+        <SignUpForm className="sign-up" />
+      </div>
     </div>
   );
 };

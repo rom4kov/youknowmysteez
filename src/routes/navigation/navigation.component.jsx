@@ -2,15 +2,22 @@ import { Fragment, useContext } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { UserContext } from "../../contexts/user.context";
 
+import { signOutUser } from "../../utils/firebase/firebase.utils";
+
 import "./navigation.styles.scss";
 
 const Navigation = ({ navColor }) => {
   const { currentUser } = useContext(UserContext);
-  console.log(currentUser);
+
+  const signOutHandler = async () => {
+    const res = await signOutUser();
+    console.log(res);
+  };
+
+  console.log("currentUser:", currentUser);
 
   const location = useLocation();
   const loc = location.pathname;
-  console.log("loc", loc);
 
   const color = navColor === false || loc !== "/" ? "black" : "white";
   const background = navColor === false || loc !== "/" ? "#ddd" : "transparent";
@@ -77,9 +84,23 @@ const Navigation = ({ navColor }) => {
             >
               WARENKORB
             </Link>
-            <Link className="nav-link" to="/auth" style={{ color: `${color}` }}>
-              ANMELDEN
-            </Link>
+            {currentUser ? (
+              <span
+                className="nav-link"
+                style={{ color: `${color}` }}
+                onClick={signOutHandler}
+              >
+                ABMELDEN
+              </span>
+            ) : (
+              <Link
+                className="nav-link"
+                to="/auth"
+                style={{ color: `${color}` }}
+              >
+                ANMELDEN
+              </Link>
+            )}
           </div>
         </div>
       </div>
