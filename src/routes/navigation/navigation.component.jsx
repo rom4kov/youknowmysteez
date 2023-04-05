@@ -1,8 +1,13 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
+import { UserContext } from "../../contexts/user.context";
+
 import "./navigation.styles.scss";
 
 const Navigation = ({ navColor }) => {
+  const { currentUser } = useContext(UserContext);
+  console.log(currentUser);
+
   const location = useLocation();
   const loc = location.pathname;
   console.log("loc", loc);
