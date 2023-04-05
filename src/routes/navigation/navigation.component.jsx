@@ -7,11 +7,11 @@ import { signOutUser } from "../../utils/firebase/firebase.utils";
 import "./navigation.styles.scss";
 
 const Navigation = ({ navColor }) => {
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
 
   const signOutHandler = async () => {
-    const res = await signOutUser();
-    console.log(res);
+    await signOutUser();
+    setCurrentUser(null);
   };
 
   console.log("currentUser:", currentUser);
