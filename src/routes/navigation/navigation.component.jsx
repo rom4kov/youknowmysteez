@@ -7,12 +7,7 @@ import { signOutUser } from "../../utils/firebase/firebase.utils";
 import "./navigation.styles.scss";
 
 const Navigation = ({ navColor }) => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
-
-  const signOutHandler = async () => {
-    await signOutUser();
-    setCurrentUser(null);
-  };
+  const { currentUser } = useContext(UserContext);
 
   console.log("currentUser:", currentUser);
 
@@ -20,7 +15,7 @@ const Navigation = ({ navColor }) => {
   const loc = location.pathname;
 
   const color = navColor === false || loc !== "/" ? "black" : "white";
-  const background = navColor === false || loc !== "/" ? "#ddd" : "transparent";
+  const background = navColor === false || loc !== "/" ? "#aaa" : "transparent";
   const height = navColor === false || loc !== "/" ? "5rem" : "10rem";
   const marginTopNav = navColor === false || loc !== "/" ? "1.7rem" : "3.5rem";
   const marginBlockTitle =
@@ -88,7 +83,7 @@ const Navigation = ({ navColor }) => {
               <span
                 className="nav-link"
                 style={{ color: `${color}` }}
-                onClick={signOutHandler}
+                onClick={signOutUser}
               >
                 ABMELDEN
               </span>
