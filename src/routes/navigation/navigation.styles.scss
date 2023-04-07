@@ -12,6 +12,13 @@
   font-weight: bold;
 }
 
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins-Medium"),
+    url("../../assets/fonts/Poppins-Medium.ttf") format("truetype");
+  font-weight: bold;
+}
+
 .navigation {
   position: fixed;
   width: 100%;
