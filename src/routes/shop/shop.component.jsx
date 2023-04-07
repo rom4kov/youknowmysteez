@@ -2,14 +2,12 @@ import { useContext } from "react";
 
 import { ProductsContext } from "../../contexts/products.context";
 
-import SHOP_DATA from "../../shop-data.json";
-
 import "./shop.styles.scss";
 
 const Shop = () => {
-  const { products, setProducts } = useContext(ProductsContext);
+  const { products } = useContext(ProductsContext);
 
-  setProducts(SHOP_DATA);
+  // setProducts(SHOP_DATA);
 
   return (
     <div className="shop">
