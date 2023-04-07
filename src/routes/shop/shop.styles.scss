@@ -1,4 +1,21 @@
 .shop {
   margin-top: 10rem;
   text-align: center;
+
+  .shop-items {
+    margin: 5rem;
+    display: flex;
+    justify-content: baseline;
+    flex-wrap: wrap;
+
+    .shop-item {
+      margin: 2rem;
+
+      div {
+        width: 17.5rem;
+        height: 25rem;
+        overflow: hidden;
+      }
+    }
+  }
 }
