@@ -1,10 +1,11 @@
 .cart-icon-container {
   position: relative;
-  margin-inline: 0.5rem;
+  margin-left: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all 200ms ease-in;
   cursor: pointer;
 
   .shopping-icon {

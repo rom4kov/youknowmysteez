@@ -12,6 +12,14 @@
   top: 6rem;
   right: 4rem;
   z-index: 5;
+  //   transform: scale(1, 0);
+  //   transition: all 200ms ease-in-out;
+  //   transform-origin: top;
+
+  &.dropdown {
+    transform: scale(1, 1);
+    transition: all 200ms ease-in-out;
+  }
 
   .empty-message {
     font-size: 18px;

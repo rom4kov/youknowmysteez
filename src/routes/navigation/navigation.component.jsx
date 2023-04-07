@@ -1,15 +1,24 @@
 import { Fragment, useContext } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
-import { UserContext } from "../../contexts/user.context";
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 
-import "./navigation.styles.scss";
+import { UserContext } from "../../contexts/user.context";
+import { CartContext } from "../../contexts/cart.context";
+
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
+import "./navigation.styles.scss";
+
 const Navigation = ({ navColor }) => {
   const { currentUser } = useContext(UserContext);
+  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+
+  const dropdownHandler = () => {
+    setIsCartOpen(!isCartOpen);
+    console.log("Cart is open?", isCartOpen);
+  };
 
   console.log("currentUser:", currentUser);
 
@@ -93,7 +102,7 @@ const Navigation = ({ navColor }) => {
               VERSAND
             </Link>
             <Link
-              className="nav-link"
+              className="nav-link cart-link"
               to="/warenkorb"
               style={{
                 color: `${color}`,
@@ -102,10 +111,10 @@ const Navigation = ({ navColor }) => {
               }}
             >
               WARENKORB
-              <CartIcon />
             </Link>
+            <CartIcon styleProp={color} />
           </div>
-          <CartDropdown />
+          {isCartOpen && <CartDropdown />}
         </div>
       </div>
       <Outlet />
