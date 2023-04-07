@@ -2,6 +2,8 @@ import { useContext } from "react";
 
 import { ProductsContext } from "../../contexts/products.context";
 
+import ProductCard from "../../components/product-card/product-card.component";
+
 import "./shop.styles.scss";
 
 const Shop = () => {
@@ -12,13 +14,9 @@ const Shop = () => {
   return (
     <div className="shop">
       <h1>THIS IS THE YOUKNOWMYSTEEZ SHOP</h1>
-      <div className="shop-items">
-        {products.map(({ id, name, imageUrl, price }) => (
-          <div className="shop-item" key={id}>
-            <h2>{name}</h2>
-            <img src={imageUrl} alt={name}></img>
-            <p>€ {price}</p>
-          </div>
+      <div className="products-container">
+        {products.map((product) => (
+          <ProductCard product={product} key={product.id} />
         ))}
       </div>
     </div>

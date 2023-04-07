@@ -2,20 +2,21 @@
   margin-top: 10rem;
   text-align: center;
 
-  .shop-items {
-    margin: 5rem;
-    display: flex;
-    justify-content: baseline;
-    flex-wrap: wrap;
+  .products-container {
+    margin: 2rem 5rem 5rem 15rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5);
+    column-gap: 3rem;
+    row-gap: 1rem;
+    // .shop-item {
+    //   margin: 2rem;
 
-    .shop-item {
-      margin: 2rem;
-
-      div {
-        width: 17.5rem;
-        height: 25rem;
-        overflow: hidden;
-      }
-    }
+    //   div {
+    //     width: 17.5rem;
+    //     height: 25rem;
+    //     overflow: hidden;
+    //   }
+    // }
   }
 }
