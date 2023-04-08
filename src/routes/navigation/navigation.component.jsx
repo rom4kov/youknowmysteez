@@ -26,7 +26,7 @@ const Navigation = ({ navColor }) => {
   const loc = location.pathname;
 
   const color = navColor === false || loc !== "/" ? "black" : "white";
-  const background = navColor === false || loc !== "/" ? "#aaa" : "transparent";
+  const background = navColor === false || loc !== "/" ? "#fff" : "transparent";
   const height = navColor === false || loc !== "/" ? "5rem" : "10rem";
   const marginTopNav = navColor === false || loc !== "/" ? "1.7rem" : "3.5rem";
   const marginBlockTitle =
@@ -115,8 +115,8 @@ const Navigation = ({ navColor }) => {
             <CartIcon styleProp={color} />
           </div>
         </div>
+        <CartDropdown />
       </div>
-      <CartDropdown />
       <Outlet />
     </Fragment>
   );
