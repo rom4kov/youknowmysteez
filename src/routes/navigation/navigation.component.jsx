@@ -20,8 +20,6 @@ const Navigation = ({ navColor }) => {
     console.log("Cart is open?", isCartOpen);
   };
 
-  console.log("currentUser:", currentUser);
-
   const location = useLocation();
   const loc = location.pathname;
 
@@ -31,7 +29,6 @@ const Navigation = ({ navColor }) => {
   const marginTopNav = navColor === false || loc !== "/" ? "1.7rem" : "3.5rem";
   const marginBlockTitle =
     navColor === false || loc !== "/" ? "0.05rem" : "1.5rem";
-  console.log("color", color);
 
   return (
     <Fragment>
