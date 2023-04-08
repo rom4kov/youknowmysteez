@@ -114,9 +114,9 @@ const Navigation = ({ navColor }) => {
             </Link>
             <CartIcon styleProp={color} />
           </div>
-          {isCartOpen && <CartDropdown />}
         </div>
       </div>
+      <CartDropdown />
       <Outlet />
     </Fragment>
   );
