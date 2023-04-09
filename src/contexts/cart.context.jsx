@@ -38,12 +38,15 @@ export const CartProvider = ({ children }) => {
     setCartItems(removeCardItem(cartItems, cartItem));
   };
 
+  const sumTotal = cartItems.reduce((a, b) => a + b.price * b.quantity, 0);
+
   const value = {
     isCartOpen,
     setIsCartOpen,
     cartItems,
     addItemToCart,
     removeItemFromCart,
+    sumTotal,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

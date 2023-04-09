@@ -14,15 +14,15 @@ const CheckoutItem = ({ checkoutItem }) => {
   return (
     <div className="checkout-item">
       <img className="checkout-item-img" src={imageUrl} alt={name}></img>
-      <div className="checkout-item-brand-price">
-        <span className="checkout-item-brand">{brand}</span>
+      <span className="checkout-item-brand">{brand}</span>
+      <h2 className="name">{name}</h2>
+      <span className="quantity">Anzahl: - {quantity} +</span>
+      <div className="checkout-item-remove-price">
+        <span className="remove-item" onClick={removeItem}>
+          Artikel entfernen
+        </span>
         <span className="checkout-item-price">{price * quantity},00 €</span>
       </div>
-      <h2 className="name">{name}</h2>
-      <span className="quantity">Anzahl: {quantity}</span>
-      <span className="remove-item" onClick={removeItem}>
-        Artikel entfernen
-      </span>
     </div>
   );
 };

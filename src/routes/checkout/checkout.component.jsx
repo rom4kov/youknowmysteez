@@ -11,7 +11,7 @@ import "../../components/checkout-item/checkout-item.styles.scss";
 import React from "react";
 
 const Checkout = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, sumTotal } = useContext(CartContext);
 
   return (
     <div className="checkout-container">
@@ -24,6 +24,20 @@ const Checkout = () => {
       </div>
       <div className="pay">
         <h2>Gesamtsumme</h2>
+        <div className="payment-items">
+          <div className="subtotal">
+            <span>Zwischensumme</span>
+            <span>{sumTotal},00 €</span>
+          </div>
+          <div className="shipment">
+            <span>Lieferung</span>
+            <span>0,00 €</span>
+          </div>
+          <div className="total">
+            <span>Gesamtsumme</span>
+            <span>{sumTotal},00 €</span>
+          </div>
+        </div>
       </div>
     </div>
   );

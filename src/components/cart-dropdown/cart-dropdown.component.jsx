@@ -11,9 +11,7 @@ import CartItem from "../cart-item/cart-item.component";
 import "./cart-dropdown.styles.scss";
 
 const CartDropdown = () => {
-  const { isCartOpen, cartItems } = useContext(CartContext);
-
-  const sumTotal = cartItems.reduce((a, b) => a + b.price * b.quantity, 0);
+  const { isCartOpen, cartItems, sumTotal } = useContext(CartContext);
 
   console.log("cartItems in cart-dropdown:", cartItems);
 
