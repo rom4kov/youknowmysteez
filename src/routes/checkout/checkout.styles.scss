@@ -16,8 +16,11 @@
   .cart {
     grid-area: one;
     background-color: #eee;
+    height: 32rem;
+
     h2 {
       color: black;
+      margin-left: 2rem;
     }
   }
 
@@ -27,6 +30,7 @@
 
     h2 {
       color: black;
+      margin-left: 2rem;
     }
   }
 }
