@@ -16,17 +16,20 @@
   .cart {
     grid-area: one;
     background-color: #eee;
-    height: 32rem;
+    padding: 2rem;
+    border-radius: 2rem;
 
-    h2 {
+    .cart-title {
       color: black;
-      margin-left: 2rem;
+      margin-top: 0;
+      font-size: 2rem;
     }
   }
 
   .pay {
     grid-area: two;
     background-color: #eee;
+    border-radius: 2rem;
 
     h2 {
       color: black;
