@@ -1,6 +1,17 @@
 .checkout-container {
+  margin-top: 5rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 10rem;
   row-gap: 2rem;
+
+  .cart {
+    h2 {
+      color: black;
+    }
+  }
+
+  h2 {
+    color: black;
+  }
 }
