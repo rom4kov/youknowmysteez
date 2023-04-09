@@ -5,19 +5,20 @@
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
-  // border: 1pxs solid black;
+  // border: 2px solid black;
   border-radius: 1rem;
   background-color: white;
   top: 6rem;
   right: 4rem;
   z-index: 5;
-  box-shadow: 0rem 1rem 2rem -0.3rem rgb(0 0 0 / 33%);
+  box-shadow: none;
   transform: scale(1, 0);
   transition: all 300ms ease;
   transform-origin: top;
 
   &.open {
     transform: scale(1, 1);
+    box-shadow: 0rem 1rem 2rem -0.3rem rgb(0 0 0 / 33%);
     transition: all 300ms ease;
   }
 

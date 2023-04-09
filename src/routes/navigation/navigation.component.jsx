@@ -4,7 +4,6 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 import { UserContext } from "../../contexts/user.context";
-import { CartContext } from "../../contexts/cart.context";
 
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
@@ -13,12 +12,6 @@ import "./navigation.styles.scss";
 
 const Navigation = ({ navColor }) => {
   const { currentUser } = useContext(UserContext);
-  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
-
-  const dropdownHandler = () => {
-    setIsCartOpen(!isCartOpen);
-    console.log("Cart is open?", isCartOpen);
-  };
 
   const location = useLocation();
   const loc = location.pathname;
@@ -27,8 +20,13 @@ const Navigation = ({ navColor }) => {
   const background = navColor === false || loc !== "/" ? "#fff" : "transparent";
   const height = navColor === false || loc !== "/" ? "5rem" : "10rem";
   const marginTopNav = navColor === false || loc !== "/" ? "1.7rem" : "3.5rem";
+  const navShadow =
+    navColor === false || loc !== "/"
+      ? "0rem -2rem 3.7rem 1.3rem rgb(0 0 0 / 33%)"
+      : "none";
   const marginBlockTitle =
-    navColor === false || loc !== "/" ? "0.05rem" : "1.5rem";
+    navColor === false || loc !== "/" ? "0.45rem" : "1.5rem";
+  const titleFontSize = navColor === false || loc !== "/" ? "3rem" : "4rem";
 
   return (
     <Fragment>
@@ -37,6 +35,7 @@ const Navigation = ({ navColor }) => {
         style={{
           background: `${background}`,
           height: `${height}`,
+          boxShadow: `${navShadow}`,
         }}
       >
         <div className="nav-wrapper">
@@ -77,7 +76,11 @@ const Navigation = ({ navColor }) => {
         <Link className="title-link" to="/">
           <h1
             className="title"
-            style={{ color: `${color}`, marginBlock: `${marginBlockTitle}` }}
+            style={{
+              color: `${color}`,
+              marginBlock: `${marginBlockTitle}`,
+              fontSize: `${titleFontSize}`,
+            }}
           >
             youknowmysteez
           </h1>

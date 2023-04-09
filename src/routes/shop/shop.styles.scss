@@ -3,20 +3,11 @@
   text-align: center;
 
   .products-container {
-    margin: 2rem 5rem 5rem 15rem;
+    margin: 2rem 10rem 5rem 25rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5);
     column-gap: 3rem;
     row-gap: 1rem;
-    // .shop-item {
-    //   margin: 2rem;
-
-    //   div {
-    //     width: 17.5rem;
-    //     height: 25rem;
-    //     overflow: hidden;
-    //   }
-    // }
   }
 }

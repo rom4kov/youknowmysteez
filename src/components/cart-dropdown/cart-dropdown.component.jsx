@@ -18,7 +18,11 @@ const CartDropdown = () => {
       <div className="cart-items">
         {cartItems &&
           cartItems.map((item) => (
-            <CartItem cartItem={item} key={item.id}></CartItem>
+            <CartItem
+              isCartOpen={isCartOpen}
+              cartItem={item}
+              key={item.id}
+            ></CartItem>
           ))}
       </div>
       <Button>Zum Warenkorb</Button>

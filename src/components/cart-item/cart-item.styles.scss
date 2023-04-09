@@ -1,7 +1,17 @@
-h2 {
-  color: black;
-}
+.cart-item {
+  opacity: 0;
+  transition: opacity 10ms ease-in;
 
-span {
-  color: black;
+  &.open {
+    opacity: 1;
+    transition: opacity 200ms ease-in 100ms;
+  }
+
+  .name {
+    color: black;
+  }
+
+  .quantity {
+    color: black;
+  }
 }

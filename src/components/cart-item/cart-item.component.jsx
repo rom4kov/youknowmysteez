@@ -2,13 +2,14 @@ import "./cart-item.styles.scss";
 
 import React from "react";
 
-const CartItem = ({ cartItem }) => {
-  const { name, quantity } = cartItem;
+const CartItem = ({ cartItem, isCartOpen }) => {
+  const { name, imageUrl, quantity } = cartItem;
 
   return (
-    <div>
-      <h2>{name}</h2>
-      <span>{quantity}</span>
+    <div className={`cart-item ${isCartOpen ? "open" : ""}`}>
+      <img src={imageUrl}></img>
+      <h2 className="name">{name}</h2>
+      <span className="quantity">{quantity}</span>
     </div>
   );
 };

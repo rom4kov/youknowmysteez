@@ -13,7 +13,6 @@
     object-fit: cover;
     margin-bottom: 5px;
     border-radius: 1rem;
-
     transition: all 200ms ease-in-out;
   }
 
@@ -44,13 +43,14 @@
     font-size: 18px;
 
     .name {
-      width: 90%;
+      width: 60%;
       margin-bottom: 15px;
       text-align: start;
     }
 
     .price {
-      width: 10%;
+      width: 25%;
+      text-align: end;
     }
   }
 }
