@@ -5,7 +5,12 @@ import React from "react";
 const Checkout = () => {
   return (
     <div className="checkout-container">
-      <h2>Warenkorb</h2>
+      <div className="cart">
+        <h2>Warenkorb</h2>
+      </div>
+      <div className="pay">
+        <h2>Gesamtsumme</h2>
+      </div>
     </div>
   );
 };

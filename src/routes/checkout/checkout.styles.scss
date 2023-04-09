@@ -1,17 +1,32 @@
 .checkout-container {
-  margin-top: 5rem;
+  width: 70%;
+  margin-top: 10rem;
+  margin-inline: auto;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 10rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 15rem;
+  grid-template-areas:
+    "one one two"
+    "one one ."
+    "three three ."
+    "four four .";
+  column-gap: 2rem;
   row-gap: 2rem;
 
   .cart {
+    grid-area: one;
+    background-color: #eee;
     h2 {
       color: black;
     }
   }
 
-  h2 {
-    color: black;
+  .pay {
+    grid-area: two;
+    background-color: #eee;
+
+    h2 {
+      color: black;
+    }
   }
 }

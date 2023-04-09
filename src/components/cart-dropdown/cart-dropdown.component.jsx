@@ -1,5 +1,7 @@
 import { useContext } from "react";
 
+import { Link } from "react-router-dom";
+
 import { CartContext } from "../../contexts/cart.context";
 
 import Button from "../button/button.component";
@@ -31,7 +33,9 @@ const CartDropdown = () => {
         <span>Gesamtsumme:</span>
         <span>{sumTotal},00 €</span>
       </div>
-      <Button>Zum Warenkorb</Button>
+      <Link to="/cart">
+        <Button>Zum Warenkorb</Button>
+      </Link>
     </div>
   );
 };
