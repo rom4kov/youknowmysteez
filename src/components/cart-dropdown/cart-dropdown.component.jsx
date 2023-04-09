@@ -11,6 +11,8 @@ import "./cart-dropdown.styles.scss";
 const CartDropdown = () => {
   const { isCartOpen, cartItems } = useContext(CartContext);
 
+  const sumTotal = cartItems.reduce((a, b) => a + b.price * b.quantity, 0);
+
   console.log("cartItems in cart-dropdown:", cartItems);
 
   return (
@@ -24,6 +26,10 @@ const CartDropdown = () => {
               key={item.id}
             ></CartItem>
           ))}
+      </div>
+      <div className="sum-total">
+        <span>Gesamtsumme:</span>
+        <span>{sumTotal},00 €</span>
       </div>
       <Button>Zum Warenkorb</Button>
     </div>

@@ -1,7 +1,7 @@
 .cart-dropdown-container {
   position: absolute;
-  width: 17.5rem;
-  height: 22.5rem;
+  width: 22.5rem;
+  height: 30rem;
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
@@ -32,6 +32,17 @@
     display: flex;
     flex-direction: column;
     overflow: scroll;
+    margin-bottom: 0.75rem;
+  }
+
+  .sum-total {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 0.25rem;
+    margin-bottom: 0.5rem;
+    color: black;
+    font-size: 1rem;
+    font-weight: 700;
   }
 
   button {

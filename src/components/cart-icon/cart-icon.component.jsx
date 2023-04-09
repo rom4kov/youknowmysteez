@@ -7,7 +7,11 @@ import { CartContext } from "../../contexts/cart.context";
 import "./cart-icon.styles.scss";
 
 const CartIcon = ({ styleProp }) => {
-  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+  const { isCartOpen, setIsCartOpen, cartItems } = useContext(CartContext);
+
+  const itemCount = cartItems.reduce((a, b) => a + b.quantity, 0);
+
+  console.log("itemCount:", itemCount);
 
   const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen);
 
@@ -18,7 +22,7 @@ const CartIcon = ({ styleProp }) => {
       style={{ color: `${styleProp}` }}
     >
       <ShoppingIcon className="shopping-icon" />
-      <span className="item-count">2</span>
+      <span className="item-count">{itemCount}</span>
     </div>
   );
 };
