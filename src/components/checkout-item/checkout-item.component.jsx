@@ -4,6 +4,9 @@ import { CartContext } from "../../contexts/cart.context";
 
 import "./checkout-item.styles.scss";
 
+import { ReactComponent as MinusIcon } from "../../assets/svgs/minus.svg";
+import { ReactComponent as PlusIcon } from "../../assets/svgs/plus.svg";
+
 const CheckoutItem = ({ checkoutItem }) => {
   const { brand, price, imageUrl, name, quantity } = checkoutItem;
 
@@ -16,7 +19,16 @@ const CheckoutItem = ({ checkoutItem }) => {
       <img className="checkout-item-img" src={imageUrl} alt={name}></img>
       <span className="checkout-item-brand">{brand}</span>
       <h2 className="name">{name}</h2>
-      <span className="quantity">Anzahl: - {quantity} +</span>
+      <div className="quantity">
+        Anzahl:
+        <span style={{ marginInline: ".25rem" }}>
+          <MinusIcon style={{ transform: "scale(.9) translateY(.2rem)" }} />
+        </span>
+        {quantity}
+        <span style={{ marginInline: ".25rem" }}>
+          <PlusIcon style={{ transform: "scale(.9) translateY(.2rem)" }} />
+        </span>
+      </div>
       <div className="checkout-item-remove-price">
         <span className="remove-item" onClick={removeItem}>
           Artikel entfernen
