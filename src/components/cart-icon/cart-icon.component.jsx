@@ -9,8 +9,6 @@ import "./cart-icon.styles.scss";
 const CartIcon = ({ styleProp }) => {
   const { isCartOpen, setIsCartOpen, itemCount } = useContext(CartContext);
 
-  console.log("itemCount:", itemCount);
-
   const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen);
 
   return (

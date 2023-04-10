@@ -32,7 +32,7 @@ const firebaseConfig = {
   appId: "1:56635006581:web:755f5e9a7b2b5996b5623c",
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 
