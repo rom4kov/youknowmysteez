@@ -52,7 +52,7 @@ $main-color: rgb(225, 225, 225);
   width: 100%;
   transform: scaleX(0);
   height: 2px;
-  background-color: green;
+  background-color: rgb(64, 115, 64);
   transition: transform 500ms ease-in-out;
   transform-origin: center;
 }
