@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const addCartItem = (cartItems, productToAdd) => {
   // find if cartItems contains productToAdd
@@ -40,8 +40,8 @@ export const CartContext = createContext({
   cartItems: [],
   addItemToCart: () => {},
   removeItemFromCart: () => {},
-  itemCount: "",
-  sumTotal: "",
+  itemCount: 0,
+  sumTotal: 0,
   decreaseQtyOfCartItem: () => {},
   increaseQtyOfCartItem: () => {},
 });
@@ -49,6 +49,18 @@ export const CartContext = createContext({
 export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [itemCount, setItemCount] = useState(0);
+  const [sumTotal, setSumTotal] = useState(0);
+
+  useEffect(() => {
+    const newItemCount = cartItems.reduce((a, b) => a + b.quantity, 0);
+    setItemCount(newItemCount);
+  }, [cartItems]);
+
+  useEffect(() => {
+    const newSumTotal = cartItems.reduce((a, b) => a + b.price * b.quantity, 0);
+    setSumTotal(newSumTotal);
+  }, [cartItems]);
 
   const addItemToCart = (productToAdd) => {
     setCartItems(addCartItem(cartItems, productToAdd));
@@ -65,10 +77,6 @@ export const CartProvider = ({ children }) => {
   const increaseQtyOfCartItem = (checkoutItem) => {
     setCartItems(increaseQuantity(cartItems, checkoutItem));
   };
-
-  const itemCount = cartItems.reduce((a, b) => a + b.quantity, 0);
-
-  const sumTotal = cartItems.reduce((a, b) => a + b.price * b.quantity, 0);
 
   const value = {
     isCartOpen,
