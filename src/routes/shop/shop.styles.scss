@@ -1,20 +1,4 @@
 .shop {
   margin-top: 10rem;
   text-align: center;
-
-  .category-title {
-    text-align: start;
-    margin-left: 27rem;
-    margin-bottom: -2rem;
-    font-size: 2rem;
-  }
-
-  .products-container {
-    margin: 2rem 10rem 5rem 25rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    // grid-template-rows: repeat(5);
-    column-gap: 3rem;
-    row-gap: 1rem;
-  }
 }
