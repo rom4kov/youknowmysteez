@@ -10,9 +10,12 @@ import { ReactComponent as PlusIcon } from "../../assets/svgs/plus.svg";
 const CheckoutItem = ({ checkoutItem }) => {
   const { brand, price, imageUrl, name, quantity } = checkoutItem;
 
-  const { removeItemFromCart } = useContext(CartContext);
+  const { removeItemFromCart, decreaseQtyOfCartItem, increaseQtyOfCartItem } =
+    useContext(CartContext);
 
   const removeItem = () => removeItemFromCart(checkoutItem);
+  const decreaseQuantity = () => decreaseQtyOfCartItem(checkoutItem);
+  const increaseQuantity = () => increaseQtyOfCartItem(checkoutItem);
 
   return (
     <div className="checkout-item">
@@ -21,12 +24,26 @@ const CheckoutItem = ({ checkoutItem }) => {
       <h2 className="name">{name}</h2>
       <div className="quantity">
         Anzahl:
-        <span style={{ marginInline: ".25rem" }}>
-          <MinusIcon style={{ transform: "scale(.9) translateY(.2rem)" }} />
+        <span className="minus-svg" style={{ marginInline: ".25rem" }}>
+          <MinusIcon
+            onClick={decreaseQuantity}
+            style={{
+              transform: "scale(.9) translateY(.2rem)",
+              cursor: "pointer",
+            }}
+          />
         </span>
-        {quantity}
-        <span style={{ marginInline: ".25rem" }}>
-          <PlusIcon style={{ transform: "scale(.9) translateY(.2rem)" }} />
+        <span className="qty-num-container">
+          <span className="qty-num">{quantity}</span>
+        </span>
+        <span className="plus-svg" style={{ marginInline: ".25rem" }}>
+          <PlusIcon
+            onClick={increaseQuantity}
+            style={{
+              transform: "scale(.9) translateY(.2rem)",
+              cursor: "pointer",
+            }}
+          />
         </span>
       </div>
       <div className="checkout-item-remove-price">

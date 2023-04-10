@@ -7,9 +7,7 @@ import { CartContext } from "../../contexts/cart.context";
 import "./cart-icon.styles.scss";
 
 const CartIcon = ({ styleProp }) => {
-  const { isCartOpen, setIsCartOpen, cartItems } = useContext(CartContext);
-
-  const itemCount = cartItems.reduce((a, b) => a + b.quantity, 0);
+  const { isCartOpen, setIsCartOpen, itemCount } = useContext(CartContext);
 
   console.log("itemCount:", itemCount);
 

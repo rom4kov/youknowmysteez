@@ -18,12 +18,32 @@ const removeCardItem = (cartItems, cartItem) => {
   return cartItems.filter((el) => el.id !== cartItem.id);
 };
 
+const decreaseQuantity = (cartItems, checkoutItem) => {
+  return cartItems.map((cartItem) =>
+    cartItem.id === checkoutItem.id && checkoutItem.quantity > 1
+      ? { ...cartItem, quantity: checkoutItem.quantity - 1 }
+      : cartItem
+  );
+};
+
+const increaseQuantity = (cartItems, checkoutItem) => {
+  return cartItems.map((cartItem) =>
+    cartItem.id === checkoutItem.id
+      ? { ...cartItem, quantity: checkoutItem.quantity + 1 }
+      : cartItem
+  );
+};
+
 export const CartContext = createContext({
   isCartOpen: false,
   setIsCartOpen: () => {},
   cartItems: [],
   addItemToCart: () => {},
   removeItemFromCart: () => {},
+  itemCount: "",
+  sumTotal: "",
+  decreaseQtyOfCartItem: () => {},
+  increaseQtyOfCartItem: () => {},
 });
 
 export const CartProvider = ({ children }) => {
@@ -38,6 +58,16 @@ export const CartProvider = ({ children }) => {
     setCartItems(removeCardItem(cartItems, cartItem));
   };
 
+  const decreaseQtyOfCartItem = (checkoutItem) => {
+    setCartItems(decreaseQuantity(cartItems, checkoutItem));
+  };
+
+  const increaseQtyOfCartItem = (checkoutItem) => {
+    setCartItems(increaseQuantity(cartItems, checkoutItem));
+  };
+
+  const itemCount = cartItems.reduce((a, b) => a + b.quantity, 0);
+
   const sumTotal = cartItems.reduce((a, b) => a + b.price * b.quantity, 0);
 
   const value = {
@@ -46,7 +76,10 @@ export const CartProvider = ({ children }) => {
     cartItems,
     addItemToCart,
     removeItemFromCart,
+    itemCount,
     sumTotal,
+    decreaseQtyOfCartItem,
+    increaseQtyOfCartItem,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
