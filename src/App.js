@@ -17,7 +17,7 @@ const App = () => {
         <Route index element={<Home intObsRef={intObsRef} />} />
         <Route path="auth" element={<Authentication />} />
         <Route path="shop" element={<Shop />} />
-        <Route path="cart" element={<Checkout />} />
+        <Route path="checkout" element={<Checkout />} />
       </Route>
     </Routes>
   );

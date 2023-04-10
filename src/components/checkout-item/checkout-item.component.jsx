@@ -18,10 +18,10 @@ const CheckoutItem = ({ checkoutItem }) => {
   const increaseQuantity = () => increaseQtyOfCartItem(checkoutItem);
 
   return (
-    <div className="checkout-item">
-      <img className="checkout-item-img" src={imageUrl} alt={name}></img>
+    <div className="checkout-item-container">
+      <img className="checkout-item-img" src={imageUrl} alt={`${name}`}></img>
       <span className="checkout-item-brand">{brand}</span>
-      <h2 className="name">{name}</h2>
+      <h3 className="name">{name}</h3>
       <div className="quantity">
         Anzahl:
         <span className="minus-svg" style={{ marginInline: ".25rem" }}>

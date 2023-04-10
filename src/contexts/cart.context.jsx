@@ -14,7 +14,7 @@ const addCartItem = (cartItems, productToAdd) => {
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
-const removeCardItem = (cartItems, cartItem) => {
+const removeCartItem = (cartItems, cartItem) => {
   return cartItems.filter((el) => el.id !== cartItem.id);
 };
 
@@ -55,7 +55,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeItemFromCart = (cartItem) => {
-    setCartItems(removeCardItem(cartItems, cartItem));
+    setCartItems(removeCartItem(cartItems, cartItem));
   };
 
   const decreaseQtyOfCartItem = (checkoutItem) => {

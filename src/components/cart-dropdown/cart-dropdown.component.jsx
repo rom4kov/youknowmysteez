@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { Link } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import { CartContext } from "../../contexts/cart.context";
 
@@ -11,9 +11,14 @@ import CartItem from "../cart-item/cart-item.component";
 import "./cart-dropdown.styles.scss";
 
 const CartDropdown = () => {
-  const { isCartOpen, cartItems, sumTotal } = useContext(CartContext);
+  const { isCartOpen, setIsCartOpen, cartItems, sumTotal } =
+    useContext(CartContext);
+  const navigate = useNavigate();
 
-  console.log("cartItems in cart-dropdown:", cartItems);
+  const goToCheckoutHandler = () => {
+    navigate("/checkout");
+    setIsCartOpen(!isCartOpen);
+  };
 
   return (
     <div className={`cart-dropdown-container ${isCartOpen ? "open" : ""}`}>
@@ -31,9 +36,7 @@ const CartDropdown = () => {
         <span>Gesamtsumme:</span>
         <span>{sumTotal},00 €</span>
       </div>
-      <Link to="/cart">
-        <Button>Zum Warenkorb</Button>
-      </Link>
+      <Button onClick={goToCheckoutHandler}>Zum Warenkorb</Button>
     </div>
   );
 };
