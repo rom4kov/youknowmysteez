@@ -1,0 +1,22 @@
+.category-preview-container {
+  margin: 2rem 10rem 5rem 25rem;
+
+  h2 {
+    text-align: start;
+    margin-left: 2rem;
+    margin-bottom: 0;
+
+    .title {
+      // margin-left: 27rem;
+      font-size: 2rem;
+    }
+  }
+
+  .preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    // grid-template-rows: repeat(5);
+    column-gap: 3rem;
+    row-gap: 1rem;
+  }
+}
