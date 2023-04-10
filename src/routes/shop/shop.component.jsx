@@ -17,11 +17,13 @@ const Shop = () => {
         <h1>THIS IS THE YOUKNOWMYSTEEZ SHOP</h1>
         {Object.keys(categoriesMap).map((title) => (
           <Fragment key={title}>
-            <h2>{title}</h2>
+            <h2 className="category-title">{title}</h2>
             <div className="products-container">
-              {categoriesMap[title].map((product) => (
-                <ProductCard product={product} key={product.id} />
-              ))}
+              {categoriesMap[title].map((product) => {
+                if (categoriesMap[title].indexOf(product) < 4) {
+                  return <ProductCard product={product} key={product.id} />;
+                }
+              })}
             </div>
           </Fragment>
         ))}
