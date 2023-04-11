@@ -17,13 +17,7 @@ const App = () => {
       <Route path="/" element={<Navigation navColor={navColor} />}>
         <Route index element={<Home intObsRef={intObsRef} />} />
         <Route path="auth" element={<Authentication />} />
-        <Route path="shop" element={<Shop />}>
-          <Route index path="hats" element={<ProductCategory />} />
-          <Route path="sneakers" element={<ProductCategory />} />
-          <Route path="jackets" element={<ProductCategory />} />
-          <Route path="mens" element={<ProductCategory />} />
-          <Route path="womens" element={<ProductCategory />} />
-        </Route>
+        <Route path="shop/*" element={<Shop />} />
         <Route path="checkout" element={<Checkout />} />
       </Route>
     </Routes>
