@@ -16,8 +16,9 @@ const Navigation = ({ navColor }) => {
   const location = useLocation();
   const loc = location.pathname;
 
-  const color = navColor === false || loc !== "/" ? "black" : "white";
-  const background = navColor === false || loc !== "/" ? "#fff" : "transparent";
+  const color = navColor === false || loc !== "/" ? "white" : "white";
+  const background =
+    navColor === false || loc !== "/" ? "black" : "transparent";
   const height = navColor === false || loc !== "/" ? "5rem" : "10rem";
   const marginTopNav = navColor === false || loc !== "/" ? "1.7rem" : "3.5rem";
   const navShadow =
