@@ -1,12 +1,12 @@
 import React from "react";
 
-import "./form-input.styles.scss";
+import { Group, FormIput, GrowingUnderline } from "./form-input.styles";
 
 const FormInput = ({ label, ...otherProps }) => {
   return (
-    <div className="group">
-      <input className="form-input" {...otherProps} />
-      <div className="growing-underline"></div>
+    <Group>
+      <FormIput {...otherProps} />
+      <GrowingUnderline />
       {label && (
         <label
           className={`${
@@ -16,7 +16,7 @@ const FormInput = ({ label, ...otherProps }) => {
           {label}
         </label>
       )}
-    </div>
+    </Group>
   );
 };
 
