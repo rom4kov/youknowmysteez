@@ -1,4 +1,4 @@
-.category-container {
+.directory-item-container {
   min-width: 30%;
   height: 20rem;
   display: flex;
@@ -19,7 +19,7 @@
         filter 0.5s ease-out;
     }
 
-    & .category-body-container {
+    & .directory-item-body {
       opacity: 0.9;
     }
   }
@@ -45,7 +45,7 @@
       filter 0.2s ease-out;
   }
 
-  .category-body-container {
+  .directory-item-body {
     height: 90px;
     padding: 0 25px;
     display: flex;
