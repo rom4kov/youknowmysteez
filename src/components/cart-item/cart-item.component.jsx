@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 
 import {
-  CartItem,
+  CartItemContainer,
   CartItemImg,
   CartItemBrandPrice,
   CartItemBrand,
@@ -21,18 +21,16 @@ const CartItem = ({ cartItem, isCartOpen }) => {
   const removeItem = () => removeItemFromCart(cartItem);
 
   return (
-    <div className={`cart-item ${isCartOpen ? "open" : ""}`}>
-      <img className="cart-item-img" src={imageUrl} alt={name}></img>
-      <div className="cart-item-brand-price">
-        <span className="cart-item-brand">{brand}</span>
-        <span className="cart-item-price">{price * quantity},00 €</span>
-      </div>
-      <h2 className="name">{name}</h2>
-      <span className="quantity">Anzahl: {quantity}</span>
-      <span className="remove-item" onClick={removeItem}>
-        Artikel entfernen
-      </span>
-    </div>
+    <CartItemContainer className={`${isCartOpen ? "open" : ""}`}>
+      <CartItemImg src={imageUrl} alt={name} />
+      <CartItemBrandPrice>
+        <CartItemBrand>{brand}</CartItemBrand>
+        <CartItemPrice>{price * quantity},00 €</CartItemPrice>
+      </CartItemBrandPrice>
+      <Name>{name}</Name>
+      <Quantity>Anzahl: {quantity}</Quantity>
+      <RemoveItem onClick={removeItem}>Artikel entfernen</RemoveItem>
+    </CartItemContainer>
   );
 };
 

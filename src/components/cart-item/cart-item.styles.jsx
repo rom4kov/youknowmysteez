@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CartItem = styled.div`
+export const CartItemContainer = styled.div`
   max-width: 100%;
   margin-bottom: 0.75rem;
   display: grid;

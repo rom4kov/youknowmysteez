@@ -8,7 +8,11 @@ import Button from "../button/button.component";
 
 import CartItem from "../cart-item/cart-item.component";
 
-import "./cart-dropdown.styles.scss";
+import {
+  CartDropdownContainer,
+  CartItems,
+  SumTotal,
+} from "./cart-dropdown.styles";
 
 const CartDropdown = () => {
   const { isCartOpen, setIsCartOpen, cartItems, sumTotal } =
@@ -21,8 +25,8 @@ const CartDropdown = () => {
   };
 
   return (
-    <div className={`cart-dropdown-container ${isCartOpen ? "open" : ""}`}>
-      <div className="cart-items">
+    <CartDropdownContainer className={`${isCartOpen ? "open" : ""}`}>
+      <CartItems>
         {cartItems &&
           cartItems.map((item) => (
             <CartItem
@@ -31,13 +35,13 @@ const CartDropdown = () => {
               key={item.id}
             ></CartItem>
           ))}
-      </div>
-      <div className="sum-total">
+      </CartItems>
+      <SumTotal>
         <span>Gesamtsumme:</span>
         <span>{sumTotal},00 €</span>
-      </div>
+      </SumTotal>
       <Button onClick={goToCheckoutHandler}>Zum Warenkorb</Button>
-    </div>
+    </CartDropdownContainer>
   );
 };
 
