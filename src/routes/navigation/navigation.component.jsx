@@ -8,7 +8,7 @@ import { UserContext } from "../../contexts/user.context";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
-import "./navigation.styles.scss";
+import { NavigationContainer } from "./navigation.styles";
 
 const Navigation = ({ navColor }) => {
   const { currentUser } = useContext(UserContext);
@@ -31,93 +31,92 @@ const Navigation = ({ navColor }) => {
 
   return (
     <Fragment>
-      <div
-        className="navigation"
-        style={{
-          background: `${background}`,
-          height: `${height}`,
-          boxShadow: `${navShadow}`,
-        }}
-      >
-        <div className="nav-wrapper">
-          <div className="left-nav" style={{ marginTop: `${marginTopNav}` }}>
-            {currentUser ? (
-              <span
-                className="nav-link"
-                style={{ color: `${color}` }}
-                onClick={signOutUser}
-              >
-                ABMELDEN
-              </span>
-            ) : (
-              <Link
-                className="nav-link"
-                to="/auth"
-                style={{ color: `${color}` }}
-              >
-                ANMELDEN
-              </Link>
-            )}
-            <Link
-              className="nav-links nav-link"
-              to="/about"
-              style={{ color: `${color}` }}
-            >
-              ABOUT
-            </Link>
-            <Link
-              className="nav-link"
-              to="/kontakt"
-              style={{ color: `${color}` }}
-            >
-              KONTAKT
-            </Link>
-          </div>
-        </div>
-        <Link className="title-link" to="/">
-          <h1
-            className="title"
-            style={{
-              color: `${color}`,
-              marginBlock: `${marginBlockTitle}`,
-              fontSize: `${titleFontSize}`,
-            }}
-          >
-            youknowmysteez
-          </h1>
-        </Link>
-        <div className="nav-wrapper">
-          <div className="right-nav" style={{ marginTop: `${marginTopNav}` }}>
-            <Link
-              className="nav-links nav-link"
-              to="/shop"
-              style={{ color: `${color}` }}
-            >
-              SHOP
-            </Link>
-            <Link
-              className="nav-link"
-              to="/versand"
-              style={{ color: `${color}` }}
-            >
-              VERSAND
-            </Link>
-            <Link
-              className="nav-link cart-link"
-              to="/warenkorb"
-              style={{
-                color: `${color}`,
-                marginRight: "-.5rem",
-                display: "flex",
-              }}
-            >
-              WARENKORB
-            </Link>
-            <CartIcon styleProp={color} />
-          </div>
-        </div>
-        <CartDropdown />
-      </div>
+      <NavigationContainer>
+        //  style={{
+      //     background: `${background}`,
+      //     height: `${height}`,
+      //     boxShadow: `${navShadow}`,
+      //   }}
+      // >
+      //   <div className="nav-wrapper">
+      //     <div className="left-nav" style={{ marginTop: `${marginTopNav}` }}>
+      //       {currentUser ? (
+      //         <span
+      //           className="nav-link"
+      //           style={{ color: `${color}` }}
+      //           onClick={signOutUser}
+      //         >
+      //           ABMELDEN
+      //         </span>
+      //       ) : (
+      //         <Link
+      //           className="nav-link"
+      //           to="/auth"
+      //           style={{ color: `${color}` }}
+      //         >
+      //           ANMELDEN
+      //         </Link>
+      //       )}
+      //       <Link
+      //         className="nav-links nav-link"
+      //         to="/about"
+      //         style={{ color: `${color}` }}
+      //       >
+      //         ABOUT
+      //       </Link>
+      //       <Link
+      //         className="nav-link"
+      //         to="/kontakt"
+      //         style={{ color: `${color}` }}
+      //       >
+      //         KONTAKT
+      //       </Link>
+      //     </div>
+      //   </div>
+      //   <Link className="title-link" to="/">
+      //     <h1
+      //       className="title"
+      //       style={{
+      //         color: `${color}`,
+      //         marginBlock: `${marginBlockTitle}`,
+      //         fontSize: `${titleFontSize}`,
+      //       }}
+      //     >
+      //       youknowmysteez
+      //     </h1>
+      //   </Link>
+      //   <div className="nav-wrapper">
+      //     <div className="right-nav" style={{ marginTop: `${marginTopNav}` }}>
+      //       <Link
+      //         className="nav-links nav-link"
+      //         to="/shop"
+      //         style={{ color: `${color}` }}
+      //       >
+      //         SHOP
+      //       </Link>
+      //       <Link
+      //         className="nav-link"
+      //         to="/versand"
+      //         style={{ color: `${color}` }}
+      //       >
+      //         VERSAND
+      //       </Link>
+      //       <Link
+      //         className="nav-link cart-link"
+      //         to="/warenkorb"
+      //         style={{
+      //           color: `${color}`,
+      //           marginRight: "-.5rem",
+      //           display: "flex",
+      //         }}
+      //       >
+      //         WARENKORB
+      //       </Link>
+      //       <CartIcon styleProp={color} />
+      //     </div>
+      //   </div>
+      //   <CartDropdown />
+      </NavigationContainer>
       <Outlet />
     </Fragment>
   );
