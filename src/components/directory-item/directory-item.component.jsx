@@ -1,20 +1,25 @@
-import "./directory-item.styles.scss";
+import {
+  DrectoryItemContainer,
+  BackgroundImage,
+  DirectoryItemBody,
+  DirectoryItemTitle,
+  DirectoryItemText,
+} from "./directory-item.styles";
 
 const DirectoryItem = ({ category }) => {
   const { imageUrl, title } = category;
   return (
-    <div className="directory-item-container">
-      <div
-        className="background-image"
+    <DrectoryItemContainer>
+      <BackgroundImage
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url(${imageUrl})`,
         }}
       />
-      <div className="directory-item-body">
-        <h2>{title}</h2>
-        <p>Shop Now</p>
-      </div>
-    </div>
+      <DirectoryItemBody>
+        <DirectoryItemTitle>{title}</DirectoryItemTitle>
+        <DirectoryItemText>Shop Now</DirectoryItemText>
+      </DirectoryItemBody>
+    </DrectoryItemContainer>
   );
 };
 
