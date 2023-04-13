@@ -2,7 +2,16 @@ import { useContext } from "react";
 
 import { CartContext } from "../../contexts/cart.context";
 
-import "./cart-item.styles.scss";
+import {
+  CartItem,
+  CartItemImg,
+  CartItemBrandPrice,
+  CartItemBrand,
+  CartItemPrice,
+  Name,
+  Quantity,
+  RemoveItem,
+} from "./cart-item.styles";
 
 const CartItem = ({ cartItem, isCartOpen }) => {
   const { brand, price, imageUrl, name, quantity } = cartItem;

@@ -1,13 +1,13 @@
-import "./banner.styles.scss";
+import { BannerContainer, Video, LinearGradient } from "./banner.styles.jsx";
 import video from "../../assets/videos/rakim.webm";
 import { forwardRef } from "react";
 
-const Banner = forwardRef(({}, ref) => {
+const Banner = forwardRef(({ _ }, ref) => {
   return (
-    <div className="banner" ref={ref}>
-      <video src={video} autoPlay loop muted></video>
-      <div className="linear-gradient"></div>
-    </div>
+    <BannerContainer ref={ref}>
+      <Video src={video} autoPlay loop muted></Video>
+      <LinearGradient />
+    </BannerContainer>
   );
 });
 
