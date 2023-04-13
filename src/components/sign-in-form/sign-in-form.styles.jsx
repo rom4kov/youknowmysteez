@@ -1,0 +1,61 @@
+import styled from "styled";
+
+export const SingInContainer = styled.div`
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  margin-right: -2rem;
+`
+
+.sign-in-container {
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  margin-right: -2rem;
+
+  .username {
+    position: absolute;
+    top: -6rem;
+    right: -20rem;
+    width: 8.75rem;
+    height: 2rem;
+    color: rgba(255, 255, 255, 0.854);
+    background: transparent;
+    font-size: 1.15em;
+    font-weight: 700;
+    border: 2px solid rgb(255, 255, 255);
+  }
+
+  .login {
+    width: 30rem;
+    height: 15rem;
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: #fff;
+      opacity: 0.6;
+    }
+
+    span {
+      font-size: 1.1rem;
+      color: #fff;
+      opacity: 0.6;
+    }
+
+    .form-inputs {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      .buttons-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+      }
+    }
+  }
+}
