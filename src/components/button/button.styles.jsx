@@ -1,4 +1,6 @@
-.button-container {
+import styled from "styled-components";
+
+export const BaseButton = styled.button`
   width: 47.5%;
   height: 45px;
   letter-spacing: 0.5px;
@@ -25,29 +27,29 @@
     border: 1px solid black;
     // transition: all 500ms ease-in-out;
   }
+`;
 
-  &.google-sign-in {
-    background-color: #4285f4;
+export const GoogleSignInButton = styled(BaseButton)`
+  background-color: #4285f4;
+  color: white;
+
+  &:hover {
+    background-color: #71a3f2;
+    border: none;
+  }
+`;
+
+export const InvertedButton = styled(BaseButton)`
+  // position: absolute;
+  // top: 17rem;
+  // left: 4.7rem;
+  background-color: white;
+  color: black;
+  // border: 1px solid black;
+
+  &:hover {
+    background-color: black;
     color: white;
-
-    &:hover {
-      background-color: #71a3f2;
-      border: none;
-    }
+    border: none;
   }
-
-  &.inverted {
-    // position: absolute;
-    // top: 17rem;
-    // left: 4.7rem;
-    background-color: white;
-    color: black;
-    // border: 1px solid black;
-
-    &:hover {
-      background-color: black;
-      color: white;
-      border: none;
-    }
-  }
-}
+`;

@@ -23,6 +23,7 @@ export const CartDropdownContainer = styled.div`
     transform: scale(1, 1);
     box-shadow: 0rem 1rem 2rem -0.3rem rgb(0 0 0 / 33%);
     transition: all 300ms ease;
+  }
 `;
 
 export const CartItems = styled.div`
@@ -43,13 +44,13 @@ export const SumTotal = styled.div`
   font-weight: 700;
 `;
 
-// export const CartDropdownButton = styled(Button)`
-//   width: 100%;
-//   height: 2rem;
-//   margin-top: auto;
-//   margin-left: auto;
-//   opacity: 0.9;
-// `;
+export const CartDropdownButton = styled(Button)`
+  width: 100%;
+  height: 2rem;
+  margin-top: auto;
+  margin-left: auto;
+  opacity: 0.9;
+`;
 
 // .cart-dropdown-container {
 //   position: absolute;

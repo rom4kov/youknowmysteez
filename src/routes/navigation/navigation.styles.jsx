@@ -79,11 +79,10 @@ export const NavLinkRight = styled(Link)`
   text-align: left;
   transition: all 200ms ease-in;
   cursor: pointer;
-}
 
   &:first-child {
-  margin-left: 0;
-}
+    margin-left: 0;
+  }
 `;
 
 // @font-face {
