@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Urban Starblues Demo";
+  src: local("Urban Starblues Demo"),
+    url("./Urban Starblues Demo.otf") format("opentype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins-Bold"), url("./Poppins-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins-Medium"), url("./Poppins-Medium.ttf") format("truetype");
+  font-weight: bold;
+}
