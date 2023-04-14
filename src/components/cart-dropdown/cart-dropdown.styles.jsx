@@ -30,7 +30,7 @@ export const CartItems = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow-y: auto;
   margin-bottom: 0.75rem;
 `;
 
@@ -44,7 +44,7 @@ export const SumTotal = styled.div`
   font-weight: 700;
 `;
 
-export const CartDropdownButton = styled(Button)`
+export const CartButton = styled(Button)`
   width: 100%;
   height: 2rem;
   margin-top: auto;
@@ -100,10 +100,10 @@ export const CartDropdownButton = styled(Button)`
 //   }
 
 //   button {
-//     width: 100%;
-//     height: 2rem;
-//     margin-top: auto;
-//     margin-left: auto;
-//     opacity: 0.9;
+// width: 100%;
+// height: 2rem;
+// margin-top: auto;
+// margin-left: auto;
+// opacity: 0.9;
 //   }
 // }

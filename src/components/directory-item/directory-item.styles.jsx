@@ -1,44 +1,5 @@
 import styled from "styled-components";
 
-export const DrectoryItemContainer = styled.div`
-  min-width: 30%;
-  height: 20rem;
-  display: flex;
-  flex: 1 1 auto;
-  align-items: center;
-  justify-content: center;
-  margin: 0 7.5px 15px;
-  overflow: hidden;
-  border-radius: 1rem;
-
-  &:hover {
-    cursor: pointer;
-
-    & .background-image {
-      scale: 1.1;
-      filter: none;
-      transition: scale 3s cubic-bezier(0.25, 0.45, 0.45, 0.95),
-        filter 0.5s ease-out;
-    }
-
-    & .directory-item-body {
-      opacity: 0.9;
-    }
-  }
-
-  &.large {
-    height: 380px;
-  }
-
-  &:first-child {
-    margin-right: 7.5px;
-  }
-
-  &:last-child {
-    margin-left: 7.5px;
-  }
-`;
-
 export const BackgroundImage = styled.div`
   width: 100%;
   height: 100%;
@@ -56,6 +17,45 @@ export const DirectoryItemBody = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
+`;
+
+export const DrectoryItemContainer = styled.div`
+  min-width: 30%;
+  height: 20rem;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  margin: 0 7.5px 15px;
+  overflow: hidden;
+  border-radius: 1rem;
+
+  &:hover {
+    cursor: pointer;
+
+    & ${BackgroundImage} {
+      scale: 1.1;
+      filter: none;
+      transition: scale 3s cubic-bezier(0.25, 0.45, 0.45, 0.95),
+        filter 0.5s ease-out;
+    }
+
+    & ${DirectoryItemBody} {
+      opacity: 0.9;
+    }
+  }
+
+  &.large {
+    height: 380px;
+  }
+
+  &:first-child {
+    margin-right: 7.5px;
+  }
+
+  &:last-child {
+    margin-left: 7.5px;
+  }
 `;
 
 export const DirectoryItemTitle = styled.h2`

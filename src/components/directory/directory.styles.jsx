@@ -6,5 +6,6 @@ export const DrectoryContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 3.5rem;
+  margin-bottom: 5rem;
   padding: 2rem;
 `;
