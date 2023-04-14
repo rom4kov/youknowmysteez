@@ -1,13 +1,17 @@
-.background {
+import styled from "styled-components";
+
+import img from "../../assets/images/auth.jpg";
+
+export const Background = styled.div`
   position: absolute;
   top: 5rem;
   width: 100%;
   height: 140vh;
-  background-image: url("../../assets/images/auth.jpg");
+  background-image: url(${img});
   background-size: cover;
-}
+`;
 
-.authentication {
+export const AuthContainer = styled.div`
   position: fixed;
   top: 12.5rem;
   left: 17.5vw;
@@ -32,4 +36,4 @@
     background-color: #fff;
     opacity: 0.25;
   }
-}
+`;

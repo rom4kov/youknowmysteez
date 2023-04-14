@@ -1,7 +1,13 @@
 import Banner from "../../components/banner/banner.component";
 import Directory from "../../components/directory/directory.component";
 import { Outlet } from "react-router-dom";
-import "./home.styles.scss";
+import {
+  HomeContainer,
+  NavIntersectionRoot,
+  SaleHeadinng,
+  SaleText,
+  Footer,
+} from "./home.styles";
 import img0 from "../../assets/images/shirts.jpg";
 import img1 from "../../assets/images/jackets.jpg";
 import img2 from "../../assets/images/sneakers.jpg";
@@ -38,15 +44,15 @@ const Home = ({ intObsRef }) => {
   ];
 
   return (
-    <div className="home-container">
-      <div className="nav-intersection-root"></div>
+    <HomeContainer>
+      <NavIntersectionRoot />
       <Outlet />
       <Banner ref={intObsRef} />
-      <h3>HIER ZUM SPRINGSALE 2023</h3>
-      <p>BIS ZU 70% AUF JACKEN, JEANS UND SCHUHE</p>
+      <SaleHeadinng>HIER ZUM SPRINGSALE 2023</SaleHeadinng>
+      <SaleText>BIS ZU 70% AUF JACKEN, JEANS UND SCHUHE</SaleText>
       <Directory categories={categories} />
-      <footer>THIS IS THE FOOTER SECTION</footer>
-    </div>
+      <Footer>THIS IS THE FOOTER SECTION</Footer>
+    </HomeContainer>
   );
 };
 

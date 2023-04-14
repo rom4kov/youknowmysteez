@@ -3,45 +3,60 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
-import Button from "../../components/button/button.component";
+import Button, {
+  BUTTON_TYPE_CLASSES,
+} from "../../components/button/button.component";
 
-import "./checkout.styles.scss";
+import {
+  CheckoutContainer,
+  Cart,
+  CartTitle,
+  Pay,
+  PayHeading,
+  PaymentItems,
+  SubTotal,
+  Shipment,
+  Total,
+  ToPaymentButton,
+} from "./checkout.styles";
 
 const Checkout = () => {
   const { cartItems, itemCount, sumTotal } = useContext(CartContext);
 
   return (
-    <div className="checkout-container">
-      <div className="cart">
-        <h2 className="cart-title">
+    <CheckoutContainer>
+      <Cart>
+        <CartTitle>
           Warenkorb {itemCount ? `(${itemCount} Artikel)` : ""}
-        </h2>
+        </CartTitle>
         {cartItems &&
           cartItems.map((item) => (
             <CheckoutItem checkoutItem={item} key={item.id}></CheckoutItem>
           ))}
-      </div>
-      <div className="pay">
-        <h2>Gesamtsumme</h2>
-        <div className="payment-items">
-          <div className="subtotal">
+      </Cart>
+      <Pay>
+        <PayHeading>Gesamtsumme</PayHeading>
+        <PaymentItems>
+          <SubTotal>
             <span>Zwischensumme</span>
             <span>{sumTotal},00 €</span>
-          </div>
-          <div className="shipment">
+          </SubTotal>
+          <Shipment>
             <span>Lieferung</span>
             <span>0,00 €</span>
-          </div>
-          <div className="total">
+          </Shipment>
+          <Total>
             <span>
               Gesamtsumme <span>(inkl. Mwst.)</span>
             </span>
             <span>{sumTotal},00 €</span>
-          </div>
-        </div>
-        <Button>Zur Kasse</Button>
-      </div>
-    </div>
+          </Total>
+        </PaymentItems>
+        <ToPaymentButton buttonType={BUTTON_TYPE_CLASSES.base}>
+          Zur Kasse
+        </ToPaymentButton>
+      </Pay>
+    </CheckoutContainer>
   );
 };
 

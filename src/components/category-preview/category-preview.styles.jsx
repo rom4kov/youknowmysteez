@@ -9,6 +9,7 @@ export const CategoryPreviewContainer = styled.div`
 export const CategoryTitleLink = styled(Link)`
   color: black;
   font-size: 2rem;
+  margin-left: 2rem;
 `;
 
 export const Preview = styled.div`
@@ -18,26 +19,3 @@ export const Preview = styled.div`
   column-gap: 3rem;
   row-gap: 1rem;
 `;
-
-// .category-preview-container {
-//   margin: 2rem 10rem 2rem 25rem;
-
-//   h2 {
-//     text-align: start;
-//     margin-left: 2rem;
-//     margin-bottom: 0;
-
-//     .title {
-//       color: black;
-//       font-size: 2rem;
-//     }
-//   }
-
-//   .preview {
-//     display: grid;
-//     grid-template-columns: repeat(4, 1fr);
-//     // grid-template-rows: repeat(5);
-//     column-gap: 3rem;
-//     row-gap: 1rem;
-//   }
-// }
