@@ -4,7 +4,7 @@ import { CategoriesContext } from "../../contexts/categories.context";
 
 import CategoryPreview from "../../components/category-preview/category-preview.component";
 
-import "./categories-preview.styles.scss";
+import { PreviewTitle } from "./categories-preview.styles.jsx";
 
 const CategoriesPreview = () => {
   const { categoriesMap } = useContext(CategoriesContext);
@@ -13,9 +13,7 @@ const CategoriesPreview = () => {
 
   return (
     <Fragment>
-      <h1 className="categories-preview-title">
-        THIS IS THE YOUKNOWMYSTEEZ SHOP
-      </h1>
+      <PreviewTitle>THIS IS THE YOUKNOWMYSTEEZ SHOP</PreviewTitle>
       {Object.keys(categoriesMap).map((title) => {
         const products = categoriesMap[title];
         return (

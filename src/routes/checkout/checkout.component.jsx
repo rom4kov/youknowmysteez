@@ -7,8 +7,6 @@ import Button from "../../components/button/button.component";
 
 import "./checkout.styles.scss";
 
-import "../../components/checkout-item/checkout-item.styles.scss";
-
 const Checkout = () => {
   const { cartItems, itemCount, sumTotal } = useContext(CartContext);
 

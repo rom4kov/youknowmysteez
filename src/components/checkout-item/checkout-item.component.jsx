@@ -2,7 +2,16 @@ import { useContext } from "react";
 
 import { CartContext } from "../../contexts/cart.context";
 
-import "./checkout-item.styles.scss";
+import {
+  CheckoutItemContainer,
+  CheckoutItemImg,
+  CheckoutItemBrand,
+  Name,
+  Quantity,
+  RemoveAndPrice,
+  RemoveItem,
+  Price,
+} from "./checkout-item.styles";
 
 import { ReactComponent as MinusIcon } from "../../assets/svgs/minus.svg";
 import { ReactComponent as PlusIcon } from "../../assets/svgs/plus.svg";
@@ -18,11 +27,11 @@ const CheckoutItem = ({ checkoutItem }) => {
   const increaseQuantity = () => increaseQtyOfCartItem(checkoutItem);
 
   return (
-    <div className="checkout-item-container">
-      <img className="checkout-item-img" src={imageUrl} alt={`${name}`}></img>
-      <span className="checkout-item-brand">{brand}</span>
-      <h3 className="name">{name}</h3>
-      <div className="quantity">
+    <CheckoutItemContainer>
+      <CheckoutItemImg src={imageUrl} alt={`${name}`}></CheckoutItemImg>
+      <CheckoutItemBrand>{brand}</CheckoutItemBrand>
+      <Name>{name}</Name>
+      <Quantity>
         Anzahl:
         <span className="minus-svg" style={{ marginInline: ".25rem" }}>
           <MinusIcon
@@ -45,14 +54,12 @@ const CheckoutItem = ({ checkoutItem }) => {
             }}
           />
         </span>
-      </div>
-      <div className="checkout-item-remove-price">
-        <span className="remove-item" onClick={removeItem}>
-          Artikel entfernen
-        </span>
-        <span className="checkout-item-price">{price * quantity},00 €</span>
-      </div>
-    </div>
+      </Quantity>
+      <RemoveAndPrice>
+        <RemoveItem onClick={removeItem}>Artikel entfernen</RemoveItem>
+        <Price>{price * quantity},00 €</Price>
+      </RemoveAndPrice>
+    </CheckoutItemContainer>
   );
 };
 
