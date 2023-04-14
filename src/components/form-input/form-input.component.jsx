@@ -1,20 +1,23 @@
 import React from "react";
 
-import { Group, FormIput, GrowingUnderline } from "./form-input.styles";
+import {
+  Group,
+  FormInputField,
+  FormInputLabel,
+  GrowingUnderline,
+} from "./form-input.styles";
 
 const FormInput = ({ label, ...otherProps }) => {
   return (
     <Group>
-      <FormIput {...otherProps} />
+      <FormInputField {...otherProps} />
       <GrowingUnderline />
       {label && (
-        <label
-          className={`${
-            otherProps.value.length ? "shrink" : ""
-          } form-input-label`}
+        <FormInputLabel
+          className={`${otherProps.value.length ? "shrink" : ""}`}
         >
           {label}
-        </label>
+        </FormInputLabel>
       )}
     </Group>
   );

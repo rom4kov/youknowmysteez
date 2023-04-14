@@ -3,7 +3,15 @@ import { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
-import "./sign-in-form.styles.jsx";
+import {
+  SingInContainer,
+  Username,
+  Login,
+  LoginTitle,
+  LoginSubheading,
+  FormInputs,
+  ButtonsContainer,
+} from "./sign-in-form.styles";
 
 import {
   signInAuthUserEmailAndPassword,
@@ -57,12 +65,12 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="sign-in-container">
-      <p className="username">{userName}</p>
-      <div className="login">
-        <h2>Du hast einen Account?</h2>
-        <span>Melde dich per Email und Passwort an</span>
-        <form onSubmit={handleSubmit} className="form-inputs">
+    <SingInContainer>
+      <Username>{userName}</Username>
+      <Login>
+        <LoginTitle>Du hast einen Account?</LoginTitle>
+        <LoginSubheading>Melde dich per Email und Passwort an</LoginSubheading>
+        <FormInputs onSubmit={handleSubmit}>
           <FormInput
             label="Email"
             type="email"
@@ -81,7 +89,7 @@ const SignInForm = () => {
             onChange={handleChange}
             required
           />
-          <div className="buttons-container">
+          <ButtonsContainer>
             <Button type="submit">Anmelden</Button>
             <Button
               type="button"
@@ -90,10 +98,10 @@ const SignInForm = () => {
             >
               Anmelden mit Google
             </Button>
-          </div>
-        </form>
-      </div>
-    </div>
+          </ButtonsContainer>
+        </FormInputs>
+      </Login>
+    </SingInContainer>
   );
 };
 
