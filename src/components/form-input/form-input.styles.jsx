@@ -1,15 +1,15 @@
-import styled from "styled-components";
-
-const shrinkLabel = `
-  top: -0.7rem;
-  left: 0.1rem;
-  font-size: 0.8rem;
-  color: $main-color;
-`;
+import styled, { css } from "styled-components";
 
 const subColor = `hsla(0, 0%, 97%, 0.6)`;
 const lightColor = `hsla(0, 0%, 100%, 0.855)`;
-// const mainColor = `rgb(225, 225, 225)`;
+const mainColor = `rgb(225, 225, 225)`;
+
+const shrinkLabelStyles = css`
+  top: -0.7rem;
+  left: 0.1rem;
+  font-size: 0.8rem;
+  color: ${mainColor};
+`;
 
 export const Group = styled.div`
   position: relative;
@@ -38,9 +38,9 @@ export const FormInputLabel = styled.label`
   color: ${lightColor};
   transition: 300ms ease all;
 
-  &.shrink {
-    ${shrinkLabel};
-  }
+  ${function ({ shrink }) {
+    return shrink && shrinkLabelStyles;
+  }};
 `;
 
 export const FormInputField = styled.input`
@@ -70,6 +70,6 @@ export const FormInputField = styled.input`
   }
 
   &:focus ~ ${FormInputLabel} {
-    ${shrinkLabel};
+    ${shrinkLabelStyles};
   }
 `;

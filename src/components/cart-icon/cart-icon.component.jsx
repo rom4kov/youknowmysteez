@@ -4,11 +4,7 @@ import { useContext } from "react";
 
 import { CartContext } from "../../contexts/cart.context";
 
-import {
-  CartIconContainer,
-  ShoppingIconContainer,
-  ItemCount,
-} from "./cart-icon.styles";
+import { CartIconContainer, ShoppingIcon, ItemCount } from "./cart-icon.styles";
 
 const CartIcon = ({ styleProp }) => {
   const { isCartOpen, setIsCartOpen, itemCount } = useContext(CartContext);
@@ -20,7 +16,7 @@ const CartIcon = ({ styleProp }) => {
       onClick={toggleIsCartOpen}
       style={{ color: `${styleProp}` }}
     >
-      <ShoppingIconContainer />
+      <ShoppingIcon />
       <ItemCount>{itemCount}</ItemCount>
     </CartIconContainer>
   );

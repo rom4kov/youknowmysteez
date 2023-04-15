@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const BackgroundImage = styled.div`
   width: 100%;
   height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    ${({ backgroundImage }) => `url(${backgroundImage})`};
   background-size: cover;
   filter: grayscale(1);
   transition: scale 1s cubic-bezier(0.25, 0.45, 0.45, 0.95),

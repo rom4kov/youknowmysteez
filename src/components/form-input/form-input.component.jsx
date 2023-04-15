@@ -11,9 +11,7 @@ const FormInput = ({ label, ...otherProps }) => {
       <FormInputField {...otherProps} />
       <GrowingUnderline />
       {label && (
-        <FormInputLabel
-          className={`${otherProps.value.length ? "shrink" : ""}`}
-        >
+        <FormInputLabel shrink={otherProps.value.length}>
           {label}
         </FormInputLabel>
       )}
