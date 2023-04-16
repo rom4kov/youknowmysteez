@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 
-import { selectCurrentUser } from "../../store/user.selector";
+import { selectCurrentUser } from "../../store/selectors/user.selector";
 
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
