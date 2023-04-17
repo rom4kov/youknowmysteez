@@ -5,7 +5,7 @@ import {
 } from "redux";
 // import logger from "redux-logger";
 
-import { rootReducer } from "./reducers/root-reducer";
+import { rootReducer } from "./root-reducer";
 
 const loggerMiddleware = (store) => (next) => (action) => {
   if (!action.type) {
