@@ -4,6 +4,14 @@ import { CartContext } from "../../contexts/cart.context";
 
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
+import { useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux";
+
+import { selectCartItems } from "../../store/selectors/cart.selector";
+
+import { setCartItems } from "../../store/actions/cart.action";
+
 import {
   ProductCardContainer,
   ProductCardImg,
@@ -16,7 +24,31 @@ import {
 const ProductCard = ({ product }) => {
   const { name, imageUrl, price } = product;
   product.quantity = 1;
-  const { addItemToCart } = useContext(CartContext);
+
+  const dispatch = useDispatch();
+
+  const cartItems = useSelector(selectCartItems);
+
+  const addCartItem = (cartItems, productToAdd) => {
+    // find if cartItems contains productToAdd
+    const existingItem = cartItems.find((item) => item.id === productToAdd.id);
+    // If found, increment quantity
+    if (existingItem) {
+      return cartItems.map((cartItem) =>
+        cartItem.id === productToAdd.id
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
+      );
+    }
+    return [...cartItems, { ...productToAdd, quantity: 1 }];
+  };
+
+  const addItemToCart = (productToAdd) => {
+    const newCartItems = addCartItem(cartItems, productToAdd);
+    dispatch(setCartItems(newCartItems));
+  };
+
+  // const { addItemToCart } = useContext(CartContext);
   const addProductToCart = () => {
     addItemToCart(product);
   };
