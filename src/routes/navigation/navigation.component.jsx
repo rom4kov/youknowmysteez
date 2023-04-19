@@ -21,6 +21,7 @@ import {
 
 const Navigation = ({ navColor }) => {
   const currentUser = useSelector(selectCurrentUser);
+
   const location = useLocation();
   const loc = location.pathname;
 
