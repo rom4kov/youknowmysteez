@@ -43,11 +43,6 @@ const ProductCard = ({ product }) => {
     return [...cartItems, { ...productToAdd, quantity: 1 }];
   };
 
-  useEffect(() => {
-    console.log(cartItems);
-    dispatch(setCartItems({ cartItems: [], itemCount: 0, sumTotal: 0 }));
-  }, [dispatch]);
-
   const addItemToCart = (productToAdd) => {
     const newCartItems = addCartItem(cartItems, productToAdd);
     dispatch(setCartItems(newCartItems));

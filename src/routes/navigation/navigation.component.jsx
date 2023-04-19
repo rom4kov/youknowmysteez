@@ -1,6 +1,10 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux";
+
+import { setCartItems } from "../../store/actions/cart.action";
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 
@@ -21,6 +25,12 @@ import {
 
 const Navigation = ({ navColor }) => {
   const currentUser = useSelector(selectCurrentUser);
+
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(setCartItems({ cartItems: [], itemCount: 0, sumTotal: 0 }));
+  // }, [dispatch]);
 
   const location = useLocation();
   const loc = location.pathname;

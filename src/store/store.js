@@ -8,6 +8,7 @@ import {
 import { rootReducer } from "./root-reducer";
 
 const loggerMiddleware = (store) => (next) => (action) => {
+  console.log("action in store:", action);
   if (!action.type) {
     return next(action);
   }

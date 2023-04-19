@@ -1,8 +1,11 @@
 import { createSelector } from "reselect";
 
-const selectCartReducer = (state) => state.cart;
+const selectCartReducer = (state) => {
+  console.log("STAAATE . CAAART: ", state.cart);
+  return state.cart;
+};
 
-console.log(selectCartReducer);
+// console.log(selectCartReducer);
 
 export const selectIsCartOpen = createSelector(
   [selectCartReducer],
@@ -15,25 +18,22 @@ export const selectIsCartOpen = createSelector(
 export const selectCartItems = createSelector(
   [selectCartReducer],
   (cartSlice) => {
-    console.log(cartSlice);
+    console.log("cartSlice1", cartSlice);
+    console.log("cartItems1", cartSlice.cartItems);
     return cartSlice.cartItems;
   }
 );
 
 export const selectNewCartItems = createSelector(
   [selectCartItems],
-  (newCartItems) => {
-    console.log(newCartItems);
-    const cartItems = newCartItems.cartItems;
-    const newItemCount = newCartItems.reduce((a, b) => a + b.quantity, 0);
-    const newSumTotal = newCartItems.reduce(
-      (a, b) => a + b.price * b.quantity,
-      0
-    );
+  (cartItems) => {
+    console.log("cartItems2: ", cartItems);
+    const itemCount = cartItems.reduce((a, b) => a + b.quantity, 0);
+    const sumTotal = cartItems.reduce((a, b) => a + b.price * b.quantity, 0);
     return {
       cartItems,
-      newItemCount,
-      newSumTotal,
+      itemCount,
+      sumTotal,
     };
   }
 );

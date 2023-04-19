@@ -11,7 +11,7 @@ import { setCartIsOpen } from "../../store/actions/cart.action";
 
 import {
   selectIsCartOpen,
-  selectCartItems,
+  selectNewCartItems,
 } from "../../store/selectors/cart.selector";
 
 import { CartIconContainer, ShoppingIcon, ItemCount } from "./cart-icon.styles";
@@ -23,17 +23,22 @@ const CartIcon = ({ styleProp }) => {
 
   const isCartOpen = useSelector(selectIsCartOpen);
 
-  console.log(isCartOpen);
+  console.log("isCartOpen: ", isCartOpen);
+  console.log("!isCartOpen: ", !isCartOpen);
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(setCartIsOpen(false));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(setCartIsOpen(isCartOpen));
+  // }, []);
+  const opposite = !isCartOpen;
 
-  const toggleIsCartOpen = () => dispatch(setCartIsOpen(!isCartOpen));
+  const toggleIsCartOpen = () => {
+    return dispatch(setCartIsOpen(opposite));
+  };
 
-  const { itemCount } = useSelector(selectCartItems);
+  const { itemCount } = useSelector(selectNewCartItems);
+  console.log("itemCount: ", itemCount);
 
   return (
     <CartIconContainer

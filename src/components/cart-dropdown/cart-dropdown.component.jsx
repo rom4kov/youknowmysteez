@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 
 import {
   selectIsCartOpen,
-  selectCartItems,
+  selectNewCartItems,
 } from "../../store/selectors/cart.selector";
 
 import { setCartIsOpen } from "../../store/actions/cart.action";
@@ -36,7 +36,8 @@ const CartDropdown = () => {
   const dispatch = useDispatch();
 
   const isCartOpen = useSelector(selectIsCartOpen);
-  const { cartItems, sumTotal } = useSelector(selectCartItems);
+  const { cartItems, sumTotal } = useSelector(selectNewCartItems);
+  console.log("cartItems + sumTotal", cartItems, sumTotal);
 
   const goToCheckoutHandler = () => {
     navigate("/checkout");
