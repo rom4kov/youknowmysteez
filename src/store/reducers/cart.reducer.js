@@ -1,14 +1,18 @@
 import { CART_ACTION_TYPES } from "../redux-types/cart.types";
 
-export const INITIAL_STATE = {
+const CART_INITIAL_STATE = {
   isCartOpen: false,
   cartItems: [],
   itemCount: 0,
   sumTotal: 0,
 };
 
-export const cartReducer = (state, action) => {
+export const cartReducer = (state = CART_INITIAL_STATE, action = {}) => {
   const { type, payload } = action;
+  console.log("state: ", state);
+  console.log("action ", action);
+
+  // const type = "SET_CART_ITEMS";
 
   switch (type) {
     case CART_ACTION_TYPES.SET_IS_CART_OPEN:
@@ -22,6 +26,6 @@ export const cartReducer = (state, action) => {
         ...payload,
       };
     default:
-      throw new Error(`Unhandled type ${type} in the cartReducer`);
+      return state;
   }
 };

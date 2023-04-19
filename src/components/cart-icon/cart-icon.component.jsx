@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useEffect } from "react";
 
 // import { ReactComponent as ShoppingIcon } from "../../assets/svgs/shopping-bag2.svg";
 
@@ -23,7 +23,13 @@ const CartIcon = ({ styleProp }) => {
 
   const isCartOpen = useSelector(selectIsCartOpen);
 
+  console.log(isCartOpen);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setCartIsOpen(false));
+  }, [dispatch]);
 
   const toggleIsCartOpen = () => dispatch(setCartIsOpen(!isCartOpen));
 

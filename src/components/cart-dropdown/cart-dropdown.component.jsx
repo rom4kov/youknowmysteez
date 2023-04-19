@@ -40,7 +40,7 @@ const CartDropdown = () => {
 
   const goToCheckoutHandler = () => {
     navigate("/checkout");
-    setIsCartOpen(!isCartOpen);
+    // setIsCartOpen(!isCartOpen);
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { CartContext } from "../../contexts/cart.context";
 
@@ -42,6 +42,11 @@ const ProductCard = ({ product }) => {
     }
     return [...cartItems, { ...productToAdd, quantity: 1 }];
   };
+
+  useEffect(() => {
+    console.log(cartItems);
+    dispatch(setCartItems({ cartItems: [], itemCount: 0, sumTotal: 0 }));
+  }, [dispatch]);
 
   const addItemToCart = (productToAdd) => {
     const newCartItems = addCartItem(cartItems, productToAdd);
