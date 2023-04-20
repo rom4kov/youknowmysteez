@@ -1,10 +1,6 @@
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-
-import { useDispatch } from "react-redux";
-
-import { setCartItems } from "../../store/actions/cart.action";
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 

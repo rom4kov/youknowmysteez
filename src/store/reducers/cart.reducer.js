@@ -7,10 +7,6 @@ const CART_INITIAL_STATE = {
 
 export const cartReducer = (state = CART_INITIAL_STATE, action = {}) => {
   const { type, payload } = action;
-  console.log("state in cartReducer: ", state);
-  console.log("action in cartReducer", action);
-
-  // const type = "SET_CART_ITEMS";
 
   switch (type) {
     case CART_ACTION_TYPES.SET_IS_CART_OPEN:

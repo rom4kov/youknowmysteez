@@ -1,10 +1,8 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { removeItemFromCart } from "../../store/actions/cart.action";
 import { decreaseQtyOfCartItem } from "../../store/actions/cart.action";
 import { increaseQtyOfCartItem } from "../../store/actions/cart.action";
-
-import { useSelector } from "react-redux";
 
 import { selectCartItems } from "../../store/selectors/cart.selector";
 
