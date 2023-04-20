@@ -8,6 +8,11 @@ export const setCartIsOpen = (isCartOpen) => {
 };
 
 export const setCartItems = ({ cartItems, itemCount, sumTotal }) => {
+  console.log("********** setCartItems action payload: ", {
+    cartItems,
+    itemCount,
+    sumTotal,
+  });
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, {
     cartItems,
     itemCount,

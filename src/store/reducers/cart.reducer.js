@@ -9,8 +9,8 @@ const CART_INITIAL_STATE = {
 
 export const cartReducer = (state = CART_INITIAL_STATE, action = {}) => {
   const { type, payload } = action;
-  console.log("state: ", state);
-  console.log("action ", action);
+  console.log("state in cartReducer: ", state);
+  console.log("action in cartReducer", action);
 
   // const type = "SET_CART_ITEMS";
 

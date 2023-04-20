@@ -23,9 +23,6 @@ const CartIcon = ({ styleProp }) => {
 
   const isCartOpen = useSelector(selectIsCartOpen);
 
-  console.log("isCartOpen: ", isCartOpen);
-  console.log("!isCartOpen: ", !isCartOpen);
-
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -38,7 +35,6 @@ const CartIcon = ({ styleProp }) => {
   };
 
   const { itemCount } = useSelector(selectNewCartItems);
-  console.log("itemCount: ", itemCount);
 
   return (
     <CartIconContainer

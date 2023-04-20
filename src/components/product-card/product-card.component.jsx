@@ -1,14 +1,10 @@
-import { useContext, useEffect } from "react";
-
-import { CartContext } from "../../contexts/cart.context";
-
-import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
+import { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import { useSelector } from "react-redux";
 
 import { useDispatch } from "react-redux";
 
-import { selectCartItems } from "../../store/selectors/cart.selector";
+import { selectNewCartItems } from "../../store/selectors/cart.selector";
 
 import { setCartItems } from "../../store/actions/cart.action";
 
@@ -27,7 +23,7 @@ const ProductCard = ({ product }) => {
 
   const dispatch = useDispatch();
 
-  const cartItems = useSelector(selectCartItems);
+  const { cartItems } = useSelector(selectNewCartItems);
 
   const addCartItem = (cartItems, productToAdd) => {
     // find if cartItems contains productToAdd
@@ -45,7 +41,7 @@ const ProductCard = ({ product }) => {
 
   const addItemToCart = (productToAdd) => {
     const newCartItems = addCartItem(cartItems, productToAdd);
-    dispatch(setCartItems(newCartItems));
+    return dispatch(setCartItems({ cartItems: newCartItems }));
   };
 
   // const { addItemToCart } = useContext(CartContext);

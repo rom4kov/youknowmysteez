@@ -16,7 +16,14 @@ import {
 const CartItem = ({ cartItem, isCartOpen }) => {
   const { brand, price, imageUrl, name, quantity } = cartItem;
 
-  const { removeItemFromCart } = useContext(CartContext);
+  const removeCartItem = (cartItems, cartItem) => {
+    return cartItems.filter((el) => el.id !== cartItem.id);
+  };
+
+  const removeItemFromCart = (cartItem) => {
+    const newCartItems = removeCartItem(cartItems, cartItem);
+    updateCartItemsReducer(newCartItems);
+  };
 
   const removeItem = () => removeItemFromCart(cartItem);
 

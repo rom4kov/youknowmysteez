@@ -36,6 +36,7 @@ const CartDropdown = () => {
   const dispatch = useDispatch();
 
   const isCartOpen = useSelector(selectIsCartOpen);
+
   const { cartItems, sumTotal } = useSelector(selectNewCartItems);
   console.log("cartItems + sumTotal", cartItems, sumTotal);
 
