@@ -2,5 +2,17 @@ import { createAction } from "../../utils/reducer/reducer.utils";
 
 import { CATEGORIES_ACTION_TYPES } from "../redux-types/category.types";
 
-export const setCategories = (categoriesArray) =>
+import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils.js";
+
+export const fetchCategoriesSuccess = (categoriesArray) =>
   createAction(CATEGORIES_ACTION_TYPES.SET_CATEGORIES, categoriesArray);
+
+export const fetchCategoriesStart = () =>
+  createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START);
+
+export const fetchCategoriesFailed = (error) =>
+  createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAIL, error);
+
+export const fetchCategoriesAsync = () => async (dispatch) => {
+  const categoriesArray = await getCategoriesAndDocuments();
+};
