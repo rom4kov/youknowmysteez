@@ -1,6 +1,10 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
-import { CartContext } from "../../contexts/cart.context";
+import { useDispatch } from "react-redux";
+
+import { selectNewCartItems } from "../../store/selectors/cart.selector";
+
+import { setCartItems } from "../../store/actions/cart.action";
 
 import {
   CartItemContainer,
@@ -16,13 +20,17 @@ import {
 const CartItem = ({ cartItem, isCartOpen }) => {
   const { brand, price, imageUrl, name, quantity } = cartItem;
 
+  const { cartItems } = useSelector(selectNewCartItems);
+
+  const dispatch = useDispatch();
+
   const removeCartItem = (cartItems, cartItem) => {
     return cartItems.filter((el) => el.id !== cartItem.id);
   };
 
   const removeItemFromCart = (cartItem) => {
     const newCartItems = removeCartItem(cartItems, cartItem);
-    updateCartItemsReducer(newCartItems);
+    return dispatch(setCartItems({ cartItems: newCartItems }));
   };
 
   const removeItem = () => removeItemFromCart(cartItem);

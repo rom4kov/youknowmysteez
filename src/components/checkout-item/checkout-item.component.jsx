@@ -1,6 +1,10 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
-import { CartContext } from "../../contexts/cart.context";
+import { useDispatch } from "react-redux";
+
+import { selectNewCartItems } from "../../store/selectors/cart.selector";
+
+import { setCartItems } from "../../store/actions/cart.action";
 
 import {
   CheckoutItemContainer,
@@ -19,12 +23,48 @@ import { ReactComponent as PlusIcon } from "../../assets/svgs/plus.svg";
 const CheckoutItem = ({ checkoutItem }) => {
   const { brand, price, imageUrl, name, quantity } = checkoutItem;
 
-  const { removeItemFromCart, decreaseQtyOfCartItem, increaseQtyOfCartItem } =
-    useContext(CartContext);
+  const { cartItems } = useSelector(selectNewCartItems);
+
+  const dispatch = useDispatch();
+
+  const removeCartItem = (cartItems, cartItem) => {
+    return cartItems.filter((el) => el.id !== cartItem.id);
+  };
+
+  const decreaseQuantity = (cartItems, checkoutItem) => {
+    return cartItems.map((cartItem) =>
+      cartItem.id === checkoutItem.id && checkoutItem.quantity > 1
+        ? { ...cartItem, quantity: checkoutItem.quantity - 1 }
+        : cartItem
+    );
+  };
+
+  const increaseQuantity = (cartItems, checkoutItem) => {
+    return cartItems.map((cartItem) =>
+      cartItem.id === checkoutItem.id
+        ? { ...cartItem, quantity: checkoutItem.quantity + 1 }
+        : cartItem
+    );
+  };
+
+  const removeItemFromCart = (cartItem) => {
+    const newCartItems = removeCartItem(cartItems, cartItem);
+    dispatch(setCartItems({ cartItems: newCartItems }));
+  };
+
+  const decreaseQtyOfCartItem = (checkoutItem) => {
+    const newCartItems = decreaseQuantity(cartItems, checkoutItem);
+    dispatch(setCartItems({ cartItems: newCartItems }));
+  };
+
+  const increaseQtyOfCartItem = (checkoutItem) => {
+    const newCartItems = increaseQuantity(cartItems, checkoutItem);
+    dispatch(setCartItems({ cartItems: newCartItems }));
+  };
 
   const removeItem = () => removeItemFromCart(checkoutItem);
-  const decreaseQuantity = () => decreaseQtyOfCartItem(checkoutItem);
-  const increaseQuantity = () => increaseQtyOfCartItem(checkoutItem);
+  const decreaseQty = () => decreaseQtyOfCartItem(checkoutItem);
+  const increaseQty = () => increaseQtyOfCartItem(checkoutItem);
 
   return (
     <CheckoutItemContainer>
@@ -35,7 +75,7 @@ const CheckoutItem = ({ checkoutItem }) => {
         Anzahl:
         <span className="minus-svg" style={{ marginInline: ".25rem" }}>
           <MinusIcon
-            onClick={decreaseQuantity}
+            onClick={decreaseQty}
             style={{
               transform: "scale(.9) translateY(.2rem)",
               cursor: "pointer",
@@ -47,7 +87,7 @@ const CheckoutItem = ({ checkoutItem }) => {
         </span>
         <span className="plus-svg" style={{ marginInline: ".25rem" }}>
           <PlusIcon
-            onClick={increaseQuantity}
+            onClick={increaseQty}
             style={{
               transform: "scale(.9) translateY(.2rem)",
               cursor: "pointer",
