@@ -1,12 +1,8 @@
 import { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
-import { useSelector } from "react-redux";
-
 import { useDispatch } from "react-redux";
 
-import { selectNewCartItems } from "../../store/selectors/cart.selector";
-
-import { setCartItems } from "../../store/actions/cart.action";
+import { addItemToCart } from "../../store/actions/cart.action";
 
 import {
   ProductCardContainer,
@@ -23,31 +19,7 @@ const ProductCard = ({ product }) => {
 
   const dispatch = useDispatch();
 
-  const { cartItems } = useSelector(selectNewCartItems);
-
-  const addCartItem = (cartItems, productToAdd) => {
-    // find if cartItems contains productToAdd
-    const existingItem = cartItems.find((item) => item.id === productToAdd.id);
-    // If found, increment quantity
-    if (existingItem) {
-      return cartItems.map((cartItem) =>
-        cartItem.id === productToAdd.id
-          ? { ...cartItem, quantity: cartItem.quantity + 1 }
-          : cartItem
-      );
-    }
-    return [...cartItems, { ...productToAdd, quantity: 1 }];
-  };
-
-  const addItemToCart = (productToAdd) => {
-    const newCartItems = addCartItem(cartItems, productToAdd);
-    return dispatch(setCartItems({ cartItems: newCartItems }));
-  };
-
-  // const { addItemToCart } = useContext(CartContext);
-  const addProductToCart = () => {
-    addItemToCart(product);
-  };
+  const addProductToCart = () => dispatch(addItemToCart(product));
 
   return (
     <ProductCardContainer>

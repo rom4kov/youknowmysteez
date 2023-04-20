@@ -3,8 +3,6 @@ import { CART_ACTION_TYPES } from "../redux-types/cart.types";
 const CART_INITIAL_STATE = {
   isCartOpen: false,
   cartItems: [],
-  itemCount: 0,
-  sumTotal: 0,
 };
 
 export const cartReducer = (state = CART_INITIAL_STATE, action = {}) => {
@@ -23,7 +21,7 @@ export const cartReducer = (state = CART_INITIAL_STATE, action = {}) => {
     case CART_ACTION_TYPES.SET_CART_ITEMS:
       return {
         ...state,
-        ...payload,
+        cartItems: payload,
       };
     default:
       return state;
