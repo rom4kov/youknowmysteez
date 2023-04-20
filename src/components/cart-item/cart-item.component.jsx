@@ -2,6 +2,10 @@ import { useDispatch } from "react-redux";
 
 import { removeItemFromCart } from "../../store/actions/cart.action";
 
+import { useSelector } from "react-redux";
+
+import { selectCartItems } from "../../store/selectors/cart.selector";
+
 import {
   CartItemContainer,
   CartItemImg,
@@ -16,9 +20,11 @@ import {
 const CartItem = ({ cartItem, isCartOpen }) => {
   const { brand, price, imageUrl, name, quantity } = cartItem;
 
+  const cartItems = useSelector(selectCartItems);
+
   const dispatch = useDispatch();
 
-  const removeItem = () => dispatch(removeItemFromCart(cartItem));
+  const removeItem = () => dispatch(removeItemFromCart(cartItems, cartItem));
 
   return (
     <CartItemContainer className={`${isCartOpen ? "open" : ""}`}>

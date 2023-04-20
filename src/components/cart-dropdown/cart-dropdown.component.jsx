@@ -6,6 +6,7 @@ import {
   selectIsCartOpen,
   selectCartItems,
   selectCartCount,
+  selectCartTotal,
 } from "../../store/selectors/cart.selector";
 
 import { BUTTON_TYPE_CLASSES } from "../button/button.component";
@@ -26,8 +27,8 @@ const CartDropdown = () => {
 
   const isCartOpen = useSelector(selectIsCartOpen);
   const cartItems = useSelector(selectCartItems);
-  const sumTotal = useSelector(selectCartCount);
-  console.log("cartItems + sumTotal", cartItems, sumTotal);
+  const cartTotal = useSelector(selectCartTotal);
+  console.log("cartItems + sumTotal", cartItems, cartTotal);
 
   const goToCheckoutHandler = () => {
     navigate("/checkout");
@@ -48,7 +49,7 @@ const CartDropdown = () => {
       </CartItems>
       <SumTotal>
         <span>Gesamtsumme:</span>
-        <span>{sumTotal},00 €</span>
+        <span>{cartTotal},00 €</span>
       </SumTotal>
       <CartButton
         buttonType={BUTTON_TYPE_CLASSES.base}

@@ -4,6 +4,10 @@ import { removeItemFromCart } from "../../store/actions/cart.action";
 import { decreaseQtyOfCartItem } from "../../store/actions/cart.action";
 import { increaseQtyOfCartItem } from "../../store/actions/cart.action";
 
+import { useSelector } from "react-redux";
+
+import { selectCartItems } from "../../store/selectors/cart.selector";
+
 import {
   CheckoutItemContainer,
   CheckoutItemImg,
@@ -21,11 +25,16 @@ import { ReactComponent as PlusIcon } from "../../assets/svgs/plus.svg";
 const CheckoutItem = ({ checkoutItem }) => {
   const { brand, price, imageUrl, name, quantity } = checkoutItem;
 
+  const cartItems = useSelector(selectCartItems);
+
   const dispatch = useDispatch();
 
-  const removeItem = () => dispatch(removeItemFromCart(checkoutItem));
-  const decreaseQty = () => dispatch(decreaseQtyOfCartItem(checkoutItem));
-  const increaseQty = () => dispatch(increaseQtyOfCartItem(checkoutItem));
+  const removeItem = () =>
+    dispatch(removeItemFromCart(cartItems, checkoutItem));
+  const decreaseQty = () =>
+    dispatch(decreaseQtyOfCartItem(cartItems, checkoutItem));
+  const increaseQty = () =>
+    dispatch(increaseQtyOfCartItem(cartItems, checkoutItem));
 
   return (
     <CheckoutItemContainer>
