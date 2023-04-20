@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 
 import {
   selectIsCartOpen,
-  selectNewCartItems,
+  selectCartItems,
+  selectCartCount,
 } from "../../store/selectors/cart.selector";
 
 import { BUTTON_TYPE_CLASSES } from "../button/button.component";
@@ -24,8 +25,8 @@ const CartDropdown = () => {
   const navigate = useNavigate();
 
   const isCartOpen = useSelector(selectIsCartOpen);
-
-  const { cartItems, sumTotal } = useSelector(selectNewCartItems);
+  const cartItems = useSelector(selectCartItems);
+  const sumTotal = useSelector(selectCartCount);
   console.log("cartItems + sumTotal", cartItems, sumTotal);
 
   const goToCheckoutHandler = () => {

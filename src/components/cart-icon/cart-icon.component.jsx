@@ -5,13 +5,14 @@ import { setCartIsOpen } from "../../store/actions/cart.action";
 
 import {
   selectIsCartOpen,
-  selectNewCartItems,
+  selectCartCount,
 } from "../../store/selectors/cart.selector";
 
 import { CartIconContainer, ShoppingIcon, ItemCount } from "./cart-icon.styles";
 
 const CartIcon = ({ styleProp }) => {
   const isCartOpen = useSelector(selectIsCartOpen);
+  const cartCount = useSelector(selectCartCount);
 
   const dispatch = useDispatch();
 
@@ -19,15 +20,13 @@ const CartIcon = ({ styleProp }) => {
     return dispatch(setCartIsOpen(!isCartOpen));
   };
 
-  const { itemCount } = useSelector(selectNewCartItems);
-
   return (
     <CartIconContainer
       onClick={toggleIsCartOpen}
       style={{ color: `${styleProp}` }}
     >
       <ShoppingIcon />
-      <ItemCount>{itemCount}</ItemCount>
+      <ItemCount>{cartCount}</ItemCount>
     </CartIconContainer>
   );
 };

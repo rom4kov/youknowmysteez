@@ -26,12 +26,6 @@ import {
 const Navigation = ({ navColor }) => {
   const currentUser = useSelector(selectCurrentUser);
 
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(setCartItems({ cartItems: [], itemCount: 0, sumTotal: 0 }));
-  // }, [dispatch]);
-
   const location = useLocation();
   const loc = location.pathname;
 

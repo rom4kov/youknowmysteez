@@ -2,7 +2,9 @@ import { createAction } from "../../utils/reducer/reducer.utils";
 
 import { CART_ACTION_TYPES } from "../redux-types/cart.types";
 
-import { store } from "../store";
+// import { store } from "../store";
+
+// const cartItems = store.getState().cart.cartItems;
 
 export const setCartIsOpen = (isCartOpen) =>
   createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, isCartOpen);
@@ -49,26 +51,22 @@ const increaseQuantity = (cartItems, checkoutItem) => {
   );
 };
 
-export const addItemToCart = (productToAdd) => {
-  const cartItems = store.getState().cart.cartItems;
+export const addItemToCart = (cartItems, productToAdd) => {
   const newCartItems = addCartItem(cartItems, productToAdd);
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
 };
 
-export const removeItemFromCart = (cartItem) => {
-  const cartItems = store.getState().cart.cartItems;
+export const removeItemFromCart = (cartItems, cartItem) => {
   const newCartItems = removeCartItem(cartItems, cartItem);
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
 };
 
-export const decreaseQtyOfCartItem = (checkoutItem) => {
-  const cartItems = store.getState().cart.cartItems;
+export const decreaseQtyOfCartItem = (cartItems, checkoutItem) => {
   const newCartItems = decreaseQuantity(cartItems, checkoutItem);
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
 };
 
-export const increaseQtyOfCartItem = (checkoutItem) => {
-  const cartItems = store.getState().cart.cartItems;
+export const increaseQtyOfCartItem = (cartItems, checkoutItem) => {
   const newCartItems = increaseQuantity(cartItems, checkoutItem);
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
 };

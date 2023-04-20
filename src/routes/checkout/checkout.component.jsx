@@ -1,6 +1,10 @@
 import { useSelector } from "react-redux";
 
-import { selectNewCartItems } from "../../store/selectors/cart.selector";
+import {
+  selectCartItems,
+  selectCartCount,
+  selectCartTotal,
+} from "../../store/selectors/cart.selector";
 
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
@@ -19,13 +23,15 @@ import {
 } from "./checkout.styles";
 
 const Checkout = () => {
-  const { cartItems, itemCount, sumTotal } = useSelector(selectNewCartItems);
+  const cartItems = useSelector(selectCartItems);
+  const cartCount = useSelector(selectCartCount);
+  const cartTotal = useSelector(selectCartTotal);
 
   return (
     <CheckoutContainer>
       <Cart>
         <CartTitle>
-          Warenkorb {itemCount ? `(${itemCount} Artikel)` : ""}
+          Warenkorb {cartCount ? `(${cartCount} Artikel)` : ""}
         </CartTitle>
         {cartItems &&
           cartItems.map((item) => (
@@ -37,7 +43,7 @@ const Checkout = () => {
         <PaymentItems>
           <SubTotal>
             <span>Zwischensumme</span>
-            <span>{sumTotal},00 €</span>
+            <span>{cartTotal},00 €</span>
           </SubTotal>
           <Shipment>
             <span>Lieferung</span>
@@ -47,7 +53,7 @@ const Checkout = () => {
             <span>
               Gesamtsumme <span>(inkl. Mwst.)</span>
             </span>
-            <span>{sumTotal},00 €</span>
+            <span>{cartTotal},00 €</span>
           </Total>
         </PaymentItems>
         <ToPaymentButton buttonType={BUTTON_TYPE_CLASSES.base}>
