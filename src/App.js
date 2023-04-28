@@ -10,21 +10,16 @@ import Checkout from "./routes/checkout/checkout.component";
 import {
   onAuthStateChangedListener,
   createUserDocumentFromAuth,
+  getCurrentUser,
 } from "./utils/firebase/firebase.utils";
 import { setCurrentUser } from "./store/actions/user.action";
 
 const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener((user) => {
-      if (user) {
-        createUserDocumentFromAuth(user);
-      }
-      dispatch(setCurrentUser(user));
-    });
-    return unsubscribe;
-  }, [dispatch]);
+    getCurrentUser().then((user) => console.log(user));
+  }, []);
 
   let { ref: intObsRef, inView: navColor } = useInView({
     threshold: 0.2,
