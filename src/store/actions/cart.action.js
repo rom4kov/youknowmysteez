@@ -2,20 +2,8 @@ import { createAction } from "../../utils/reducer/reducer.utils";
 
 import { CART_ACTION_TYPES } from "../redux-types/cart.types";
 
-// import { store } from "../store";
-
-// const cartItems = store.getState().cart.cartItems;
-
 export const setCartIsOpen = (isCartOpen) =>
   createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, isCartOpen);
-
-// export const setCartItems = ({ cartItems, itemCount, sumTotal }) => {
-//   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, {
-//     cartItems,
-//     itemCount,
-//     sumTotal,
-//   });
-// };
 
 const addCartItem = (cartItems, productToAdd) => {
   // find if cartItems contains productToAdd

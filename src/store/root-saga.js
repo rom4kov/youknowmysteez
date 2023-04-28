@@ -1,3 +1,7 @@
 import { all, call } from "redux-saga/effects";
 
-export function* rootSaga() {}
+import { categoriesSaga } from "./sagas/category.saga";
+
+export function* rootSaga() {
+  yield all([call(categoriesSaga)]);
+}
