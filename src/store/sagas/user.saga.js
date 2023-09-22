@@ -10,13 +10,16 @@ export function* isUserAuthenticated() {
   try {
     const userAuth = yield call(getCurrentUser);
     if (!userAuth) return;
-  } catch (error) {}
+    yield put(signInSuccess(userAuth));
+  } catch (error) {
+    yield put(signInFailed(error));
+  }
 }
 
 export function* onCheckUserSession() {
-  yield takeLatest(USER_ACTION_TYPES.CHECK_USER_SESSION);
+  yield takeLatest(USER_ACTION_TYPES.CHECK_USER_SESSION, isUserAuthenticated);
 }
 
 export function* userSagas() {
-  yield all([]);
+  yield all([call(onCheckUserSession)]);
 }
