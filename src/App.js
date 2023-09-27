@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import Navigation from "./routes/navigation/navigation.component";
 import Home from "./routes/home/home.component";
@@ -11,14 +12,14 @@ import {
   createUserDocumentFromAuth,
   getCurrentUser,
 } from "./utils/firebase/firebase.utils";
-import { setCurrentUser } from "./store/actions/user.action";
+import { checkUserSession } from "./store/actions/user.action";
 
 const App = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getCurrentUser().then((user) => console.log(user));
-  }, []);
+    dispatch(checkUserSession())
+  }, [dispatch]);
 
   let { ref: intObsRef, inView: navColor } = useInView({
     threshold: 0.2,
