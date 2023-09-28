@@ -11,7 +11,7 @@ export const SignUpHeading = styled.h2`
   position: relative;
   top: 0;
   left: 0;
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 0.8rem + 1vw, 2rem);
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 1rem;

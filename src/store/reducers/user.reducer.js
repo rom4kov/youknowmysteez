@@ -19,7 +19,6 @@ export const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isLoading: true,
-        creds: payload,
       }
     case USER_ACTION_TYPES.GOOGLE_SIGN_IN_START:
       return {
@@ -33,6 +32,11 @@ export const userReducer = (state = INITIAL_STATE, action) => {
       };
     case USER_ACTION_TYPES.SIGN_IN_FAILED:
       return { ...state, error: payload };
+    case USER_ACTION_TYPES.SIGN_OUT_USER:
+      return {
+        ...state,
+        currentUser: null
+      }
     default:
       return state;
   }

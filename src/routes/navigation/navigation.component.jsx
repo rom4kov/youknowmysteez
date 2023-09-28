@@ -1,8 +1,10 @@
 import { Fragment } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { signOutUser } from "../../utils/firebase/firebase.utils";
+// import { signOutUser } from "../../utils/firebase/firebase.utils";
+
+import { signOutUser } from "../../store/actions/user.action";
 
 import { selectCurrentUser } from "../../store/selectors/user.selector";
 
@@ -39,6 +41,10 @@ const Navigation = ({ navColor }) => {
     navColor === false || loc !== "/" ? "0.45rem" : "1.5rem";
   const titleFontSize = navColor === false || loc !== "/" ? "3rem" : "4rem";
 
+  const dispatch = useDispatch();
+
+  const handleSignOut = () => dispatch(signOutUser());
+
   return (
     <Fragment>
       <NavigationContainer
@@ -54,7 +60,7 @@ const Navigation = ({ navColor }) => {
               <NavLinkLeft
                 as="span"
                 style={{ color: `${color}` }}
-                onClick={signOutUser}
+                onClick={handleSignOut}
               >
                 ABMELDEN
               </NavLinkLeft>

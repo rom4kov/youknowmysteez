@@ -21,12 +21,12 @@ export const Username = styled.p`
 `;
 
 export const Login = styled.div`
-  width: 30rem;
+  width: 25vw;
   height: 15rem;
 `;
 
 export const LoginTitle = styled.h2`
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 0.8rem + 1vw, 2rem);
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 1rem;

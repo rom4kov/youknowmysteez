@@ -13,14 +13,12 @@ import {
   createUserDocumentFromAuth,
   signInWithGooglePopup,
   signInAuthUserEmailAndPassword,
-  signOut,
+  signOutUser,
 } from "../../utils/firebase/firebase.utils";
 
 export function* googleSignIn() {
   try {
-    console.log("hello");
     const signedInUser = yield call(signInWithGooglePopup);
-    console.log("googleSignIn saga:", signedInUser);
     yield put(signInSuccess(signedInUser));
   } catch (error) {
     yield put(signInFailed(error));
@@ -29,14 +27,16 @@ export function* googleSignIn() {
 
 export function* emailSignIn(action) {
   try {
-    console.log("emailSignIn-Saga:", action.payload);
     const { email, password } = action.payload;
     const userEmailSignIn = yield call(signInAuthUserEmailAndPassword, email, password);
-    console.log(userEmailSignIn);
     yield put(signInSuccess(userEmailSignIn));
   } catch (error) {
     yield put(signInFailed(error));
   }
+}
+
+export function* signOut() {
+  yield call(signOutUser);
 }
 
 export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
@@ -71,6 +71,10 @@ export function* onEmailSignIn() {
   yield takeLatest(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, emailSignIn);
 }
 
+export function* onSignOut() {
+  yield takeLatest(USER_ACTION_TYPES.SIGN_OUT_USER, signOut)
+}
+
 export function* onCheckUserSession() {
   yield takeLatest(USER_ACTION_TYPES.CHECK_USER_SESSION, isUserAuthenticated);
 }
@@ -80,5 +84,6 @@ export function* userSagas() {
     call(onCheckUserSession),
     call(onGoogleSignIn),
     call(onEmailSignIn),
+    call(onSignOut)
   ]);
 }

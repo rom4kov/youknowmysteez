@@ -27,7 +27,7 @@ export const AuthContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 7rem;
+  gap: 5vw;
 
   .hyphen {
     width: 2px;
