@@ -4,22 +4,49 @@ import { USER_ACTION_TYPES } from "store/redux-types/user.types";
 
 import { signInSuccess, signInFailed } from "store/actions/user.action";
 
-import { getCurrentUser } from "../../utils/firebase/firebase.utils";
+import {
+  getCurrentUser,
+  createUserDocumentFromAuth,
+  signInWithGooglePopup,
+  signInAuthUserEmailAndPassword,
+  signOut
+} from "../../utils/firebase/firebase.utils";
 
-// export function* setCurrentUser() {
+export function* googleSignIn() {
+  try {
+    const signedInUser = yield call(signInWithGooglePopup);
+    yield put(signInSuccess(signedInUser));
+  } catch (error) {
+    yield put(signInFailed(error));
+  }
+}
 
-// 2}
+export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
+  try {
+    const userSnapshot = yield call(
+      createUserDocumentFromAuth,
+      userAuth,
+      additionalDetails
+    );
+    yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data()}))
+  } catch (error) {
+    yield put(signInFailed(error));
+  }
+}
 
 export function* isUserAuthenticated() {
   try {
     const userAuth = yield call(getCurrentUser);
     console.log("userAuth:", userAuth);
     if (!userAuth) return;
-    yield put(signInSuccess(userAuth));
+    yield call(getSnapshotFromUserAuth, userAuth);
   } catch (error) {
-    console.log("error", error);
     yield put(signInFailed(error));
   }
+}
+
+export function* onGoogleSignIn() {
+  yield takeLatest(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START, googleSignIn)
 }
 
 export function* onCheckUserSession() {
