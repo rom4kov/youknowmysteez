@@ -31,7 +31,7 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-  const [userName, setUserName] = useState("");
+  // const [userName, setUserName] = useState("");
 
   const dispatch = useDispatch();
 
@@ -47,10 +47,11 @@ const SignInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { user } = await signInAuthUserEmailAndPassword(email, password);
-      const username = await displayUserData(user.uid);
-      console.log("user data:", username);
-      setUserName(username.displayName);
+      dispatch(emailSignInStart(email, password));
+      // const { user } = await signInAuthUserEmailAndPassword(email, password);
+      // const username = await displayUserData(user.uid);
+      // console.log("user data:", username);
+      // setUserName(username.displayName);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -73,7 +74,7 @@ const SignInForm = () => {
 
   return (
     <SingInContainer>
-      <Username>{userName}</Username>
+      {/* <Username>{userName}</Username> */}
       <Login>
         <LoginTitle>Du hast einen Account?</LoginTitle>
         <LoginSubheading>Melde dich per Email und Passwort an</LoginSubheading>
