@@ -17,7 +17,7 @@ export const CartItemContainer = styled.div`
 
   &.open {
     opacity: 1;
-    transition: opacity 200ms ease-in 100ms;
+    transition: opacity 100ms ease-in 200ms;
   }
 `;
 
