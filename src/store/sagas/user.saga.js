@@ -21,10 +21,9 @@ import {
 
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
-export function* getUserFromUserAuth(user, additionalInformation) {
-  console.log("user in getUserFromUserAuth:", user);
+export function* signInSignedUpUser({ payload: { user, additionalDetails }}) {
+  console.log("hello");
   try {
-    yield call(createUserDocumentFromAuth, user, additionalInformation);
     const userDocRef = yield doc(db, "user", user.uid);
     const { displayName, email } = user;
     const createdAt = new Date();
@@ -33,13 +32,12 @@ export function* getUserFromUserAuth(user, additionalInformation) {
         displayName,
         email,
         createdAt,
-        ...additionalInformation,
+        ...additionalDetails,
       });
     } catch (error) {
       console.log("error creating the user", error.message);
-    }
+    };
     const userSnapshot = yield getDoc(userDocRef);
-    console.log("payload1:", userSnapshot);
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (error) {
     yield put(signInFailed(error));
@@ -51,18 +49,12 @@ export function* signOut() {
 }
 
 export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
-  console.log(
-    "userAuth in getSnapshotFromUserAuth:",
-    userAuth,
-    additionalDetails
-  );
   try {
     const userSnapshot = yield call(
       createUserDocumentFromAuth,
       userAuth,
       additionalDetails
     );
-    console.log("payload2:", userSnapshot.data());
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (error) {
     yield put(signInFailed(error));
@@ -70,20 +62,6 @@ export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
 }
 
 export function* signInWithEmail({ payload: { email, password } }) {
-  try {
-    const { user } = yield call(
-      signInAuthUserEmailAndPassword,
-      email,
-      password
-    );
-    console.log(user);
-    yield call(getSnapshotFromUserAuth, user);
-  } catch (error) {
-    yield put(signInFailed(error));
-  }
-}
-
-export function* signInAfterSignUp(email, password) {
   try {
     const { user } = yield call(
       signInAuthUserEmailAndPassword,
@@ -109,7 +87,6 @@ export function* signInWithGoogle() {
 export function* isUserAuthenticated() {
   try {
     const userAuth = yield call(getCurrentUser);
-    console.log("userAuth:", userAuth);
     if (!userAuth) return;
     yield call(getSnapshotFromUserAuth, userAuth);
   } catch (error) {
@@ -117,26 +94,27 @@ export function* isUserAuthenticated() {
   }
 }
 
-export function* signUpUser({ payload: { email, password, displayName } }) {
+export function* signUp({ payload: { email, password, displayName } }) {
   try {
-    console.log("signUpCreds:", email, password, displayName);
     const { user } = yield call(
       createAuthUserWithEmailAndPassword,
       email,
       password
     );
-    console.log("signedUpUser1:", user);
-    if (!user) return;
-    console.log("signedUpUser2:", user);
-    yield put(signUpSuccess(user));
-    yield call(getUserFromUserAuth, { ...user, displayName });
+    const additionalDetails = {};
+    yield put(signUpSuccess({ ...user, displayName }, additionalDetails));
+    // yield call(signInSignedUpUser, { ...user, displayName });
   } catch (error) {
     yield put(signUpFailed(error));
   }
 }
 
-export function* onSignUp() {
-  yield takeLatest(USER_ACTION_TYPES.SIGN_UP_START, signUpUser);
+export function* onSignUpStart() {
+  yield takeLatest(USER_ACTION_TYPES.SIGN_UP_START, signUp);
+}
+
+export function* onSignUpSuccess() {
+  yield takeLatest(USER_ACTION_TYPES.SIGN_UP_SUCCESS, signInSignedUpUser);
 }
 
 export function* onGoogleSignIn() {
@@ -158,7 +136,8 @@ export function* onCheckUserSession() {
 export function* userSagas() {
   yield all([
     call(onCheckUserSession),
-    call(onSignUp),
+    call(onSignUpStart),
+    call(onSignUpSuccess),
     call(onGoogleSignIn),
     call(onEmailSignIn),
     call(onSignOut),
