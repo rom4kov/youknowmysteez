@@ -5,19 +5,12 @@ import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import {
   SingInContainer,
-  Username,
   Login,
   LoginTitle,
   LoginSubheading,
   FormInputs,
   ButtonsContainer,
 } from "./sign-in-form.styles";
-
-import {
-  signInAuthUserEmailAndPassword,
-  displayUserData,
-  signInWithGooglePopup,
-} from "../../utils/firebase/firebase.utils";
 
 import { googleSignInStart, emailSignInStart } from "store/actions/user.action";
 
@@ -31,7 +24,6 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-  // const [userName, setUserName] = useState("");
 
   const dispatch = useDispatch();
 
