@@ -3,10 +3,13 @@ import { takeLatest, put, all, call } from "redux-saga/effects";
 import { USER_ACTION_TYPES } from "store/redux-types/user.types";
 
 import {
+  setCurrentUser,
   signUpSuccess,
   signUpFailed,
   signInSuccess,
   signInFailed,
+  signOutSuccess,
+  signOutFailed,
 } from "store/actions/user.action";
 
 import {
@@ -21,8 +24,7 @@ import {
 
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
-export function* signInSignedUpUser({ payload: { user, additionalDetails }}) {
-  console.log("hello");
+export function* signInSignedUpUser({ payload: { user, additionalDetails } }) {
   try {
     const userDocRef = yield doc(db, "user", user.uid);
     const { displayName, email } = user;
@@ -36,7 +38,7 @@ export function* signInSignedUpUser({ payload: { user, additionalDetails }}) {
       });
     } catch (error) {
       console.log("error creating the user", error.message);
-    };
+    }
     const userSnapshot = yield getDoc(userDocRef);
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (error) {
@@ -45,7 +47,12 @@ export function* signInSignedUpUser({ payload: { user, additionalDetails }}) {
 }
 
 export function* signOut() {
-  yield call(signOutUser);
+  try {
+    yield call(signOutUser);
+    yield put(signOutSuccess());
+  } catch (error) {
+    yield put(signOutFailed(error));
+  }
 }
 
 export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
@@ -103,7 +110,6 @@ export function* signUp({ payload: { email, password, displayName } }) {
     );
     const additionalDetails = {};
     yield put(signUpSuccess({ ...user, displayName }, additionalDetails));
-    // yield call(signInSignedUpUser, { ...user, displayName });
   } catch (error) {
     yield put(signUpFailed(error));
   }
@@ -125,8 +131,8 @@ export function* onEmailSignIn() {
   yield takeLatest(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, signInWithEmail);
 }
 
-export function* onSignOut() {
-  yield takeLatest(USER_ACTION_TYPES.SIGN_OUT_USER, signOut);
+export function* onSignOutStart() {
+  yield takeLatest(USER_ACTION_TYPES.SIGN_OUT_START, signOut);
 }
 
 export function* onCheckUserSession() {
@@ -140,6 +146,6 @@ export function* userSagas() {
     call(onSignUpSuccess),
     call(onGoogleSignIn),
     call(onEmailSignIn),
-    call(onSignOut),
+    call(onSignOutStart),
   ]);
 }

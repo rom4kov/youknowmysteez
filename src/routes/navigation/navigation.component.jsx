@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 // import { signOutUser } from "../../utils/firebase/firebase.utils";
 
-import { signOutUser } from "../../store/actions/user.action";
+import { signOutStart } from "../../store/actions/user.action";
 
 import { selectCurrentUser } from "../../store/selectors/user.selector";
 
@@ -43,7 +43,7 @@ const Navigation = ({ navColor }) => {
 
   const dispatch = useDispatch();
 
-  const handleSignOut = () => dispatch(signOutUser());
+  const handleSignOut = () => dispatch(signOutStart());
 
   return (
     <Fragment>
