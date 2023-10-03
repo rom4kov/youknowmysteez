@@ -9,7 +9,7 @@ import {
   signInFailed,
   signOutSuccess,
   signOutFailed,
-} from "store/actions/user.action";
+} from "store/reducers/user.reducer";
 
 import {
   db,
