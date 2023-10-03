@@ -3,7 +3,6 @@ import { takeLatest, put, all, call } from "redux-saga/effects";
 import { USER_ACTION_TYPES } from "store/redux-types/user.types";
 
 import {
-  setCurrentUser,
   signUpSuccess,
   signUpFailed,
   signInSuccess,

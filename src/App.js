@@ -13,14 +13,13 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log(checkUserSession());
     dispatch(checkUserSession())
   }, [dispatch]);
 
   let { ref: intObsRef, inView: navColor } = useInView({
     threshold: 0.2,
   });
-
-  console.log(intObsRef);
 
   return (
     <Routes>
