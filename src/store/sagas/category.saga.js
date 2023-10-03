@@ -5,12 +5,11 @@ import { getCategoriesAndDocuments } from "utils/firebase/firebase.utils";
 import {
   fetchCategoriesSuccess,
   fetchCategoriesFailed,
-} from "store/actions/category.action";
-
-import { CATEGORIES_ACTION_TYPES } from "store/redux-types/category.types";
+} from "store/reducers/category.reducer";
 
 export function* fetchCategoriesAsync() {
   try {
+    console.log("check");
     const categoriesArray = yield call(getCategoriesAndDocuments, "categories");
     yield put(fetchCategoriesSuccess(categoriesArray));
   } catch (error) {
@@ -19,8 +18,9 @@ export function* fetchCategoriesAsync() {
 }
 
 export function* onFetchCategories() {
+  console.log("check");
   yield takeLatest(
-    CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START,
+    "categories/fetchCategoriesStart",
     fetchCategoriesAsync
   );
 }

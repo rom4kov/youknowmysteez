@@ -18,14 +18,14 @@ import {
 } from "./product-card.styles";
 
 const ProductCard = ({ product }) => {
-  const { name, imageUrl, price } = product;
-  product.quantity = 1;
+  const productToAdd = { ...product, quantity: 1 };
+  const { name, imageUrl, price } = productToAdd;
 
   const dispatch = useDispatch();
 
   const cartItems = useSelector(selectCartItems);
 
-  const addProductToCart = () => dispatch(addItemToCart(cartItems, product));
+  const addProductToCart = () => dispatch(addItemToCart(cartItems, productToAdd));
 
   return (
     <ProductCardContainer>
