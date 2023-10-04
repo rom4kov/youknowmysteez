@@ -1,6 +1,4 @@
-import styled from "styled-components";
-
-import Button from "../../components/button/button.component";
+import styled from "styled-components/macro";
 
 export const CheckoutContainer = styled.div`
   width: 70%;
@@ -69,10 +67,4 @@ export const Total = styled.div`
   justify-content: space-between;
   font-size: 1.1rem;
   font-weight: 700;
-`;
-
-export const ToPaymentButton = styled(Button)`
-  width: 100% !important;
-  height: 2rem;
-  border-radius: 0.75rem;
 `;

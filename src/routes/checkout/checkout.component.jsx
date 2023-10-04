@@ -7,7 +7,7 @@ import {
 } from "../../store/selectors/cart.selector";
 
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
-import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
+import PaymentForm from "../../components/payment-form/payment-form.component";
 
 import {
   CheckoutContainer,
@@ -19,7 +19,6 @@ import {
   SubTotal,
   Shipment,
   Total,
-  ToPaymentButton,
 } from "./checkout.styles";
 
 const Checkout = () => {
@@ -56,9 +55,7 @@ const Checkout = () => {
             <span>{cartTotal},00 €</span>
           </Total>
         </PaymentItems>
-        <ToPaymentButton buttonType={BUTTON_TYPE_CLASSES.base}>
-          Zur Kasse
-        </ToPaymentButton>
+        <PaymentForm />
       </Pay>
     </CheckoutContainer>
   );
