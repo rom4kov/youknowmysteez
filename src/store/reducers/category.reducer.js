@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const INITIAL_STATE = {
+export const CATEGORIES_INITIAL_STATE = {
   categories: [],
   isLoading: false,
   error: null,
@@ -8,7 +8,7 @@ export const INITIAL_STATE = {
 
 export const categoriesSlice = createSlice({
   name: "categories",
-  initialState: INITIAL_STATE,
+  initialState: CATEGORIES_INITIAL_STATE,
   reducers: {
     fetchCategoriesStart(state) {
       state.isLoading = true;
@@ -29,13 +29,6 @@ export const {
   fetchCategoriesSuccess,
   fetchCategoriesFailed,
 } = categoriesSlice.actions;
-
-// import { createAction } from "../../utils/reducer/reducer.utils";
-
-// import { CATEGORIES_ACTION_TYPES } from "../redux-types/category.types";
-
-// export const fetchCategoriesStart = () =>
-//   createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START);
 
 export const categoriesReducer = categoriesSlice.reducer;
 
