@@ -1,5 +1,7 @@
 import styled from "styled-components/macro";
 
+import Button from "../../components/button/button.component";
+
 export const CartContainer = styled.div`
   width: 70%;
   margin-top: 10rem;
@@ -67,4 +69,11 @@ export const Total = styled.div`
   justify-content: space-between;
   font-size: 1.1rem;
   font-weight: 700;
+`;
+
+export const ToPaymentButton = styled(Button)`
+  width: 100% !important;
+  height: 1.75rem;
+  border-radius: 1rem;
+  opacity: 0.7;
 `;

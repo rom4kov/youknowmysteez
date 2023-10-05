@@ -52,7 +52,10 @@ export const LeftNav = styled.div`
 `;
 
 export const Title = styled.h1`
-  color: #fff;
+  color: white;
+  // background: -webkit-linear-gradient(45deg, #193B19 0%, red 200%);
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
   position: relative;
   width: 100%;
   display: flex;

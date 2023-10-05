@@ -7,6 +7,7 @@ import Home from "./routes/home/home.component";
 import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
 import Cart from "./routes/cart/cart.component";
+import Payment from "./routes/payment/payment.component";
 import { checkUserSession } from "./store/reducers/user.reducer";
 
 const App = () => {
@@ -27,7 +28,8 @@ const App = () => {
         <Route index element={<Home intObsRef={intObsRef} />} />
         <Route path="auth" element={<Authentication />} />
         <Route path="shop/*" element={<Shop />} />
-        <Route path="cart/*" element={<Cart />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="payment" element={<Payment />} />
       </Route>
     </Routes>
   );
