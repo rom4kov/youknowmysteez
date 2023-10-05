@@ -10,7 +10,7 @@ import CheckoutItem from "../../components/checkout-item/checkout-item.component
 import PaymentForm from "../../components/payment-form/payment-form.component";
 
 import {
-  CheckoutContainer,
+  CartContainer,
   Cart,
   CartTitle,
   Pay,
@@ -19,7 +19,7 @@ import {
   SubTotal,
   Shipment,
   Total,
-} from "./checkout.styles";
+} from "./cart.styles";
 
 const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
@@ -27,7 +27,7 @@ const Checkout = () => {
   const cartTotal = useSelector(selectCartTotal);
 
   return (
-    <CheckoutContainer>
+    <CartContainer>
       <Cart>
         <CartTitle>
           Warenkorb {cartCount ? `(${cartCount} Artikel)` : ""}
@@ -57,7 +57,7 @@ const Checkout = () => {
         </PaymentItems>
         <PaymentForm />
       </Pay>
-    </CheckoutContainer>
+    </CartContainer>
   );
 };
 

@@ -29,7 +29,7 @@ const CartDropdown = () => {
   const cartTotal = useSelector(selectCartTotal);
 
   const goToCheckoutHandler = () => {
-    navigate("/checkout");
+    navigate("/cart");
   };
 
   return (

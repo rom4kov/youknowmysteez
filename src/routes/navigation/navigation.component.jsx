@@ -97,7 +97,7 @@ const Navigation = ({ navColor }) => {
               VERSAND
             </NavLinkRight>
             <NavLinkRight
-              to="/warenkorb"
+              to="/cart"
               style={{
                 color: `${color}`,
                 marginRight: "-.5rem",

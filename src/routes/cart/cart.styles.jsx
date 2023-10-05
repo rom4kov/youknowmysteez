@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 
-export const CheckoutContainer = styled.div`
+export const CartContainer = styled.div`
   width: 70%;
   margin-top: 10rem;
   margin-inline: auto;
