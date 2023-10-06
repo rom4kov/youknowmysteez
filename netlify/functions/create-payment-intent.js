@@ -1,26 +1,28 @@
-require("dotenv").config()
+require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-exports.handler = async (event) => {
+exports.handler = async () => {
 	try {
-		const { amount } = JSON.parse(event.body);
+		// const { amount } = JSON.parse(event.body);
 
 		const paymentIntent = await stripe.paymentIntents.create({
-			amount,
+			amount: "10000",
 			currency: "eur",
-			payment_method_types: ["card"]
+			payment_method_types: ['card', 'klarna', 'paypal']
 		});
+
+		console.log(paymentIntent);
 
 		return {
 			statusCode: 200,
-			body: JSON.stringify({ paymentIntent })
+			body: JSON.stringify({ paymentIntent }),
 		};
 	} catch (error) {
 		console.log({ error });
 
 		return {
-			ststus: 400,
-			body: JSON.stringify({ error })
-		}
+			statusCode: 400,
+			body: JSON.stringify({ error }),
+		};
 	}
-}
+};
