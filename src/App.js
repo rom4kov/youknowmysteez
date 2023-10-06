@@ -15,7 +15,7 @@ const App = () => {
 
   useEffect(() => {
     console.log(checkUserSession());
-    dispatch(checkUserSession())
+    dispatch(checkUserSession());
   }, [dispatch]);
 
   let { ref: intObsRef, inView: navColor } = useInView({
