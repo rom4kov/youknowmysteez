@@ -16,6 +16,10 @@ export const PaymentContainer = styled.div`
     "four four .";
   column-gap: 2rem;
   row-gap: 2rem;
+
+  @media (max-width: 1700px) {
+    width: 80%;
+  }
 `;
 
 export const PaymentFormContainer = styled.div`
@@ -23,6 +27,16 @@ export const PaymentFormContainer = styled.div`
   background-color: #eee;
   padding: 2rem;
   border-radius: 2rem;
+`;
+
+export const FormContainer = styled.form`
+  margin-top: 2rem;
+  height: 15rem;
+  min-width: 100%;
+
+  h2 {
+    margin-top: 2rem;
+  }
 `;
 
 export const Pay = styled.div`

@@ -16,6 +16,10 @@ export const CartContainer = styled.div`
     "four four .";
   column-gap: 2rem;
   row-gap: 2rem;
+
+  @media (max-width: 1700px) {
+    width: 80%;
+  }
 `;
 
 export const Cart = styled.div`

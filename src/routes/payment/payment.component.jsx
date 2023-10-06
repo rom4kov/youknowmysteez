@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { useSelector } from "react-redux";
 
 import { selectCartTotal } from "../../store/selectors/cart.selector";
@@ -20,11 +22,12 @@ import {
 
 const Payment = () => {
   const cartTotal = useSelector(selectCartTotal);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
   return (
     <PaymentContainer>
       <PaymentFormContainer>
-        <PaymentForm />
+        <PaymentForm paymentLoad={setIsProcessingPayment}/>
       </PaymentFormContainer>
       <Pay>
         <PayHeading>Gesamtsumme</PayHeading>
@@ -44,7 +47,11 @@ const Payment = () => {
             <span>{cartTotal},00 €</span>
           </Total>
         </PaymentItems>
-        <PaymentButton buttonType={BUTTON_TYPE_CLASSES.base}>
+        <PaymentButton
+          isLoading={isProcessingPayment}
+          form="payment"
+          buttonType={BUTTON_TYPE_CLASSES.base}
+        >
           BEZAHLEN
         </PaymentButton>
       </Pay>
