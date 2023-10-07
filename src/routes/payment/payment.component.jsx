@@ -20,14 +20,20 @@ import {
   PaymentButton,
 } from "./payment.styles";
 
-const Payment = () => {
+const Payment = ({selectAmount}) => {
   const cartTotal = useSelector(selectCartTotal);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+
+  console.log(selectAmount);
+
+  // selectAmount(cartTotal);
 
   return (
     <PaymentContainer>
       <PaymentFormContainer>
-        <PaymentForm paymentLoad={setIsProcessingPayment}/>
+        <PaymentForm
+          paymentLoad={setIsProcessingPayment}
+        />
       </PaymentFormContainer>
       <Pay>
         <PayHeading>Gesamtsumme</PayHeading>

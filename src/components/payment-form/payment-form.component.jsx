@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 
 // import { useSelector } from "react-redux";
 
-// import { selectCartTotal } from "store/selectors/cart.selector";
-
 // import { selectCurrentUser } from "store/selectors/user.selector";
+
+import { useSelector } from "react-redux";
+import { selectCartTotal } from "../../store/selectors/cart.selector";
 
 import {
   PaymentElement,
@@ -14,12 +15,16 @@ import {
 
 import { PaymentFormContainer, FormContainer } from "./payment-form.styles";
 
-const PaymentForm = ({ paymentLoad }) => {
+const PaymentForm = ({ selectAmount, paymentLoad }) => {
   const stripe = useStripe();
   const elements = useElements();
-  // const amount = useSelector(selectCartTotal);
   // const currentUser = useSelector(selectCurrentUser);
   const [message, setMessage] = useState(null);
+
+  const amount = useSelector(selectCartTotal);
+  console.log(selectAmount);
+
+  // selectAmount(amount);
 
   useEffect(() => {
     if (!stripe) {
@@ -58,33 +63,56 @@ const PaymentForm = ({ paymentLoad }) => {
     if (!stripe || !elements) {
       return;
     }
+    console.log(selectAmount);
+
+    // getAmount(amount);
 
     paymentLoad(true);
 
-    const { error } = await stripe.confirmPayment({
+    // console.log(amount);
+
+    const response = await fetch(".netlify/functions/create-payment-intent", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ amount: amount * 100 }),
+    }).then((res) => res.json());
+
+    const {
+      paymentIntent: { client_secret },
+    } = response;
+
+    console.log(client_secret);
+
+    const paymentResult = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000/payment",
+        // return_url: "http://localhost:8888/confirmation",
       },
+      redirect: "if_required",
+      // payment_method: {
+      //   // card: elements.getElement(payment),
+      //   billing_details: {
+      //     name: currentUser ? currentUser.displayName : "Gast",
+      //   },
+      // },
     });
 
-    // This point will only be reached if there is an immediate error when
-    // confirming the payment. Otherwise, your customer will be redirected to
-    // your `return_url`. For some payment methods like iDEAL, your customer will
-    // be redirected to an intermediate site first to authorize the payment, then
-    // redirected to the `return_url`.
-    if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
+    if (paymentResult.error) {
+      alert(paymentResult.error);
     } else {
-      setMessage("An unexpected error occurred.");
+      if (paymentResult.paymentIntent.status === "succeeded") {
+        alert("Payment Successful");
+      }
     }
 
     paymentLoad(false);
   };
 
   const paymentElementOptions = {
-    layout: "tabs",
+    layout: "accordion",
   };
 
   return (
