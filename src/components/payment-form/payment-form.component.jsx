@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect, Fragment } from "react";
 
 // import { useSelector } from "react-redux";
 
 // import { selectCurrentUser } from "store/selectors/user.selector";
 
-import { useSelector } from "react-redux";
-import { selectCartTotal } from "../../store/selectors/cart.selector";
+// import { useSelector } from "react-redux";
+// import { selectCartTotal } from "../../store/selectors/cart.selector";
+// import { Elements } from "@stripe/react-stripe-js";
+// import { stripePromise } from "utils/stripe/stripe.utils";
 
 import {
   PaymentElement,
@@ -15,47 +17,85 @@ import {
 
 import { PaymentFormContainer, FormContainer } from "./payment-form.styles";
 
-const PaymentForm = ({ selectAmount, paymentLoad }) => {
+const PaymentForm = ({ paymentLoad }) => {
   const stripe = useStripe();
   const elements = useElements();
   // const currentUser = useSelector(selectCurrentUser);
-  const [message, setMessage] = useState(null);
+  // const [message, setMessage] = useState(null);
 
-  const amount = useSelector(selectCartTotal);
-  console.log(selectAmount);
+  // const amountValue = useSelector(selectCartTotal);
+  // console.log(selectAmount);
 
   // selectAmount(amount);
 
-  useEffect(() => {
-    if (!stripe) {
-      return;
-    }
+  // const [clientSecret, setClientSecret] = useState("");
+  // const [amount, setAmount] = useState(100);
 
-    const clientSecret = new URLSearchParams(window.location.search).get(
-      "payment_intent_client_secret"
-    );
+  // const selectAmount = (amountValue) => {
+  // setAmount(amountValue);
+  // };
 
-    if (!clientSecret) {
-      return;
-    }
+  // console.log(amount);
 
-    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-      switch (paymentIntent.status) {
-        case "succeeded":
-          setMessage("Payment succeeded!");
-          break;
-        case "processing":
-          setMessage("Your payment is processing.");
-          break;
-        case "requires_payment_method":
-          setMessage("Your payment was not successful, please try again.");
-          break;
-        default:
-          setMessage("Something went wrong.");
-          break;
-      }
-    });
-  }, [stripe]);
+  // useEffect(() => {
+  //   console.log("amount in useEffect:", amount);
+  //   // Create PaymentIntent as soon as the page loads
+  //   fetch("../.netlify/functions/create-payment-intent", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ amount: amount * 100, test: "test" }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setClientSecret(data.paymentIntent.client_secret);
+  //       console.log("data in App useEffect:", data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching client secret:", error);
+  //     });
+  // }, [amount]);
+
+  // console.log(clientSecret);
+
+  // const appearance = {
+  //   theme: "stripe",
+  // };
+
+  // const options = {
+  //   clientSecret,
+  //   appearance,
+  // };
+
+  // useEffect(() => {
+  //   if (!stripe) {
+  //     return;
+  //   }
+
+  //   const clientSecret = new URLSearchParams(window.location.search).get(
+  //     "payment_intent_client_secret"
+  //   );
+
+  //   if (!clientSecret) {
+  //     return;
+  //   }
+
+  //   stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+  //     switch (paymentIntent.status) {
+  //       case "succeeded":
+  //         setMessage("Payment succeeded!");
+  //         break;
+  //       case "processing":
+  //         setMessage("Your payment is processing.");
+  //         break;
+  //       case "requires_payment_method":
+  //         setMessage("Your payment was not successful, please try again.");
+  //         break;
+  //       default:
+  //         setMessage("Something went wrong.");
+  //         break;
+  //     }
+  //   });
+  // }, [stripe]);
 
   const paymentHandler = async (e) => {
     e.preventDefault();
@@ -63,7 +103,7 @@ const PaymentForm = ({ selectAmount, paymentLoad }) => {
     if (!stripe || !elements) {
       return;
     }
-    console.log(selectAmount);
+    // console.log(selectAmount);
 
     // getAmount(amount);
 
@@ -71,19 +111,19 @@ const PaymentForm = ({ selectAmount, paymentLoad }) => {
 
     // console.log(amount);
 
-    const response = await fetch(".netlify/functions/create-payment-intent", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ amount: amount * 100 }),
-    }).then((res) => res.json());
+    // const response = await fetch(".netlify/functions/create-payment-intent", {
+    //   method: "post",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+      // body: JSON.stringify({ amount: amount * 100 }),
+    // }).then((res) => res.json());
 
-    const {
-      paymentIntent: { client_secret },
-    } = response;
+    // const {
+    //   paymentIntent: { client_secret },
+    // } = response;
 
-    console.log(client_secret);
+    // console.log(client_secret);
 
     const paymentResult = await stripe.confirmPayment({
       elements,
@@ -116,13 +156,16 @@ const PaymentForm = ({ selectAmount, paymentLoad }) => {
   };
 
   return (
-    <PaymentFormContainer>
-      <FormContainer id="payment" onSubmit={paymentHandler}>
-        <h2>Mit Kredit- / Debitkarte zahlen</h2>
-        <PaymentElement id="payment-element" options={paymentElementOptions} />
-        {message && <div id="payment-message">{message}</div>}
-      </FormContainer>
-    </PaymentFormContainer>
+      <PaymentFormContainer>
+        <FormContainer id="payment" onSubmit={paymentHandler}>
+          <h2>Mit Kredit- / Debitkarte zahlen</h2>
+          <PaymentElement
+            id="payment-element"
+            options={paymentElementOptions}
+          />
+          {/* {message && <div id="payment-message">{message}</div>} */}
+        </FormContainer>
+      </PaymentFormContainer>
   );
 };
 
