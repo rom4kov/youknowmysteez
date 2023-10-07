@@ -57,7 +57,7 @@ const Payment = () => {
       .catch((error) => {
         console.error("Error fetching client secret:", error);
       });
-  }, []);
+  }, [amount]);
 
   console.log(clientSecret);
 
