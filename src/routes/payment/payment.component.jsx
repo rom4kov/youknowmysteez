@@ -33,30 +33,30 @@ const Payment = () => {
   // selectAmount(cartTotal);
 
   const [clientSecret, setClientSecret] = useState("");
-  // const [amount, setAmount] = useState(100);
-
-  // const selectAmount = (amountValue) => {
-  // setAmount(amountValue);
-  // };
 
   console.log(amount);
+  let ignore = false;
 
   useEffect(() => {
     console.log("amount in useEffect:", amount);
     // Create PaymentIntent as soon as the page loads
-    fetch("../.netlify/functions/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: amount * 100, test: "test" }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setClientSecret(data.paymentIntent.client_secret);
-        console.log("data in App useEffect:", data);
+    if (!ignore) {
+      fetch("../.netlify/functions/create-payment-intent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: amount * 100, test: "test" }),
       })
-      .catch((error) => {
-        console.error("Error fetching client secret:", error);
-      });
+        .then((res) => res.json())
+        .then((data) => {
+          setClientSecret(data.paymentIntent.client_secret);
+          console.log("data in App useEffect:", data);
+        })
+        .catch((error) => {
+          console.error("Error fetching client secret:", error);
+        });
+    }
+
+    ignore = true;
   }, [amount]);
 
   console.log(clientSecret);

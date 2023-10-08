@@ -129,9 +129,9 @@ const PaymentForm = ({ paymentLoad }) => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        // return_url: "http://localhost:8888/confirmation",
+        return_url: "http://localhost:8888/confirmation",
       },
-      redirect: "if_required",
+      // redirect: "if_required",
       // payment_method: {
       //   // card: elements.getElement(payment),
       //   billing_details: {
