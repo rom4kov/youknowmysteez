@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 import { useSelector } from "react-redux";
 
+import { selectCurrentUser } from "store/selectors/user.selector";
+
 import { selectCartTotal } from "../../store/selectors/cart.selector";
 
 import PaymentForm from "../../components/payment-form/payment-form.component";
@@ -27,6 +29,7 @@ const Payment = () => {
   const cartTotal = useSelector(selectCartTotal);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const amount = useSelector(selectCartTotal);
+  const currentUser = useSelector(selectCurrentUser);
 
   // console.log(selectAmount);
 
@@ -44,7 +47,7 @@ const Payment = () => {
       fetch("../.netlify/functions/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: amount * 100, test: "test" }),
+        body: JSON.stringify({ amount: amount * 100 }),
       })
         .then((res) => res.json())
         .then((data) => {
@@ -68,7 +71,10 @@ const Payment = () => {
   const options = {
     clientSecret,
     appearance,
+    currentUser: currentUser,
   };
+
+  console.log(currentUser);
 
   return (
     <PaymentContainer>

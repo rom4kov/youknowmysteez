@@ -1,8 +1,8 @@
 // import { useState, useEffect, Fragment } from "react";
 
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-// import { selectCurrentUser } from "store/selectors/user.selector";
+import { selectCurrentUser } from "store/selectors/user.selector";
 
 // import { useSelector } from "react-redux";
 // import { selectCartTotal } from "../../store/selectors/cart.selector";
@@ -20,7 +20,8 @@ import { PaymentFormContainer, FormContainer } from "./payment-form.styles";
 const PaymentForm = ({ paymentLoad }) => {
   const stripe = useStripe();
   const elements = useElements();
-  // const currentUser = useSelector(selectCurrentUser);
+  const currentUser = useSelector(selectCurrentUser);
+
   // const [message, setMessage] = useState(null);
 
   // const amountValue = useSelector(selectCartTotal);
@@ -116,7 +117,7 @@ const PaymentForm = ({ paymentLoad }) => {
     //   headers: {
     //     "Content-Type": "application/json",
     //   },
-      // body: JSON.stringify({ amount: amount * 100 }),
+    // body: JSON.stringify({ amount: amount * 100 }),
     // }).then((res) => res.json());
 
     // const {
@@ -130,13 +131,18 @@ const PaymentForm = ({ paymentLoad }) => {
       confirmParams: {
         // Make sure to change this to your payment completion page
         return_url: "http://localhost:8888/confirmation",
+        payment_method_data: {
+          billing_details: {
+            name: currentUser ? currentUser.displayName : "Gast",
+          },
+        },
       },
       // redirect: "if_required",
       // payment_method: {
-      //   // card: elements.getElement(payment),
-      //   billing_details: {
-      //     name: currentUser ? currentUser.displayName : "Gast",
-      //   },
+      // card: elements.getElement(payment),
+      // billing_details: {
+      //   name: currentUser ? currentUser.displayName : "Gast",
+      // },
       // },
     });
 
@@ -156,16 +162,13 @@ const PaymentForm = ({ paymentLoad }) => {
   };
 
   return (
-      <PaymentFormContainer>
-        <FormContainer id="payment" onSubmit={paymentHandler}>
-          <h2>Mit Kredit- / Debitkarte zahlen</h2>
-          <PaymentElement
-            id="payment-element"
-            options={paymentElementOptions}
-          />
-          {/* {message && <div id="payment-message">{message}</div>} */}
-        </FormContainer>
-      </PaymentFormContainer>
+    <PaymentFormContainer>
+      <FormContainer id="payment" onSubmit={paymentHandler}>
+        <h2>Mit Kredit- / Debitkarte zahlen</h2>
+        <PaymentElement id="payment-element" options={paymentElementOptions} />
+        {/* {message && <div id="payment-message">{message}</div>} */}
+      </FormContainer>
+    </PaymentFormContainer>
   );
 };
 
