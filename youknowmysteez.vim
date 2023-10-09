@@ -22,7 +22,7 @@ badd +1 src/store/reducers/user.reducer.js
 badd +2 src/store/redux-types/user.types.js
 badd +20 src/store/actions/user.action.js
 badd +18 .gitignore
-badd +1 src/store/store.js
+badd +62 src/store/store.js
 badd +22 src/store/actions/cart.action.js
 badd +1 src/store/redux-types/cart.types.js
 badd +1 src/store/selectors/category.selector.js
@@ -48,7 +48,7 @@ badd +21 src/store/reducers/category.reducer.js
 badd +1 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/utils/reducer/reducer.utils.js
 badd +35 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/components/cart-dropdown/cart-dropdown.styles.jsx
 badd +27 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/components/cart-item/cart-item.component.jsx
-badd +62 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/components/cart-dropdown/cart-dropdown.component.jsx
+badd +32 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/components/cart-dropdown/cart-dropdown.component.jsx
 badd +2 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/components/cart-item/cart-item.styles.jsx
 badd +1 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/store/root-reducer.js
 badd +1 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/index.js
@@ -62,7 +62,7 @@ badd +1 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youkn
 badd +1 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/.env
 badd +8 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/components/banner/banner.component.jsx
 badd +1 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/package.json
-badd +1 src/components/payment-form/payment-form.component.jsx
+badd +159 src/components/payment-form/payment-form.component.jsx
 badd +12 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/components/payment-form/payment-form.styles.jsx
 badd +32 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/routes/cart/cart.component.jsx
 badd +21 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/routes/cart/cart.styles.jsx
@@ -80,6 +80,7 @@ badd +4 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youkn
 argglobal
 %argdel
 set stal=2
+tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
@@ -111,12 +112,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 7 - ((6 * winheight(0) + 20) / 40)
+let s:l = 6 - ((5 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 7
-normal! 0
+keepjumps 6
+normal! 05|
 tabnext
 edit ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/utils/stripe/stripe.utils.js
 argglobal
@@ -152,7 +153,6 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-balt ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/components/payment-form/payment-form.styles.jsx
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -163,12 +163,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 152 - ((38 * winheight(0) + 20) / 40)
+let s:l = 74 - ((37 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 152
-normal! 0
+keepjumps 74
+normal! 02|
 tabnext
 edit src/routes/payment/payment.component.jsx
 let s:save_splitbelow = &splitbelow
@@ -195,12 +195,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 62 - ((29 * winheight(0) + 20) / 40)
+let s:l = 16 - ((15 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 62
-normal! 05|
+keepjumps 16
+normal! 03|
 tabnext
 edit src/App.js
 let s:save_splitbelow = &splitbelow
@@ -227,12 +227,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 90 - ((39 * winheight(0) + 20) / 40)
+let s:l = 1 - ((0 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 90
-normal! 0
+keepjumps 1
+normal! 019|
 tabnext
 edit ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/index.js
 let s:save_splitbelow = &splitbelow
@@ -259,13 +259,45 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 17 - ((16 * winheight(0) + 20) / 40)
+let s:l = 5 - ((4 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 17
-normal! 0
-tabnext 4
+keepjumps 5
+normal! 062|
+tabnext
+edit src/store/reducers/cart.reducer.js
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+balt src/store/actions/cart.action.js
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 79 - ((38 * winheight(0) + 20) / 40)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 79
+normal! 016|
+tabnext 3
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
@@ -280,6 +312,7 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

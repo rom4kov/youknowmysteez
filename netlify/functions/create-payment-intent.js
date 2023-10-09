@@ -3,12 +3,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 exports.handler = async (event) => {
 	try {
-		// let amount = 10000;
-
 		console.log("event object:", event.body);
-		// if (event.body.amount) {
-		// 	amount = JSON.parse(event.body);
-		// }
 		const { amount } = JSON.parse(event.body);
 
 		console.log("amount:", amount);
@@ -17,9 +12,6 @@ exports.handler = async (event) => {
 			amount: amount ? amount : 12300,
 			currency: "eur",
 			payment_method_types: ["giropay", "card", "klarna", "paypal"],
-			// automatic_payment_methods: {
-			// 	enabled: true,
-			// },
 		});
 
 		console.log(paymentIntent.amount);

@@ -1,16 +1,10 @@
 import { useState, useEffect } from "react";
-
 import { useSelector } from "react-redux";
-
 import { selectCurrentUser } from "store/selectors/user.selector";
-
 import { selectCartTotal } from "../../store/selectors/cart.selector";
-
 import PaymentForm from "../../components/payment-form/payment-form.component";
-
 import { Elements } from "@stripe/react-stripe-js";
 import { stripePromise } from "utils/stripe/stripe.utils";
-
 import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
 
 import {
@@ -30,19 +24,11 @@ const Payment = () => {
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const amount = useSelector(selectCartTotal);
   const currentUser = useSelector(selectCurrentUser);
-
-  // console.log(selectAmount);
-
-  // selectAmount(cartTotal);
-
   const [clientSecret, setClientSecret] = useState("");
 
-  console.log(amount);
   let ignore = false;
 
   useEffect(() => {
-    console.log("amount in useEffect:", amount);
-    // Create PaymentIntent as soon as the page loads
     if (!ignore) {
       fetch("../.netlify/functions/create-payment-intent", {
         method: "POST",
@@ -50,10 +36,7 @@ const Payment = () => {
         body: JSON.stringify({ amount: amount * 100 }),
       })
         .then((res) => res.json())
-        .then((data) => {
-          setClientSecret(data.paymentIntent.client_secret);
-          console.log("data in App useEffect:", data);
-        })
+        .then((data) => setClientSecret(data.paymentIntent.client_secret))
         .catch((error) => {
           console.error("Error fetching client secret:", error);
         });
@@ -61,8 +44,6 @@ const Payment = () => {
 
     ignore = true;
   }, [amount]);
-
-  console.log(clientSecret);
 
   const appearance = {
     theme: "stripe",
@@ -73,8 +54,6 @@ const Payment = () => {
     appearance,
     currentUser: currentUser,
   };
-
-  console.log(currentUser);
 
   return (
     <PaymentContainer>
