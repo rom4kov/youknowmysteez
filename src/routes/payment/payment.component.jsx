@@ -43,7 +43,7 @@ const Payment = () => {
     }
 
     ignore = true;
-  }, [amount]);
+  }, []);
 
   const appearance = {
     theme: "stripe",
