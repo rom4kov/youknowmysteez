@@ -22,6 +22,8 @@ const App = () => {
     threshold: 0.2,
   });
 
+  console.log(intObsRef);
+
   return (
     <Routes>
       <Route path="/" element={<Navigation navColor={navColor} />}>

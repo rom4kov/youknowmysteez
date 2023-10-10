@@ -1,3 +1,4 @@
+import { Ref } from "react";
 import Banner from "../../components/banner/banner.component";
 import Directory from "../../components/directory/directory.component";
 import { Outlet } from "react-router-dom";
@@ -9,7 +10,11 @@ import {
   Footer,
 } from "./home.styles";
 
-const Home = ({ intObsRef }) => {
+type HomeProps = {
+  intObsRef: Ref<any>;
+}
+
+const Home = ({ intObsRef }: HomeProps) => {
   return (
     <HomeContainer>
       <NavIntersectionRoot />

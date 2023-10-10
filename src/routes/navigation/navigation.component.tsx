@@ -21,7 +21,11 @@ import {
   NavLinkRight,
 } from "./navigation.styles";
 
-const Navigation = ({ navColor }) => {
+type NavigationProps = {
+  navColor: boolean;
+}
+
+const Navigation = ({ navColor }: NavigationProps) => {
   const currentUser = useSelector(selectCurrentUser);
 
   const location = useLocation();

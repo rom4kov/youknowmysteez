@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { useDispatch } from "react-redux";
 
 import FormInput from "../form-input/form-input.component";
@@ -22,7 +22,11 @@ const defaultFormFields = {
   confirmPassword: "",
 };
 
-const SignUpForm = () => {
+type SignUpFormProps = {
+  className: string;
+}
+
+const SignUpForm: React.FC<SignUpFormProps> = ({ className }) => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
@@ -32,7 +36,7 @@ const SignUpForm = () => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     if (password !== confirmPassword) {
       alert("Die Passwörter stimmen nicht überein.");
@@ -54,7 +58,7 @@ const SignUpForm = () => {
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
