@@ -1,6 +1,6 @@
 import { takeLatest, put, all, call } from "redux-saga/effects";
 
-import { USER_ACTION_TYPES } from "store/redux-types/user.types";
+import { USER_ACTION_TYPES } from "../redux-types/user.types";
 
 import {
   signUpSuccess,
@@ -9,7 +9,7 @@ import {
   signInFailed,
   signOutSuccess,
   signOutFailed,
-} from "store/reducers/user.reducer";
+} from "../reducers/user.reducer";
 
 import {
   db,
@@ -74,7 +74,6 @@ export function* signInWithEmail({ payload: { email, password } }) {
       email,
       password
     );
-    console.log(user);
     yield call(getSnapshotFromUserAuth, user);
   } catch (error) {
     yield put(signInFailed(error));

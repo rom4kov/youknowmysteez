@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 
-import { SpinnerContainer } from "components/spinner/spinner.styles";
+import { SpinnerContainer } from "../spinner/spinner.styles";
 
 export const BaseButton = styled.button`
   width: 47.5%;

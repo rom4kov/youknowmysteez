@@ -12,7 +12,7 @@ import {
   ButtonsContainer,
 } from "./sign-in-form.styles";
 
-import { googleSignInStart, emailSignInStart } from "store/reducers/user.reducer";
+import { googleSignInStart, emailSignInStart } from "../../store/actions/user.action";
 
 import { useDispatch } from "react-redux";
 

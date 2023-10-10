@@ -66,7 +66,7 @@ badd +159 src/components/payment-form/payment-form.component.jsx
 badd +12 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/components/payment-form/payment-form.styles.jsx
 badd +32 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/routes/cart/cart.component.jsx
 badd +21 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/routes/cart/cart.styles.jsx
-badd +83 src/routes/payment/payment.component.jsx
+badd +26 src/routes/payment/payment.component.jsx
 badd +21 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/routes/payment/payment.styles.jsx
 badd +1 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/jsconfig.json
 badd +64 ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/components/button/button.styles.jsx
@@ -163,14 +163,14 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 74 - ((37 * winheight(0) + 20) / 40)
+let s:l = 49 - ((38 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 74
+keepjumps 49
 normal! 02|
 tabnext
-edit src/routes/payment/payment.component.jsx
+edit ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/routes/navigation/navigation.component.jsx
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -184,7 +184,7 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-balt ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/routes/payment/payment.styles.jsx
+balt src/routes/payment/payment.component.jsx
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -195,26 +195,14 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 16 - ((15 * winheight(0) + 20) / 40)
+let s:l = 62 - ((38 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 16
-normal! 03|
+keepjumps 62
+normal! 0
 tabnext
 edit src/App.js
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
 argglobal
 balt ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/index.js
 setlocal fdm=manual
@@ -235,18 +223,6 @@ keepjumps 1
 normal! 019|
 tabnext
 edit ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/index.js
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
 argglobal
 balt ~/Documents/Coding/Complete_React_Dev_Course_2023/Capstone_Project/youknowmysteez/src/routes/payment/confirmation.component.jsx
 setlocal fdm=manual
@@ -267,18 +243,6 @@ keepjumps 5
 normal! 062|
 tabnext
 edit src/store/reducers/cart.reducer.js
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
 argglobal
 balt src/store/actions/cart.action.js
 setlocal fdm=manual
@@ -297,7 +261,7 @@ keepjumps exe s:l
 normal! zt
 keepjumps 79
 normal! 016|
-tabnext 3
+tabnext 4
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf

@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
-import { selectCurrentUser } from "store/selectors/user.selector";
+import { selectCurrentUser } from "../../store/selectors/user.selector";
 
 import { useDispatch } from "react-redux";
 
-import { clearCartItems } from "store/reducers/cart.reducer";
+import { clearCartItems } from "../../store/reducers/cart.reducer";
 
 import {
   PaymentElement,

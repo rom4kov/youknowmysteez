@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectCurrentUser } from "store/selectors/user.selector";
+import { selectCurrentUser } from "../../store/selectors/user.selector";
 import { selectCartTotal } from "../../store/selectors/cart.selector";
 import PaymentForm from "../../components/payment-form/payment-form.component";
 import { Elements } from "@stripe/react-stripe-js";
-import { stripePromise } from "utils/stripe/stripe.utils";
+import { stripePromise } from "../../utils/stripe/stripe.utils";
 import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
 
 import {

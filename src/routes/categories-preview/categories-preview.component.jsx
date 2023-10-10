@@ -7,7 +7,7 @@ import {
   selectCategoriesIsLoading,
 } from "../../store/selectors/category.selector";
 
-import Spinner from "components/spinner/spinner.component";
+import Spinner from "../../components/spinner/spinner.component";
 
 import CategoryPreview from "../../components/category-preview/category-preview.component";
 
