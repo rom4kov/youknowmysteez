@@ -18,7 +18,7 @@ const App = () => {
     dispatch(checkUserSession({}));
   }, [dispatch]);
 
-  let { ref: intObsRef, inView: navColor } = useInView({
+  const { ref: intObsRef, inView: navColor } = useInView({
     threshold: 0.2,
   });
 
