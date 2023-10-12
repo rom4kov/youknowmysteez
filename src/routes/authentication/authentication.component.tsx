@@ -8,7 +8,7 @@ const Authentication : React.FC = () => {
     <Background>
       <AuthContainer>
         <SignInForm />
-        <div className="hyphen"></div>
+        <div className="hyphen" />
         <SignUpForm className="sign-up" />
       </AuthContainer>
     </Background>

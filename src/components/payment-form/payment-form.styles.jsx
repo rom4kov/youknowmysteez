@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 
-export const PaymentFormContainer= styled.div`
+export const PaymentFormContainer = styled.div`
   width: 100%;
   height: 30rem;
   display: flex;

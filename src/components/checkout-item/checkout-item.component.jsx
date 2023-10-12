@@ -34,7 +34,7 @@ const CheckoutItem = ({ checkoutItem }) => {
 
   return (
     <CheckoutItemContainer>
-      <CheckoutItemImg src={imageUrl} alt={`${name}`}></CheckoutItemImg>
+      <CheckoutItemImg src={imageUrl} alt={`${name}`} />
       <CheckoutItemBrand>{brand}</CheckoutItemBrand>
       <Name>{name}</Name>
       <Quantity>

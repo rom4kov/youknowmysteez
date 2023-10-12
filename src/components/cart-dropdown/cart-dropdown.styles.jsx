@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-import Button from "../button/button.component";
+import Button from "../button/button.component"
 
 export const CartDropdownContainer = styled.div`
   position: absolute;
@@ -24,7 +24,7 @@ export const CartDropdownContainer = styled.div`
     box-shadow: 0rem 1rem 2rem -0.3rem rgb(0 0 0 / 33%);
     transition: all 300ms ease;
   }
-`;
+`
 
 export const CartItems = styled.div`
   height: 100%;
@@ -32,7 +32,7 @@ export const CartItems = styled.div`
   flex-direction: column;
   overflow-y: auto;
   margin-bottom: 0.75rem;
-`;
+`
 
 export const SumTotal = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ export const SumTotal = styled.div`
   color: black;
   font-size: 1rem;
   font-weight: 700;
-`;
+`
 
 export const CartButton = styled(Button)`
   width: 100%;
@@ -50,4 +50,4 @@ export const CartButton = styled(Button)`
   margin-top: auto;
   margin-left: auto;
   opacity: 0.9;
-`;
+`
