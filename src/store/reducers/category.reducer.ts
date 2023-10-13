@@ -17,7 +17,6 @@ export const CATEGORIES_INITIAL_STATE: CategoriesState = {
 export const categoriesSlice = createSlice({
   name: "categories",
   initialState: CATEGORIES_INITIAL_STATE,
-  action: {},
   reducers: {
     fetchCategoriesStart(state) {
       state.isLoading = true;
