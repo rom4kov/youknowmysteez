@@ -1,11 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+type CartItem = {
+  id: number;
+  name: string;
+  brand: string;
+  price: number;
+  quantity: number;
+  imageUrl: string;
+};
+
+type Product = {
+  id: number;
+  name: string;
+  brand: string;
+  price: number;
+  quantity: 1;
+  imageUrl: string;
+};
+
+export type CartState = {
+  isCartOpen: boolean;
+  cartItems: CartItem[];
+};
+
 const CART_INITIAL_STATE = {
   isCartOpen: false,
   cartItems: [],
 };
 
-const addCartItem = (cartItems, productToAdd) => {
+const addCartItem = (cartItems: CartItem[], productToAdd: Product) => {
   // find if cartItems contains productToAdd
   console.log(cartItems);
   const existingItem = cartItems.find((item) => item.id === productToAdd.id);
@@ -20,12 +43,12 @@ const addCartItem = (cartItems, productToAdd) => {
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
-const removeCartItem = (cartItems, cartItem) => {
+const removeCartItem = (cartItems: CartItem[], cartItem: CartItem) => {
   console.log(cartItems);
   return cartItems.filter((el) => el.id !== cartItem.id);
 };
 
-const decreaseQuantity = (cartItems, checkoutItem) => {
+const decreaseQuantity = (cartItems: CartItem[], checkoutItem: CartItem) => {
   return cartItems.map((cartItem) =>
     cartItem.id === checkoutItem.id && checkoutItem.quantity > 1
       ? { ...cartItem, quantity: checkoutItem.quantity - 1 }
@@ -33,7 +56,7 @@ const decreaseQuantity = (cartItems, checkoutItem) => {
   );
 };
 
-const increaseQuantity = (cartItems, checkoutItem) => {
+const increaseQuantity = (cartItems: CartItem[], checkoutItem: CartItem) => {
   return cartItems.map((cartItem) =>
     cartItem.id === checkoutItem.id
       ? { ...cartItem, quantity: checkoutItem.quantity + 1 }
