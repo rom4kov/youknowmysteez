@@ -2,6 +2,22 @@ import { takeLatest, put, all, call } from "redux-saga/effects";
 
 import { USER_ACTION_TYPES } from "../redux-types/user.types";
 
+import { UserCredential } from "firebase/auth";
+
+export type AdditionalUserInfo = {
+  isNewUser: boolean;
+  profile: object | null;
+  providerId: string;
+  username?: string | null;
+};
+
+export type SignInUser = {
+  payload: {
+    user: UserCredential["user"];
+    additionalDetails?: AdditionalUserInfo | null;
+  };
+};
+
 import {
   signUpSuccess,
   signUpFailed,
@@ -23,7 +39,9 @@ import {
 
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
-export function* signInSignedUpUser({ payload: { user, additionalDetails } }) {
+export function* signInSignedUpUser({
+  payload: { user, additionalDetails },
+}: SignInUser) {
   try {
     const userDocRef = yield doc(db, "user", user.uid);
     const { displayName, email } = user;

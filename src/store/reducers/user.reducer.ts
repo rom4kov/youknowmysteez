@@ -4,7 +4,15 @@ import { createAction } from "../../utils/reducer/reducer.utils";
 
 import { USER_ACTION_TYPES } from "../redux-types/user.types";
 
-const INITIAL_STATE = {
+import { SignInUser } from "../sagas/user.saga";
+
+export type UserType = {
+  currentUser: null;
+  isLoading: boolean;
+  error: null;
+};
+
+const INITIAL_STATE: UserType = {
   currentUser: null,
   isLoading: false,
   error: null,
@@ -44,49 +52,30 @@ export const {
   signOutFailed,
 } = userSlice.actions;
 
-export const signUpStart = (email, password, displayName) =>
+export const signUpStart = (
+  email: string,
+  password: string,
+  displayName: string
+) =>
   createAction(USER_ACTION_TYPES.SIGN_UP_START, {
     email,
     password,
     displayName,
   });
 
-export const signUpSuccess = (user, additionalDetails) =>
+export const signUpSuccess = ({
+  user,
+  additionalDetails,
+}: SignInUser["payload"]) =>
   createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, { user, additionalDetails });
 
 export const googleSignInStart = () =>
   createAction(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START);
 
-export const emailSignInStart = (email, password) =>
+export const emailSignInStart = (email: string, password: string) =>
   createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, { email, password });
 
 export const signOutStart = () =>
   createAction(USER_ACTION_TYPES.SIGN_OUT_START);
 
 export const userReducer = userSlice.reducer;
-
-// export const userReducerOld = (state = INITIAL_STATE, action) => {
-//   const { type, payload } = action;
-
-//   switch (type) {
-//     case USER_ACTION_TYPES.SIGN_IN_SUCCESS:
-//       return {
-//         ...state,
-//         currentUser: payload,
-//       };
-//     case USER_ACTION_TYPES.SIGN_OUT_SUCCESS:
-//       return {
-//         ...state,
-//         currentUser: null,
-//       };
-//     case USER_ACTION_TYPES.SIGN_UP_FAILED:
-//     case USER_ACTION_TYPES.SIGN_IN_FAILED:
-//     case USER_ACTION_TYPES.SIGN_OUT_FAILED:
-//       return {
-//         ...state,
-//         error: payload,
-//       };
-//     default:
-//       return state;
-//   }
-// };

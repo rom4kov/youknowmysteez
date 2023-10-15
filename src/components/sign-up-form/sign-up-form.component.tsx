@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
-// import { createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
-
 import { signUpStart } from "../../store/reducers/user.reducer";
 
 import {
@@ -24,7 +22,7 @@ const defaultFormFields = {
 
 type SignUpFormProps = {
   className: string;
-}
+};
 
 const SignUpForm: React.FC<SignUpFormProps> = ({ className }) => {
   const [formFields, setFormFields] = useState(defaultFormFields);

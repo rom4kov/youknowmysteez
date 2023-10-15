@@ -1,34 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type CartItem = {
-  id: number;
-  name: string;
-  brand: string;
-  price: number;
-  quantity: number;
-  imageUrl: string;
-};
+import { CartItem } from "../redux-types/cart.types";
 
-type Product = {
-  id: number;
-  name: string;
-  brand: string;
-  price: number;
-  quantity: 1;
-  imageUrl: string;
-};
+import { CategoryItem } from "../redux-types/category.types";
 
 export type CartState = {
   isCartOpen: boolean;
   cartItems: CartItem[];
 };
 
-const CART_INITIAL_STATE = {
+const CART_INITIAL_STATE: CartState = {
   isCartOpen: false,
   cartItems: [],
 };
 
-const addCartItem = (cartItems: CartItem[], productToAdd: Product) => {
+const addCartItem = (cartItems: CartItem[], productToAdd: CategoryItem) => {
   // find if cartItems contains productToAdd
   console.log(cartItems);
   const existingItem = cartItems.find((item) => item.id === productToAdd.id);
