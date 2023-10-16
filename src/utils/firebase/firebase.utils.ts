@@ -26,8 +26,6 @@ import {
 } from "firebase/firestore";
 
 import { Category } from "../../store/redux-types/category.types";
-import { AdditionalUserInfo } from "../../store/sagas/user.saga";
-import { Observer } from "redux";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDh9W9cgMC4etAD02B1xY6jLUlcpaiOTfI",

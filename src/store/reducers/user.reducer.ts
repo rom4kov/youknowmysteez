@@ -4,15 +4,29 @@ import { createAction } from "../../utils/reducer/reducer.utils";
 
 import { USER_ACTION_TYPES } from "../redux-types/user.types";
 
-import { SignInUser } from "../sagas/user.saga";
+import { Action, ActionWithPayload } from "../../utils/reducer/reducer.utils";
 
-export type UserType = {
-  currentUser: null;
-  isLoading: boolean;
-  error: null;
+import { UserData } from "../../utils/firebase/firebase.utils";
+
+import { AdditionalInformation } from "../../utils/firebase/firebase.utils";
+
+export type SignUpSuccessArgs = {
+  user: UserData;
+  additionalDetails: AdditionalInformation;
 };
 
-const INITIAL_STATE: UserType = {
+export type Credentials = {
+  email: string;
+  password: string;
+};
+
+export type UserState = {
+  readonly currentUser: UserData | null;
+  readonly isLoading: boolean;
+  readonly error: Error | null;
+};
+
+const INITIAL_STATE: UserState = {
   currentUser: null,
   isLoading: false,
   error: null,
@@ -52,11 +66,36 @@ export const {
   signOutFailed,
 } = userSlice.actions;
 
+export type UserInfo = {
+  email: string;
+  password: string;
+  displayName: string;
+};
+
+export type SignUpStart = ActionWithPayload<
+  USER_ACTION_TYPES.SIGN_UP_START,
+  UserInfo
+>;
+
+export type SignUpSuccess = ActionWithPayload<
+  USER_ACTION_TYPES.SIGN_UP_SUCCESS,
+  SignUpSuccessArgs
+>;
+
+export type GoogleSignInStart = Action<USER_ACTION_TYPES.GOOGLE_SIGN_IN_START>;
+
+export type EmailSignInStart = ActionWithPayload<
+  USER_ACTION_TYPES.EMAIL_SIGN_IN_START,
+  Credentials
+>;
+
+export type SignOutStart = Action<USER_ACTION_TYPES.SIGN_OUT_START>;
+
 export const signUpStart = (
   email: string,
   password: string,
   displayName: string
-) =>
+): SignUpStart =>
   createAction(USER_ACTION_TYPES.SIGN_UP_START, {
     email,
     password,
@@ -66,16 +105,19 @@ export const signUpStart = (
 export const signUpSuccess = ({
   user,
   additionalDetails,
-}: SignInUser["payload"]) =>
+}: SignUpSuccessArgs): SignUpSuccess =>
   createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, { user, additionalDetails });
 
-export const googleSignInStart = () =>
+export const googleSignInStart = (): GoogleSignInStart =>
   createAction(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START);
 
-export const emailSignInStart = (email: string, password: string) =>
+export const emailSignInStart = (
+  email: string,
+  password: string
+): EmailSignInStart =>
   createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, { email, password });
 
-export const signOutStart = () =>
+export const signOutStart = (): SignOutStart =>
   createAction(USER_ACTION_TYPES.SIGN_OUT_START);
 
 export const userReducer = userSlice.reducer;
