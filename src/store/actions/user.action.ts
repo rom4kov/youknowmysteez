@@ -2,6 +2,8 @@ import { createAction } from "../../utils/reducer/reducer.utils";
 
 import { User } from "firebase/auth";
 
+import { UserData } from "../../utils/firebase/firebase.utils";
+
 import { AdditionalUserInfo } from "../sagas/user.saga";
 
 import { USER_ACTION_TYPES } from "../redux-types/user.types";
@@ -35,7 +37,7 @@ export const googleSignInStart = () =>
 export const emailSignInStart = (email: string, password: string) =>
   createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, { email, password });
 
-export const signInSuccess = (user: User) =>
+export const signInSuccess = (user: UserData & { id: string }) =>
   createAction(USER_ACTION_TYPES.SIGN_IN_SUCCESS, user);
 
 export const signInFailed = (error: Error) =>
