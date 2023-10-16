@@ -9,7 +9,9 @@ import {
   applyMiddleware,
   Middleware,
 } from "@reduxjs/toolkit";
+
 import { persistStore, persistReducer, PersistConfig } from "redux-persist";
+
 import storage from "redux-persist/lib/storage";
 
 import logger from "redux-logger";

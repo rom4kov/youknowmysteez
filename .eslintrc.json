@@ -19,10 +19,19 @@
   },
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx"],
+      "files": ["*.ts", "*.tsx", "*jsx"],
       "rules": {
         "no-undef": "off",
-        "@typescript-eslint/no-explicit-any": "off"
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/ban-types": [
+          "error",
+          {
+            "extenDefaults": true,
+            "types": {
+              "{}": false
+            }
+          }
+        ]
       }
     }
   ]
