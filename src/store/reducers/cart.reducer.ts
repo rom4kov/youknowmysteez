@@ -5,8 +5,8 @@ import { CartItem } from "../redux-types/cart.types";
 import { CategoryItem } from "../redux-types/category.types";
 
 export type CartState = {
-  isCartOpen: boolean;
-  cartItems: CartItem[];
+  readonly isCartOpen: boolean;
+  readonly cartItems: CartItem[];
 };
 
 const CART_INITIAL_STATE: CartState = {
