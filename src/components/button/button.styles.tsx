@@ -42,12 +42,8 @@ export const GoogleSignInButton = styled(BaseButton)`
 `;
 
 export const InvertedButton = styled(BaseButton)`
-  // position: absolute;
-  // top: 17rem;
-  // left: 4.7rem;
   background-color: white;
   color: black;
-  // border: 1px solid black;
 
   &:hover {
     background-color: black;

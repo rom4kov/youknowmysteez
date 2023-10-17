@@ -6,12 +6,12 @@ import { USER_ACTION_TYPES } from "../redux-types/user.types";
 
 import { Action, ActionWithPayload } from "../../utils/reducer/reducer.utils";
 
+import { User } from "firebase/auth";
+
 import {
   UserData,
   AdditionalInformation,
 } from "../../utils/firebase/firebase.utils";
-
-import { User } from "firebase/auth";
 
 export type SignUpSuccessArgs = {
   user: UserData;
