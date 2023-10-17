@@ -2,9 +2,10 @@ import { createAction } from "../../utils/reducer/reducer.utils";
 
 import { User } from "firebase/auth";
 
-import { UserData } from "../../utils/firebase/firebase.utils";
-
-import { AdditionalUserInfo } from "../sagas/user.saga";
+import {
+  UserData,
+  AdditionalInformation,
+} from "../../utils/firebase/firebase.utils";
 
 import { USER_ACTION_TYPES } from "../redux-types/user.types";
 
@@ -24,7 +25,7 @@ export const signUpStart = (
 
 export const signUpSuccess = (
   user: User,
-  additionalDetails: AdditionalUserInfo
+  additionalDetails: AdditionalInformation
 ) =>
   createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, { user, additionalDetails });
 

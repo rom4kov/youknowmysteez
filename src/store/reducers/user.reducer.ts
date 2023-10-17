@@ -6,9 +6,12 @@ import { USER_ACTION_TYPES } from "../redux-types/user.types";
 
 import { Action, ActionWithPayload } from "../../utils/reducer/reducer.utils";
 
-import { UserData } from "../../utils/firebase/firebase.utils";
+import {
+  UserData,
+  AdditionalInformation,
+} from "../../utils/firebase/firebase.utils";
 
-import { AdditionalInformation } from "../../utils/firebase/firebase.utils";
+import { User } from "firebase/auth";
 
 export type SignUpSuccessArgs = {
   user: UserData;
@@ -74,12 +77,12 @@ export type UserInfo = {
 
 export type SignUpStart = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_UP_START,
-  UserInfo
+  { email: string; password: string; displayName: string }
 >;
 
 export type SignUpSuccess = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_UP_SUCCESS,
-  SignUpSuccessArgs
+  { user: User; additionalDetails: AdditionalInformation }
 >;
 
 export type GoogleSignInStart = Action<USER_ACTION_TYPES.GOOGLE_SIGN_IN_START>;
@@ -102,10 +105,10 @@ export const signUpStart = (
     displayName,
   });
 
-export const signUpSuccess = ({
-  user,
-  additionalDetails,
-}: SignUpSuccessArgs): SignUpSuccess =>
+export const signUpSuccess = (
+  user: User,
+  additionalDetails: AdditionalInformation
+): SignUpSuccess =>
   createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, { user, additionalDetails });
 
 export const googleSignInStart = (): GoogleSignInStart =>

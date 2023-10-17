@@ -1,24 +1,10 @@
 import { takeLatest, put, all, call } from "typed-redux-saga/macro";
 
-import { EmailSignInStart } from "../reducers/user.reducer";
+import { EmailSignInStart, SignUpStart } from "../reducers/user.reducer";
 
 import { USER_ACTION_TYPES } from "../redux-types/user.types";
 
-import { User, UserCredential } from "firebase/auth";
-
-export type AdditionalUserInfo = {
-  isNewUser: boolean;
-  profile: object | null;
-  providerId: string;
-  username?: string | null;
-};
-
-export type SignInUser = {
-  payload: {
-    user: UserCredential["user"];
-    additionalDetails?: AdditionalUserInfo | null;
-  };
-};
+import { User } from "firebase/auth";
 
 import {
   signUpSuccess,
@@ -30,7 +16,6 @@ import {
 } from "../reducers/user.reducer";
 
 import {
-  db,
   signInWithGooglePopup,
   createUserDocumentFromAuth,
   createAuthUserWithEmailAndPassword,
@@ -40,31 +25,12 @@ import {
   AdditionalInformation,
 } from "../../utils/firebase/firebase.utils";
 
-import { doc, setDoc, getDoc } from "firebase/firestore";
-
-export function* signInSignedUpUser({
-  payload: { user, additionalDetails },
-}: SignInUser) {
-  try {
-    const userDocRef = yield* doc(db, "user", user.uid);
-    const { displayName, email } = user;
-    const createdAt = new Date();
-    try {
-      yield* setDoc(userDocRef, {
-        displayName,
-        email,
-        createdAt,
-        ...additionalDetails,
-      });
-    } catch (error) {
-      console.log("error creating the user", error.message);
-    }
-    const userSnapshot = yield* getDoc(userDocRef);
-    yield* put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
-  } catch (error) {
-    yield* put(signInFailed(error));
-  }
-}
+export type SignInUser = {
+  payload: {
+    user: User;
+    additionalDetails?: AdditionalInformation;
+  };
+};
 
 export function* signOut() {
   try {
@@ -133,15 +99,19 @@ export function* isUserAuthenticated() {
   }
 }
 
-export function* signUp({ payload: { email, password, displayName } }) {
+export function* signUp({
+  payload: { email, password, displayName },
+}: SignUpStart) {
   try {
-    const { user } = yield* call(
+    const userCredential = yield* call(
       createAuthUserWithEmailAndPassword,
       email,
       password
     );
-    const additionalDetails = {};
-    yield* put(signUpSuccess({ ...user, displayName }, additionalDetails));
+    if (userCredential) {
+      const { user } = userCredential;
+      yield* put(signUpSuccess(user, { displayName }));
+    }
   } catch (error) {
     yield* put(signUpFailed(error));
   }
@@ -152,7 +122,7 @@ export function* onSignUpStart() {
 }
 
 export function* onSignUpSuccess() {
-  yield* takeLatest(USER_ACTION_TYPES.SIGN_UP_SUCCESS, signInSignedUpUser);
+  yield* takeLatest(USER_ACTION_TYPES.SIGN_UP_SUCCESS, getSnapshotFromUserAuth);
 }
 
 export function* onGoogleSignIn() {

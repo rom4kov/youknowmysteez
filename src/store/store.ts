@@ -6,7 +6,7 @@
 import {
   compose,
   configureStore,
-  applyMiddleware,
+  // applyMiddleware,
   Middleware,
 } from "@reduxjs/toolkit";
 
@@ -52,13 +52,13 @@ const middleWares = [
   sagaMiddleware,
 ].filter((middleware): middleware is Middleware => Boolean(middleware));
 
-const composedEnhancer =
-  (process.env.NODE_ENV !== "production" &&
-    window &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
-  compose;
-
-const composedEnhancers = composedEnhancer(applyMiddleware(...middleWares));
+// const composedEnhancer =
+//   (process.env.NODE_ENV !== "production" &&
+//     window &&
+//     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+//   compose;
+//
+// const composedEnhancers = composedEnhancer(applyMiddleware(...middleWares));
 
 export const store = configureStore({
   reducer: persistedReducer,
