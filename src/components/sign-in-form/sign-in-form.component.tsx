@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 
 import FormInput from "../form-input/form-input.component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
@@ -12,7 +12,10 @@ import {
   ButtonsContainer,
 } from "./sign-in-form.styles";
 
-import { googleSignInStart, emailSignInStart } from "../../store/actions/user.action";
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from "../../store/actions/user.action";
 
 import { useDispatch } from "react-redux";
 
@@ -31,12 +34,12 @@ const SignInForm = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       dispatch(emailSignInStart(email, password));
@@ -46,22 +49,13 @@ const SignInForm = () => {
       // setUserName(username.displayName);
       resetFormFields();
     } catch (error) {
-      switch (error.code) {
-        case "auth/wrong-password":
-          alert("Falsches Passwort.");
-          break;
-        case "auth/user-not-found":
-          alert("Email nicht bekannt.");
-          break;
-        default:
-          console.log("Error:", error);
-      }
+      console.log("Error:", error);
     }
   };
 
   const signInWithGoogle = async () => {
     // await signInWithGooglePopup();
-    dispatch(googleSignInStart())
+    dispatch(googleSignInStart());
   };
 
   return (
@@ -70,7 +64,7 @@ const SignInForm = () => {
       <Login>
         <LoginTitle>Du hast einen Account?</LoginTitle>
         <LoginSubheading>Melde dich per Email und Passwort an</LoginSubheading>
-        <FormInputs onSubmit={handleSubmit}>
+        <FormInputs onSubmit={(e) => handleSubmit}>
           <FormInput
             label="Email"
             type="email"

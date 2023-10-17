@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
-const subColor = `hsla(0, 0%, 97%, 0.6)`;
-const lightColor = `hsla(0, 0%, 100%, 0.855)`;
-const mainColor = `rgb(225, 225, 225)`;
+const subColor = "hsla(0, 0%, 97%, 0.6)";
+const lightColor = "hsla(0, 0%, 100%, 0.855)";
+const mainColor = "rgb(225, 225, 225)";
 
 const shrinkLabelStyles = css`
   top: -0.7rem;
@@ -28,7 +28,11 @@ export const GrowingUnderline = styled.div`
   transform-origin: center;
 `;
 
-export const FormInputLabel = styled.label`
+type FormInputLabelProps = {
+  shrink?: boolean;
+};
+
+export const FormInputLabel = styled.label<FormInputLabelProps>`
   position: absolute;
   top: 0.6rem;
   left: 0.3rem;
@@ -38,9 +42,7 @@ export const FormInputLabel = styled.label`
   color: ${lightColor};
   transition: 300ms ease all;
 
-  ${function ({ shrink }) {
-    return shrink && shrinkLabelStyles;
-  }};
+  ${({ shrink }) => shrink && shrinkLabelStyles};
 `;
 
 export const FormInputField = styled.input`

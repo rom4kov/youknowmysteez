@@ -1,4 +1,5 @@
 import { useState, ChangeEvent, FormEvent } from "react";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 import { useDispatch } from "react-redux";
 
 import FormInput from "../form-input/form-input.component";
@@ -34,7 +35,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ className }) => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = async (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (password !== confirmPassword) {
       alert("Die Passwörter stimmen nicht überein.");
@@ -47,7 +48,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ className }) => {
       // await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
+      if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
         alert("Die Email-Adresse ist bereits belegt.");
         return;
       } else {
@@ -56,7 +57,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ className }) => {
     }
   };
 
-  const handleChange = (event: ChangeEvent) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
