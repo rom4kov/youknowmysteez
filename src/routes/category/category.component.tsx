@@ -25,7 +25,7 @@ const Category = () => {
   >() as CategoryRouteParams;
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
-  const [products, setProducts] = useState([category]);
+  const [products, setProducts] = useState(categoriesMap[category]);
 
   useEffect(() => {
     setProducts(categoriesMap[category]);
@@ -38,10 +38,9 @@ const Category = () => {
         <Spinner />
       ) : (
         <CategoryProducts>
-          {products &&
-            products.map((product) => (
-              <ProductCard product={product} key={product.id} />
-            ))}
+          {products?.map((product) => (
+            <ProductCard product={product} key={product.id} />
+          ))}
         </CategoryProducts>
       )}
     </Fragment>
