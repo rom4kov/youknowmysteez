@@ -11,7 +11,7 @@ import Spinner from "../../components/spinner/spinner.component";
 
 import CategoryPreview from "../../components/category-preview/category-preview.component";
 
-import { PreviewTitle } from "./categories-preview.styles.jsx";
+import { PreviewTitle } from "./categories-preview.styles";
 
 const CategoriesPreview = () => {
   const categoriesMap = useSelector(selectCategoriesMap);

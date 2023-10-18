@@ -41,10 +41,9 @@ const Checkout = () => {
         <CartTitle>
           Warenkorb {cartCount ? `(${cartCount} Artikel)` : ""}
         </CartTitle>
-        {cartItems &&
-          cartItems.map((item) => (
-            <CheckoutItem checkoutItem={item} key={item.id}></CheckoutItem>
-          ))}
+        {cartItems?.map((item) => (
+          <CheckoutItem checkoutItem={item} key={item.id} />
+        ))}
       </Cart>
       <Pay>
         <PayHeading>Gesamtsumme</PayHeading>

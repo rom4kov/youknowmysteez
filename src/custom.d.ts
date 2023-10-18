@@ -4,3 +4,11 @@ declare module "*.svg" {
   const src: string;
   export default src;
 }
+
+declare module "*.jpg";
+
+declare const process: {
+  env: {
+    REACT_APP_STRIPE_PUBLISHABLE_KEY: string;
+  };
+};

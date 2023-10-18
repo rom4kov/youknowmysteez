@@ -1,4 +1,3 @@
-import { Ref } from "react";
 import Banner from "../../components/banner/banner.component";
 import Directory from "../../components/directory/directory.component";
 import { Outlet } from "react-router-dom";
@@ -11,8 +10,8 @@ import {
 } from "./home.styles";
 
 type HomeProps = {
-  intObsRef: Ref<any>;
-}
+  intObsRef: (node?: Element | null | undefined) => void;
+};
 
 const Home = ({ intObsRef }: HomeProps) => {
   return (
