@@ -9,7 +9,11 @@ import {
 
 import { CartIconContainer, ShoppingIcon, ItemCount } from "./cart-icon.styles";
 
-const CartIcon = ({ styleProp }) => {
+type CartIconProp = {
+  styleProp: string;
+};
+
+const CartIcon = ({ styleProp }: CartIconProp) => {
   const isCartOpen = useSelector(selectIsCartOpen);
   const cartCount = useSelector(selectCartCount);
 

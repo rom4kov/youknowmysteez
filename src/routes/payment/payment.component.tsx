@@ -4,6 +4,7 @@ import { selectCurrentUser } from "../../store/selectors/user.selector";
 import { selectCartTotal } from "../../store/selectors/cart.selector";
 import PaymentForm from "../../components/payment-form/payment-form.component";
 import { Elements } from "@stripe/react-stripe-js";
+import { StripeElementsOptions } from "@stripe/stripe-js";
 import { stripePromise } from "../../utils/stripe/stripe.utils";
 import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
 
@@ -21,7 +22,8 @@ import {
 
 const Payment = () => {
   const cartTotal = useSelector(selectCartTotal);
-  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  const [isProcessingPayment, setIsProcessingPayment] =
+    useState<boolean>(false);
   const amount = useSelector(selectCartTotal);
   const currentUser = useSelector(selectCurrentUser);
   const [clientSecret, setClientSecret] = useState("");
@@ -53,7 +55,7 @@ const Payment = () => {
     clientSecret,
     appearance,
     currentUser: currentUser,
-  };
+  } as StripeElementsOptions;
 
   return (
     <PaymentContainer>

@@ -8,6 +8,10 @@ import { useDispatch } from "react-redux";
 
 import { clearCartItems } from "../../store/reducers/cart.reducer";
 
+import { StripePaymentElementOptions } from "@stripe/stripe-js";
+
+import { Dispatch, SetStateAction, FormEvent, FormEventHandler } from "react";
+
 import {
   PaymentElement,
   useStripe,
@@ -16,14 +20,20 @@ import {
 
 import { PaymentFormContainer, FormContainer } from "./payment-form.styles";
 
-const PaymentForm = ({ paymentLoad }) => {
+type PaymentFormProps = {
+  paymentLoad: Dispatch<SetStateAction<boolean>>;
+};
+
+const PaymentForm = ({ paymentLoad }: PaymentFormProps) => {
   const stripe = useStripe();
   const elements = useElements();
   const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const paymentHandler = async (e) => {
+  const paymentHandler: FormEventHandler = async (
+    e: FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
@@ -41,7 +51,7 @@ const PaymentForm = ({ paymentLoad }) => {
           },
         },
       },
-      redirect: 'if_required'
+      redirect: "if_required",
     });
 
     if (paymentResult.error) {
@@ -61,7 +71,7 @@ const PaymentForm = ({ paymentLoad }) => {
 
   const paymentElementOptions = {
     layout: "accordion",
-  };
+  } as StripePaymentElementOptions;
 
   return (
     <PaymentFormContainer>

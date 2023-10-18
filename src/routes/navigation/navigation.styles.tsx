@@ -14,7 +14,7 @@ export const NavigationContainer = styled.div`
   transition: all 200ms ease-out;
 `;
 
-// vorher ".nav-link":
+// war vorher ".nav-link":
 export const NavLinkLeft = styled(Link)`
   color: #fff;
   margin-right: 2rem;
@@ -53,9 +53,6 @@ export const LeftNav = styled.div`
 
 export const Title = styled.h1`
   color: white;
-  // background: -webkit-linear-gradient(45deg, #193B19 0%, red 200%);
-  // -webkit-background-clip: text;
-  // -webkit-text-fill-color: transparent;
   position: relative;
   width: 100%;
   display: flex;

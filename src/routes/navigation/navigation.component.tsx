@@ -2,8 +2,6 @@ import { Fragment } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-// import { signOutUser } from "../../utils/firebase/firebase.utils";
-
 import { signOutStart } from "../../store/actions/user.action";
 
 import { selectCurrentUser } from "../../store/selectors/user.selector";
@@ -23,7 +21,7 @@ import {
 
 type NavigationProps = {
   navColor: boolean;
-}
+};
 
 const Navigation = ({ navColor }: NavigationProps) => {
   const currentUser = useSelector(selectCurrentUser);
