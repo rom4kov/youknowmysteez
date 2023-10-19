@@ -8,16 +8,26 @@ import {
   DirectoryItemText,
 } from "./directory-item.styles";
 
-const DirectoryItem = ({ category }) => {
+import { Category } from "../../store/redux-types/category.types";
+
+type DirectoryItemProps = {
+  category: Category;
+};
+
+const DirectoryItem = ({ category }: DirectoryItemProps) => {
   const { imageUrl, title, route } = category;
 
   const navigate = useNavigate();
 
   const onNavigateHandler = () => navigate(route);
 
+  const style = {
+    backgroundImage: imageUrl,
+  };
+
   return (
     <DrectoryItemContainer onClick={onNavigateHandler}>
-      <BackgroundImage backgroundImage={imageUrl} />
+      <BackgroundImage backgroundImage={backgroundImage} />
       <DirectoryItemBody>
         <DirectoryItemTitle>{title}</DirectoryItemTitle>
         <DirectoryItemText>Shop Now</DirectoryItemText>

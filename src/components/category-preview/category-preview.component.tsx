@@ -4,7 +4,7 @@ import {
   CategoryPreviewContainer,
   CategoryTitleLink,
   Preview,
-} from "./category-preview.styles.jsx";
+} from "./category-preview.styles";
 
 import { CategoryItem } from "../../store/redux-types/category.types";
 

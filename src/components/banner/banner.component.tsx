@@ -1,4 +1,4 @@
-import { BannerContainer, Video, LinearGradient } from "./banner.styles.jsx";
+import { BannerContainer, Video, LinearGradient } from "./banner.styles";
 import video from "../../assets/videos/rakim.webm";
 import { forwardRef } from "react";
 

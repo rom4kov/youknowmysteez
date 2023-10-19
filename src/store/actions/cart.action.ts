@@ -7,12 +7,12 @@ import {
   ActionWithPayload,
 } from "../../utils/reducer/reducer.utils";
 
-import { CART_ACTION_TYPES, CartItem } from "../redux-types/cart.types";
+import { CART_ACTION_TYPES, CartItemType } from "../redux-types/cart.types";
 
 const addCartItem = (
-  cartItems: CartItem[],
+  cartItems: CartItemType[],
   productToAdd: CategoryItem
-): CartItem[] => {
+): CartItemType[] => {
   // find if cartItems contains productToAdd
   const existingItem = cartItems.find((item) => item.id === productToAdd.id);
   // If found, increment quantity
@@ -27,16 +27,16 @@ const addCartItem = (
 };
 
 const removeCartItem = (
-  cartItems: CartItem[],
-  cartItem: CartItem
-): CartItem[] => {
+  cartItems: CartItemType[],
+  cartItem: CartItemType
+): CartItemType[] => {
   return cartItems.filter((el) => el.id !== cartItem.id);
 };
 
 const decreaseQuantity = (
-  cartItems: CartItem[],
-  checkoutItem: CartItem
-): CartItem[] => {
+  cartItems: CartItemType[],
+  checkoutItem: CartItemType
+): CartItemType[] => {
   return cartItems.map((cartItem) =>
     cartItem.id === checkoutItem.id && checkoutItem.quantity > 1
       ? { ...cartItem, quantity: checkoutItem.quantity - 1 }
@@ -45,9 +45,9 @@ const decreaseQuantity = (
 };
 
 const increaseQuantity = (
-  cartItems: CartItem[],
-  checkoutItem: CartItem
-): CartItem[] => {
+  cartItems: CartItemType[],
+  checkoutItem: CartItemType
+): CartItemType[] => {
   return cartItems.map((cartItem) =>
     cartItem.id === checkoutItem.id
       ? { ...cartItem, quantity: checkoutItem.quantity + 1 }
@@ -62,7 +62,7 @@ export type SetIsCartOpen = ActionWithPayload<
 
 export type SetCartItems = ActionWithPayload<
   CART_ACTION_TYPES.SET_CART_ITEMS,
-  CartItem[]
+  CartItemType[]
 >;
 
 export const setCartIsOpen = withMatcher(
@@ -71,12 +71,12 @@ export const setCartIsOpen = withMatcher(
 );
 
 export const setCartItems = withMatcher(
-  (cartItems: CartItem[]): SetCartItems =>
+  (cartItems: CartItemType[]): SetCartItems =>
     createAction(CART_ACTION_TYPES.SET_CART_ITEMS, cartItems)
 );
 
 export const addItemToCart = (
-  cartItems: CartItem[],
+  cartItems: CartItemType[],
   productToAdd: CategoryItem
 ) => {
   const newCartItems = addCartItem(cartItems, productToAdd);
@@ -84,24 +84,24 @@ export const addItemToCart = (
 };
 
 export const removeItemFromCart = (
-  cartItems: CartItem[],
-  cartItem: CartItem
+  cartItems: CartItemType[],
+  cartItem: CartItemType
 ) => {
   const newCartItems = removeCartItem(cartItems, cartItem);
   return setCartItems(newCartItems);
 };
 
 export const decreaseQtyOfCartItem = (
-  cartItems: CartItem[],
-  checkoutItem: CartItem
+  cartItems: CartItemType[],
+  checkoutItem: CartItemType
 ) => {
   const newCartItems = decreaseQuantity(cartItems, checkoutItem);
   return setCartItems(newCartItems);
 };
 
 export const increaseQtyOfCartItem = (
-  cartItems: CartItem[],
-  checkoutItem: CartItem
+  cartItems: CartItemType[],
+  checkoutItem: CartItemType
 ) => {
   const newCartItems = increaseQuantity(cartItems, checkoutItem);
   return setCartItems(newCartItems);

@@ -1,5 +1,6 @@
-import { DrectoryContainer } from "./directory.styles";
-import DrectoryItem from "../directory-item/directory-item.component";
+import { DirectoryContainer } from "./directory.styles";
+import DirectoryItem from "../directory-item/directory-item.component";
+import { Category } from "../../store/redux-types/category.types";
 
 import img0 from "../../assets/images/shirts.jpg";
 import img1 from "../../assets/images/jackets.jpg";
@@ -38,15 +39,15 @@ const categories = [
     imageUrl: img4,
     route: "shop/mens",
   },
-];
+] as Category[];
 
 const Directory = () => {
   return (
-    <DrectoryContainer>
+    <DirectoryContainer>
       {categories.map((category) => (
-        <DrectoryItem key={category.id} category={category} />
+        <DirectoryItem key={category.id} category={category} />
       ))}
-    </DrectoryContainer>
+    </DirectoryContainer>
   );
 };
 
