@@ -7,7 +7,8 @@ export const BackgroundImage = styled.div`
     ${({ backgroundImage }) => `url(${backgroundImage})`};
   background-size: cover;
   filter: grayscale(1);
-  transition: scale 1s cubic-bezier(0.25, 0.45, 0.45, 0.95),
+  transition:
+    scale 1s cubic-bezier(0.25, 0.45, 0.45, 0.95),
     filter 0.2s ease-out;
 `;
 
@@ -38,7 +39,8 @@ export const DrectoryItemContainer = styled.div`
     & ${BackgroundImage} {
       scale: 1.1;
       filter: none;
-      transition: scale 3s cubic-bezier(0.25, 0.45, 0.45, 0.95),
+      transition:
+        scale 3s cubic-bezier(0.25, 0.45, 0.45, 0.95),
         filter 0.5s ease-out;
     }
 

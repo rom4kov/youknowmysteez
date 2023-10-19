@@ -12,14 +12,19 @@ import {
   Quantity,
   RemoveItem,
 } from "./cart-item.styles";
+import { CartItemType } from "../../store/redux-types/cart.types";
 
-const CartItem = ({ cartItem, isCartOpen }) => {
+type CartItemProps = {
+  cartItem: CartItemType;
+  isCartOpen: boolean;
+};
+
+const CartItem = ({ cartItem, isCartOpen }: CartItemProps) => {
   const { brand, price, imageUrl, name, quantity } = cartItem;
 
   const dispatch = useDispatch();
 
-  const removeItem = () =>
-    dispatch(removeItemFromCart(cartItem));
+  const removeItem = () => dispatch(removeItemFromCart(cartItem));
 
   return (
     <CartItemContainer className={`${isCartOpen ? "open" : ""}`}>

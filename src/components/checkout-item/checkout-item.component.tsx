@@ -20,17 +20,20 @@ import {
 import { ReactComponent as MinusIcon } from "../../assets/svgs/minus.svg";
 import { ReactComponent as PlusIcon } from "../../assets/svgs/plus.svg";
 
-const CheckoutItem = ({ checkoutItem }) => {
+import { CartItemType } from "../../store/redux-types/cart.types";
+
+type CheckoutItemProps = {
+  checkoutItem: CartItemType;
+};
+
+const CheckoutItem = ({ checkoutItem }: CheckoutItemProps) => {
   const { brand, price, imageUrl, name, quantity } = checkoutItem;
 
   const dispatch = useDispatch();
 
-  const removeItem = () =>
-    dispatch(removeItemFromCart(checkoutItem));
-  const decreaseQty = () =>
-    dispatch(decreaseQtyOfCartItem(checkoutItem));
-  const increaseQty = () =>
-    dispatch(increaseQtyOfCartItem(checkoutItem));
+  const removeItem = () => dispatch(removeItemFromCart(checkoutItem));
+  const decreaseQty = () => dispatch(decreaseQtyOfCartItem(checkoutItem));
+  const increaseQty = () => dispatch(increaseQtyOfCartItem(checkoutItem));
 
   return (
     <CheckoutItemContainer>

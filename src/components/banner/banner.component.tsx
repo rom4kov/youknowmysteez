@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 const Banner = forwardRef(function Banner(props, ref) {
   return (
     <BannerContainer ref={ref} {...props}>
-      <Video src={video} autoPlay loop muted></Video>
+      <Video src={video} autoPlay loop muted />
       <LinearGradient />
     </BannerContainer>
   );

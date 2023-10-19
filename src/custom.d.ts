@@ -7,6 +7,8 @@ declare module "*.svg" {
 
 declare module "*.jpg";
 
+declare module "*.webm";
+
 declare const process: {
   env: {
     REACT_APP_STRIPE_PUBLISHABLE_KEY: string;
