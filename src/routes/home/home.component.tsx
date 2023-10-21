@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import Banner from "../../components/banner/banner.component";
 import Directory from "../../components/directory/directory.component";
 import { Outlet } from "react-router-dom";
@@ -8,6 +9,10 @@ import {
   SaleText,
   Footer,
 } from "./home.styles";
+
+type Props = {
+  props: void[];
+};
 
 type HomeProps = {
   intObsRef: (node?: Element | null | undefined) => void;
