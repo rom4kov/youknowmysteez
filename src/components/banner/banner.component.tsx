@@ -1,12 +1,16 @@
 import { BannerContainer, Video, LinearGradient } from "./banner.styles";
 import video from "../../assets/videos/rakim.webm";
-import { RefObject, forwardRef } from "react";
+import { ForwardedRef, forwardRef } from "react";
 
-export type BannerProps = React.HTMLProps<HTMLDivElement> & {
-  ref: RefObject<HTMLDivElement>;
+export type BannerProps = {
+  props: string;
 };
 
-const Banner = forwardRef(function Banner({ ref }: BannerProps) {
+const Banner = forwardRef(function Banner(
+  props: BannerProps,
+  ref: ForwardedRef<HTMLDivElement>
+) {
+  console.log(props);
   return (
     <BannerContainer ref={ref}>
       <Video src={video} autoPlay loop muted />
