@@ -4,6 +4,8 @@ import { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import { addItemToCart } from "../../store/reducers/cart.reducer";
 
+import { CategoryItem } from "../../store/redux-types/category.types";
+
 import {
   ProductCardContainer,
   ProductCardImg,
@@ -13,7 +15,11 @@ import {
   ProductCardButton,
 } from "./product-card.styles";
 
-const ProductCard = ({ product }) => {
+type ProductCardProps = {
+  product: CategoryItem;
+};
+
+const ProductCard = ({ product }: ProductCardProps) => {
   const productToAdd = { ...product, quantity: 1 };
   const { name, imageUrl, price } = productToAdd;
 
