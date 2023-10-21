@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
-type backgroundColor,
+type Props = {
+  backgroundImage: string;
+};
 
-export const BackgroundImage = styled.div`
+export const BackgroundImage = styled.div<Props>`
   width: 100%;
   height: 100%;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    ${({ props }) => `url(${props.backgroundImage})`};
+    ${({ backgroundImage }) => `url(${backgroundImage})`};
   background-size: cover;
   filter: grayscale(1);
   transition:

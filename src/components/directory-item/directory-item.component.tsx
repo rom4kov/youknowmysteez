@@ -21,13 +21,9 @@ const DirectoryItem = ({ category }: DirectoryItemProps) => {
 
   const onNavigateHandler = () => navigate(route);
 
-  const style = {
-    backgroundImage: imageUrl,
-  };
-
   return (
     <DrectoryItemContainer onClick={onNavigateHandler}>
-      <BackgroundImage backgroundImage={backgroundImage} />
+      <BackgroundImage backgroundImage={imageUrl} />
       <DirectoryItemBody>
         <DirectoryItemTitle>{title}</DirectoryItemTitle>
         <DirectoryItemText>Shop Now</DirectoryItemText>
