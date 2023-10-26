@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-
+import { useCallback } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import {
   selectIsCartOpen,
@@ -28,9 +28,9 @@ const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
 
-  const goToCheckoutHandler = () => {
+  const goToCheckoutHandler = useCallback(() => {
     navigate("/cart");
-  };
+  }, [navigate]);
 
   return (
     <CartDropdownContainer className={`${isCartOpen ? "open" : ""}`}>
