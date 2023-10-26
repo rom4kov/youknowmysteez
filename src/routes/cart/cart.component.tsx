@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -31,9 +32,9 @@ const Checkout = () => {
 
   const navigate = useNavigate();
 
-  const goToPaymentHandler = () => {
+  const goToPaymentHandler = useCallback(() => {
     navigate("/payment");
-  };
+  }, [navigate]);
 
   return (
     <CartContainer>

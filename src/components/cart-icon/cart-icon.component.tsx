@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setCartIsOpen } from "../../store/reducers/cart.reducer";
@@ -19,7 +20,10 @@ const CartIcon = ({ styleProp }: CartIconProp) => {
 
   const dispatch = useDispatch();
 
-  const toggleIsCartOpen = () => dispatch(setCartIsOpen(!isCartOpen));
+  const toggleIsCartOpen = useCallback(
+    () => dispatch(setCartIsOpen(!isCartOpen)),
+    [dispatch, isCartOpen]
+  );
 
   return (
     <CartIconContainer

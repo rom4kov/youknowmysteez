@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { useCallback, Fragment } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -44,7 +44,7 @@ const Navigation = ({ navColor }: NavigationProps) => {
 
   const dispatch = useDispatch();
 
-  const handleSignOut = () => dispatch(signOutStart());
+  const handleSignOut = useCallback(() => dispatch(signOutStart()), [dispatch]);
 
   return (
     <Fragment>

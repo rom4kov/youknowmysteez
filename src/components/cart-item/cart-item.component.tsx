@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { useDispatch } from "react-redux";
 
 import { removeItemFromCart } from "../../store/reducers/cart.reducer";
@@ -19,7 +21,7 @@ type CartItemProps = {
   isCartOpen: boolean;
 };
 
-const CartItem = ({ cartItem, isCartOpen }: CartItemProps) => {
+const CartItem = memo(({ cartItem, isCartOpen }: CartItemProps) => {
   const { brand, price, imageUrl, name, quantity } = cartItem;
 
   const dispatch = useDispatch();
@@ -38,6 +40,6 @@ const CartItem = ({ cartItem, isCartOpen }: CartItemProps) => {
       <RemoveItem onClick={removeItem}>Artikel entfernen</RemoveItem>
     </CartItemContainer>
   );
-};
+});
 
 export default CartItem;
