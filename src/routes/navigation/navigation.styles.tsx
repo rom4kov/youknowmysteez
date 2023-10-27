@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import "../../assets/fonts/fonts.css";
 
@@ -28,10 +28,14 @@ export const NavLinkLeft = styled(Link)`
   &:last-child {
     margin-right: 0;
   }
+
+  @media screen and (max-width: 800px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const NavWrapper = styled.div`
-  width: 25rem;
+  width: 25vw;
 `;
 
 export const LeftNav = styled.div`
@@ -60,6 +64,10 @@ export const Title = styled.h1`
   font-family: "Urban Starblues Demo";
   transition: all 300ms ease-out;
   cursor: pointer;
+
+  @media screen and (max-width: 800px) {
+    font-size: 2rem !important;
+  }
 `;
 
 export const RightNav = styled.div`
@@ -82,5 +90,9 @@ export const NavLinkRight = styled(Link)`
 
   &:first-child {
     margin-left: 0;
+  }
+
+  @media screen and (max-width: 800px) {
+    font-size: 0.8rem;
   }
 `;
