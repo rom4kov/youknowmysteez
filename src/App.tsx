@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import Spinner from "./components/spinner/spinner.component";
 import { checkUserSession } from "./store/reducers/user.reducer";
+import { GlobalStyle } from "./global.styles";
 
 const Home = lazy(() => import("./routes/home/home.component"));
 const Navigation = lazy(
@@ -34,6 +35,7 @@ const App = () => {
 
   return (
     <Suspense fallback={<Spinner />}>
+      <GlobalStyle />
       <Routes>
         <Route path="/" element={<Navigation navColor={navColor} />}>
           <Route index element={<Home intObsRef={intObsRef} />} />

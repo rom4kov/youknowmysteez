@@ -13,5 +13,6 @@ declare const process: {
   env: {
     REACT_APP_STRIPE_PUBLISHABLE_KEY: string;
     NODE_ENV: "development" | "production" | "test";
+    PUBLIC_URL: string;
   };
 };

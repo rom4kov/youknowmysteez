@@ -54,17 +54,15 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    // await signInWithGooglePopup();
     dispatch(googleSignInStart());
   };
 
   return (
     <SingInContainer>
-      {/* <Username>{userName}</Username> */}
       <Login>
         <LoginTitle>Du hast einen Account?</LoginTitle>
         <LoginSubheading>Melde dich per Email und Passwort an</LoginSubheading>
-        <FormInputs onSubmit={(e) => handleSubmit}>
+        <FormInputs onSubmit={() => handleSubmit}>
           <FormInput
             label="Email"
             type="email"
