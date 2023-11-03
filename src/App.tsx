@@ -31,8 +31,6 @@ const App = () => {
     threshold: 0.2,
   });
 
-  console.log(intObsRef);
-
   return (
     <Suspense fallback={<Spinner />}>
       <GlobalStyle />

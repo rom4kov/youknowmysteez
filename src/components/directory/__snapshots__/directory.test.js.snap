@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`properly render Directory component 1`] = `
+<styled.div>
+  <DirectoryItem
+    category={
+      Object {
+        "id": 1,
+        "imageUrl": "shirts.jpg",
+        "route": "shop/hats",
+        "title": "TEES",
+      }
+    }
+    key="1"
+  />
+  <DirectoryItem
+    category={
+      Object {
+        "id": 2,
+        "imageUrl": "jackets.jpg",
+        "route": "shop/jackets",
+        "title": "JACKETS",
+      }
+    }
+    key="2"
+  />
+  <DirectoryItem
+    category={
+      Object {
+        "id": 3,
+        "imageUrl": "sneakers.jpg",
+        "route": "shop/sneakers",
+        "title": "SNEAKERS",
+      }
+    }
+    key="3"
+  />
+  <DirectoryItem
+    category={
+      Object {
+        "id": 4,
+        "imageUrl": "womens.jpg",
+        "route": "shop/womens",
+        "title": "WOMENS",
+      }
+    }
+    key="4"
+  />
+  <DirectoryItem
+    category={
+      Object {
+        "id": 5,
+        "imageUrl": "mens.jpg",
+        "route": "shop/mens",
+        "title": "MENS",
+      }
+    }
+    key="5"
+  />
+</styled.div>
+`;
