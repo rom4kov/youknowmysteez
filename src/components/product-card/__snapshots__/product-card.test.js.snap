@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`properly render ProductCard component 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductCard>
+    <styled.div>
+      <div
+        className="sc-dmqHEX kneRcb"
+      >
+        <styled.img
+          alt="undefined"
+        >
+          <img
+            alt="undefined"
+            className="sc-hLseeU iwsRzB"
+          />
+        </styled.img>
+        <styled.div>
+          <div
+            className="sc-eDDNvR iqCncc"
+          >
+            <styled.span>
+              <span
+                className="sc-jTrPJq ckcNaj"
+              />
+            </styled.span>
+            <styled.span>
+              <span
+                className="sc-gLDzan ewZTjn"
+              >
+                € 
+              </span>
+            </styled.span>
+          </div>
+        </styled.div>
+        <Styled(Button)
+          buttonType="inverted"
+          onClick={[Function]}
+        >
+          <Button
+            buttonType="inverted"
+            className="sc-iAEyYk jvcVwh"
+            onClick={[Function]}
+          >
+            <buttonstyles__InvertedButton
+              className="sc-iAEyYk jvcVwh"
+              onClick={[Function]}
+            >
+              <button
+                className="buttonstyles__BaseButton-sc-lswy1h-0 buttonstyles__InvertedButton-sc-lswy1h-2 jJMbCT fsMtkj sc-iAEyYk jvcVwh"
+                onClick={[Function]}
+              >
+                In den Warenkorb
+              </button>
+            </buttonstyles__InvertedButton>
+          </Button>
+        </Styled(Button)>
+      </div>
+    </styled.div>
+  </ProductCard>
+</Provider>
+`;

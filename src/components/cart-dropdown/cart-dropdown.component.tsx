@@ -21,15 +21,6 @@ import {
 
 import "./cart-dropdown.styles.scss";
 
-const sleep = (milliseconds: number): void => {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if (new Date().getTime() - start > milliseconds) {
-      break;
-    }
-  }
-};
-
 const CartDropdown = () => {
   const navigate = useNavigate();
 

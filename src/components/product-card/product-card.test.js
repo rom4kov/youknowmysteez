@@ -1,20 +1,25 @@
 import { mount } from "enzyme";
-import App from "./App";
+import ProductCard from "./product-card.component";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
 import configureStore from "redux-mock-store";
 
 const mockStore = configureStore();
-const initState = {};
+const initState = {
+  product: {
+    id: 1,
+    imageUrl: "www.url.com",
+    name: "hat",
+    price: 20,
+    brand: "Nike",
+  },
+};
 const store = mockStore(initState);
 
-test("renders learn react link", () => {
+it("properly render ProductCard component", () => {
   expect(
     mount(
       <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <ProductCard />
       </Provider>
     )
   ).toMatchSnapshot();
