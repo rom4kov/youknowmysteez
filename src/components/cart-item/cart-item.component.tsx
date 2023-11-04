@@ -23,6 +23,7 @@ type CartItemProps = {
 
 const CartItem = memo(({ cartItem, isCartOpen }: CartItemProps) => {
   const { brand, price, imageUrl, name, quantity } = cartItem;
+  console.log(brand);
 
   const dispatch = useDispatch();
 
