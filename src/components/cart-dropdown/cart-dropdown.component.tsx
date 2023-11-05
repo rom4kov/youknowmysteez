@@ -33,7 +33,10 @@ const CartDropdown = () => {
   }, [navigate]);
 
   return (
-    <CartDropdownContainer className={`${isCartOpen ? "open" : ""}`}>
+    <CartDropdownContainer
+      className={`${isCartOpen ? "open" : ""}`}
+      aria-label="cart-dropdown"
+    >
       <CartItems>
         {cartItems.length ? (
           cartItems.map((item) => (
