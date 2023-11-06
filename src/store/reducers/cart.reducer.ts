@@ -16,7 +16,6 @@ const CART_INITIAL_STATE: CartState = {
 
 const addCartItem = (cartItems: CartItemType[], productToAdd: CategoryItem) => {
   // find if cartItems contains productToAdd
-  console.log(cartItems);
   const existingItem = cartItems.find((item) => item.id === productToAdd.id);
   // If found, increment quantity
   if (existingItem) {

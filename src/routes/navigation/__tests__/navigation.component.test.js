@@ -51,11 +51,10 @@ describe("navigation tests", () => {
   });
 
   test("it should render cart-dropdown if isCartOpen is true", () => {
-    const initialCartItems = [];
     renderWithProviders(<Navigation />, {
       preloadedState: {
         cart: {
-          cartItems: initialCartItems,
+          cartItems: [],
           isCartOpen: true,
         },
       },
