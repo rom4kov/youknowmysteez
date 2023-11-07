@@ -12,7 +12,7 @@ const Banner = forwardRef(function Banner(
 ) {
   console.log(props);
   return (
-    <BannerContainer ref={ref}>
+    <BannerContainer ref={ref} aria-label="banner">
       <Video src={video} autoPlay loop muted />
       <LinearGradient />
     </BannerContainer>
