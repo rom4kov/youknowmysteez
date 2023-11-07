@@ -40,7 +40,6 @@ describe("product-card tests", () => {
 
     const addToCartButton = screen.getByText(/in den warenkorb/i);
     await fireEvent.click(addToCartButton);
-    console.log(store.getState().cart.cartItems);
     expect(store.getState().cart.cartItems.length).toBe(1);
   });
 });
