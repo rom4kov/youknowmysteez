@@ -50,9 +50,12 @@ exports[`renders learn react link 1`] = `
           fallback={<Spinner />}
         >
           <Spinner>
-            <styled.div>
+            <styled.div
+              data-testid="spinner"
+            >
               <div
                 className="sc-beqWaB calAUi"
+                data-testid="spinner"
               >
                 <styled.div>
                   <div

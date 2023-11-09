@@ -23,14 +23,16 @@ type CartItemProps = {
 
 const CartItem = memo(({ cartItem, isCartOpen }: CartItemProps) => {
   const { brand, price, imageUrl, name, quantity } = cartItem;
-  console.log(brand);
 
   const dispatch = useDispatch();
 
   const removeItem = () => dispatch(removeItemFromCart(cartItem));
 
   return (
-    <CartItemContainer className={`${isCartOpen ? "open" : ""}`}>
+    <CartItemContainer
+      className={`${isCartOpen ? "open" : ""}`}
+      data-testid="cart-item"
+    >
       <CartItemImg src={imageUrl} alt={name} />
       <CartItemBrandPrice>
         <CartItemBrand>{brand}</CartItemBrand>

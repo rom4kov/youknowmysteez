@@ -50,7 +50,7 @@ const CartDropdown = () => {
       </CartItems>
       <SumTotal>
         <span>Gesamtsumme:</span>
-        <span>{cartTotal},00 €</span>
+        <span data-testid="cart-total">{cartTotal},00 €</span>
       </SumTotal>
       <CartButton
         buttonType={BUTTON_TYPE_CLASSES.base}

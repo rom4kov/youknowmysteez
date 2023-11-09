@@ -43,4 +43,32 @@ describe("CartDropdown tests", () => {
     const emptyCartText = screen.getByText(/keine artikel im warenkorb/i);
     expect(emptyCartText).toBeInTheDocument();
   });
+
+  test("it should show cartTotal correctly", () => {
+    renderWithProviders(<CartDropdown />, {
+      preloadedState: {
+        cart: {
+          cartItems: [
+            {
+              id: 1,
+              name: "nice jacket",
+              brand: "the jacket brand",
+              price: 70,
+              quantity: 1,
+            },
+            {
+              id: 2,
+              name: "another nice jacket",
+              brand: "the jacket brand",
+              price: 75,
+              quantity: 1,
+            },
+          ],
+        },
+      },
+    });
+
+    const cartTotalText = screen.getByTestId("cart-total");
+    expect(cartTotalText).toHaveTextContent("145,00 €");
+  });
 });
