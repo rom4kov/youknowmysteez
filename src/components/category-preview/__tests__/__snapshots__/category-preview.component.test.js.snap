@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoryPreview tests should render CategoryPreview component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-fsQiph dAVzcd"
+  >
+    <h2>
+      <a
+        class="sc-qRumB fuiFcU title"
+        href="/sneakers"
+      >
+        SNEAKERS
+      </a>
+    </h2>
+    <div
+      class="sc-jsMahE juryKw"
+    >
+      <div
+        class="sc-dmqHEX kneRcb"
+      >
+        <img
+          alt="Black Converse"
+          class="sc-hLseeU iwsRzB"
+          src="converse.com"
+        />
+        <div
+          class="sc-eDDNvR iqCncc"
+        >
+          <span
+            class="sc-jTrPJq ckcNaj"
+          >
+            Black Converse
+          </span>
+          <span
+            class="sc-gLDzan ewZTjn"
+          >
+            € 100
+          </span>
+        </div>
+        <button
+          class="buttonstyles__BaseButton-sc-lswy1h-0 buttonstyles__InvertedButton-sc-lswy1h-2 jJMbCT fsMtkj sc-iAEyYk jvcVwh"
+        >
+          In den Warenkorb
+        </button>
+      </div>
+      <div
+        class="sc-dmqHEX kneRcb"
+      >
+        <img
+          alt="Red Converse"
+          class="sc-hLseeU iwsRzB"
+          src="converse.com"
+        />
+        <div
+          class="sc-eDDNvR iqCncc"
+        >
+          <span
+            class="sc-jTrPJq ckcNaj"
+          >
+            Red Converse
+          </span>
+          <span
+            class="sc-gLDzan ewZTjn"
+          >
+            € 90
+          </span>
+        </div>
+        <button
+          class="buttonstyles__BaseButton-sc-lswy1h-0 buttonstyles__InvertedButton-sc-lswy1h-2 jJMbCT fsMtkj sc-iAEyYk jvcVwh"
+        >
+          In den Warenkorb
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
