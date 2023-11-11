@@ -29,7 +29,7 @@ describe("CartItem tests", () => {
     expect(cartItemName).toBeInTheDocument();
   });
 
-  test("it should dispatch removeItemFromCart with cartItem when RemoveItem is clicked", async () => {
+  test("dispatch removeItemFromCart with cartItem when RemoveItem is clicked", async () => {
     const cartItem = {
       name: "Hat",
       brand: "Nike",
