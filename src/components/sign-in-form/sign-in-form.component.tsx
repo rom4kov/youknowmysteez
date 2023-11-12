@@ -82,7 +82,9 @@ const SignInForm = () => {
             required
           />
           <ButtonsContainer>
-            <Button type="submit">Anmelden</Button>
+            <Button type="submit" data-testid="submit-button">
+              Anmelden
+            </Button>
             <Button
               type="button"
               onClick={signInWithGoogle}
