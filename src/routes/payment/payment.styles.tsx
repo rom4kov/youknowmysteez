@@ -53,38 +53,12 @@ export const PayHeading = styled.h2`
   font-size: 2rem;
 `;
 
-export const PaymentItems = styled.div`
-  padding: 1rem;
-  background-color: #fff;
-  border-radius: 1.25rem;
-`;
-
-export const SubTotal = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-`;
-
-export const Shipment = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-`;
-
-export const Total = styled.div`
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.1rem;
-  font-weight: 700;
-`;
-
 export const PaymentButton = styled(Button)`
   width: 100% !important;
   height: 1.75rem !important;
   padding-top: 0.1rem;
   border-radius: 1rem;
-  background: #193B19;
+  background: #193b19;
   color: white;
   opacity: 0.7 !important;
 `;
-

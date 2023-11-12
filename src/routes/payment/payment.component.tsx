@@ -6,6 +6,7 @@ import PaymentForm from "../../components/payment-form/payment-form.component";
 import { Elements } from "@stripe/react-stripe-js";
 import { StripeElementsOptions } from "@stripe/stripe-js";
 import { stripePromise } from "../../utils/stripe/stripe.utils";
+import PaymentItems from "../payment-items/payment-items.component";
 import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
 
 import {
@@ -13,15 +14,10 @@ import {
   PaymentFormContainer,
   Pay,
   PayHeading,
-  PaymentItems,
-  SubTotal,
-  Shipment,
-  Total,
   PaymentButton,
 } from "./payment.styles";
 
 const Payment = () => {
-  const cartTotal = useSelector(selectCartTotal);
   const [isProcessingPayment, setIsProcessingPayment] =
     useState<boolean>(false);
   const amount = useSelector(selectCartTotal);
@@ -68,22 +64,7 @@ const Payment = () => {
       </PaymentFormContainer>
       <Pay>
         <PayHeading>Gesamtsumme</PayHeading>
-        <PaymentItems>
-          <SubTotal>
-            <span>Zwischensumme</span>
-            <span>{cartTotal},00 €</span>
-          </SubTotal>
-          <Shipment>
-            <span>Lieferung</span>
-            <span>0,00 €</span>
-          </Shipment>
-          <Total>
-            <span>
-              Gesamtsumme <span>(inkl. Mwst.)</span>
-            </span>
-            <span>{cartTotal},00 €</span>
-          </Total>
-        </PaymentItems>
+        <PaymentItems />
         <PaymentButton
           isLoading={isProcessingPayment}
           form="payment"
