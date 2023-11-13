@@ -35,6 +35,7 @@ const SignInForm = () => {
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log("test");
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
@@ -42,6 +43,7 @@ const SignInForm = () => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
+      console.log("test");
       dispatch(emailSignInStart(email, password));
       // const { user } = await signInAuthUserEmailAndPassword(email, password);
       // const username = await displayUserData(user.uid);
@@ -62,16 +64,16 @@ const SignInForm = () => {
       <Login>
         <LoginTitle>Du hast einen Account?</LoginTitle>
         <LoginSubheading>Melde dich per Email und Passwort an</LoginSubheading>
-        <FormInputs onSubmit={() => handleSubmit}>
+        <FormInputs onSubmit={handleSubmit} data-testid="form">
           <FormInput
             label="Email"
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
+            data-testid="email"
             required
           />
-
           <FormInput
             label="Passwort"
             type="password"
@@ -79,6 +81,7 @@ const SignInForm = () => {
             pattern=".{8,}"
             value={password}
             onChange={handleChange}
+            data-testid="password"
             required
           />
           <ButtonsContainer>
