@@ -2,7 +2,10 @@ import { fireEvent, screen, waitFor } from "@testing-library/react";
 import { renderWithProviders } from "../../../utils/test/test.utils";
 import SignInForm from "../sign-in-form.component";
 
-import { emailSignInStart } from "../../../store/reducers/user.reducer";
+import {
+  emailSignInStart,
+  googleSignInStart,
+} from "../../../store/reducers/user.reducer";
 
 const mockDispatch = jest.fn();
 
@@ -26,6 +29,20 @@ describe("SignInForm tests", () => {
     expect(mockDispatch).toHaveBeenCalled();
     const emailSignInAction = emailSignInStart("john@smith.com", "12345678");
     expect(mockDispatch).toHaveBeenCalledWith(emailSignInAction);
+
+    mockDispatch.mockClear();
+  });
+
+  test("dispatch googleSignInStart when google-sign-in button is clicked", async () => {
+    renderWithProviders(<SignInForm />, {
+      preloadedState: {},
+    });
+
+    const googleSignInButton = screen.getByTestId("google-sign-in-button");
+    await fireEvent.click(googleSignInButton);
+    expect(mockDispatch).toHaveBeenCalled();
+    const googleSignInAction = googleSignInStart();
+    expect(mockDispatch).toHaveBeenCalledWith(googleSignInAction);
 
     mockDispatch.mockClear();
   });

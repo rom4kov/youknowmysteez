@@ -92,6 +92,7 @@ const SignInForm = () => {
               type="button"
               onClick={signInWithGoogle}
               buttonType={BUTTON_TYPE_CLASSES.google}
+              data-testid="google-sign-in-button"
             >
               Anmelden mit Google
             </Button>
