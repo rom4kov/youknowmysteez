@@ -9,7 +9,6 @@ import {
 
 export function* fetchCategoriesAsync() {
   try {
-    console.log("check");
     const categoriesArray = yield* call(getCategoriesAndDocuments);
     yield* put(fetchCategoriesSuccess(categoriesArray));
   } catch (error) {
@@ -18,7 +17,6 @@ export function* fetchCategoriesAsync() {
 }
 
 export function* onFetchCategories() {
-  console.log("check");
   yield* takeLatest("categories/fetchCategoriesStart", fetchCategoriesAsync);
 }
 
