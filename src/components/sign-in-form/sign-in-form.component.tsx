@@ -35,7 +35,6 @@ const SignInForm = () => {
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log("test");
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
@@ -43,7 +42,6 @@ const SignInForm = () => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      console.log("test");
       dispatch(emailSignInStart(email, password));
       // const { user } = await signInAuthUserEmailAndPassword(email, password);
       // const username = await displayUserData(user.uid);
