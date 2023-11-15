@@ -102,6 +102,7 @@ export const createUserDocumentFromAuth = async (
   additionalInformation = {} as AdditionalInformation
 ): Promise<void | QueryDocumentSnapshot<UserData>> => {
   if (!userAuth) return;
+  console.log(userAuth);
 
   const userDocRef = doc(db, "user", userAuth.uid);
 

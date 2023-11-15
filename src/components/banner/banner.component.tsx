@@ -10,7 +10,6 @@ const Banner = forwardRef(function Banner(
   props: BannerProps,
   ref: ForwardedRef<HTMLDivElement>
 ) {
-  console.log(props);
   return (
     <BannerContainer ref={ref} aria-label="banner">
       <Video src={video} autoPlay loop muted />

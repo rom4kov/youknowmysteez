@@ -1,11 +1,5 @@
 import { takeLatest, put, all, call } from "typed-redux-saga/macro";
 
-import {
-  EmailSignInStart,
-  SignUpStart,
-  SignUpSuccess,
-} from "../reducers/user.reducer";
-
 import { USER_ACTION_TYPES } from "../redux-types/user.types";
 
 import { User } from "firebase/auth";
@@ -17,6 +11,9 @@ import {
   signInFailed,
   signOutSuccess,
   signOutFailed,
+  EmailSignInStart,
+  SignUpStart,
+  SignUpSuccess,
 } from "../reducers/user.reducer";
 
 import {

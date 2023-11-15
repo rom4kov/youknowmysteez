@@ -2,6 +2,8 @@ import { call } from "typed-redux-saga/macro";
 import { testSaga, expectSaga } from "redux-saga-test-plan";
 import { throwError } from "redux-saga-test-plan/providers";
 
+import { signInSuccess, signInFailed } from "../../reducers/user.reducer";
+
 import { USER_ACTION_TYPES } from "../../redux-types/user.types";
 
 import {
@@ -18,7 +20,10 @@ import {
   signInWithGoogle,
   signInWithEmail,
   signOut,
+  getSnapshotFromUserAuth,
 } from "../user.saga";
+
+import { getCurrentUser } from "../../../utils/firebase/firebase.utils";
 
 describe("User Saga tests", () => {
   test("userSagas", () => {
@@ -82,5 +87,31 @@ describe("User Saga tests", () => {
       .takeLatest(USER_ACTION_TYPES.SIGN_OUT_START, signOut)
       .next()
       .isDone();
+  });
+
+  test("isUserAuthenticated success", () => {
+    const mockUserAuth = {
+      createdAt: {
+        seconds: 1695845178,
+        nanoseconds: 91000000,
+      },
+      displayName: "John Smith",
+      email: "john@smith.com",
+      id: "vUqKlL3PmwhBJHe2oS0Fyew9r972",
+    };
+
+    return expectSaga(isUserAuthenticated)
+      .provide([[call(getCurrentUser), mockUserAuth]])
+      .call(getSnapshotFromUserAuth, mockUserAuth)
+      .run();
+  });
+
+  test("isUserAuthenticated failure", () => {
+    const mockError = new Error("An error occurred");
+
+    return expectSaga(isUserAuthenticated)
+      .provide([[call(getCurrentUser), throwError(mockError)]])
+      .put(signInFailed(mockError))
+      .run();
   });
 });
