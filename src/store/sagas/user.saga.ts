@@ -91,6 +91,12 @@ export function* isUserAuthenticated() {
   }
 }
 
+export function* signInAfterSignUp({
+  payload: { user, additionalDetails },
+}: SignUpSuccess) {
+  yield* call(getSnapshotFromUserAuth, user, additionalDetails);
+}
+
 export function* signUp({
   payload: { email, password, displayName },
 }: SignUpStart) {
@@ -102,7 +108,9 @@ export function* signUp({
     );
     if (userCredential) {
       const { user } = userCredential;
-      yield* put(signUpSuccess(user, { displayName }));
+      yield* put(signUpSuccess({ user, displayName }));
+      // const additionalDetails = displayName;
+      // yield* call(signInAfterSignUp, user, additionalDetails);
     }
   } catch (error) {
     yield* put(signUpFailed(error as Error));
@@ -116,12 +124,6 @@ export function* signOut() {
   } catch (error) {
     yield* put(signOutFailed(error as Error));
   }
-}
-
-export function* signInAfterSignUp({
-  payload: { user, additionalDetails },
-}: SignUpSuccess) {
-  yield* call(getSnapshotFromUserAuth, user, additionalDetails);
 }
 
 export function* onSignUpStart() {

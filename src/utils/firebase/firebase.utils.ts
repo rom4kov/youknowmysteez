@@ -102,7 +102,6 @@ export const createUserDocumentFromAuth = async (
   additionalInformation = {} as AdditionalInformation
 ): Promise<void | QueryDocumentSnapshot<UserData>> => {
   if (!userAuth) return;
-  console.log(userAuth);
 
   const userDocRef = doc(db, "user", userAuth.uid);
 
@@ -129,6 +128,7 @@ export const createUserDocumentFromAuth = async (
       }
     }
   }
+  console.log("userSnapshot in firebase.utils:", userSnapshot);
   return userSnapshot as QueryDocumentSnapshot<UserData>;
 };
 

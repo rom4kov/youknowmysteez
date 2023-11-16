@@ -114,4 +114,8 @@ describe("User Saga tests", () => {
       .put(signInFailed(mockError))
       .run();
   });
+
+  test("signUp", () => {
+    const mockUserCredentials = {};
+  });
 });
