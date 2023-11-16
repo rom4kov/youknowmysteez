@@ -58,13 +58,18 @@ const Navigation = ({ navColor }: NavigationProps) => {
         <NavWrapper>
           <LeftNav style={{ marginTop: `${marginTopNav}` }}>
             {currentUser ? (
-              <NavLinkLeft
-                as="span"
-                style={{ color: `${color}` }}
-                onClick={handleSignOut}
-              >
-                ABMELDEN
-              </NavLinkLeft>
+              <Fragment>
+                <div style={{ paddingRight: "2rem" }}>
+                  {currentUser.displayName}
+                </div>
+                <NavLinkLeft
+                  as="span"
+                  style={{ color: `${color}` }}
+                  onClick={handleSignOut}
+                >
+                  ABMELDEN
+                </NavLinkLeft>
+              </Fragment>
             ) : (
               <NavLinkLeft to="/auth" style={{ color: `${color}` }}>
                 ANMELDEN

@@ -108,7 +108,7 @@ export function* signUp({
     );
     if (userCredential) {
       const { user } = userCredential;
-      yield* put(signUpSuccess({ user, displayName }));
+      yield* put(signUpSuccess(user, { displayName }));
       // const additionalDetails = displayName;
       // yield* call(signInAfterSignUp, user, additionalDetails);
     }

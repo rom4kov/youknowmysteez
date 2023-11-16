@@ -42,9 +42,9 @@ export const userSlice = createSlice({
     checkUserSession(state, action) {
       state.currentUser = action.payload;
     },
-    signUpSuccess(state, action) {
-      state.currentUser = action.payload;
-    },
+    // signUpSuccess(state, action) {
+    //   state.currentUser = action.payload;
+    // },
     signInSuccess(state, action) {
       state.currentUser = action.payload;
     },
@@ -69,7 +69,7 @@ export const {
   signOutSuccess,
   signUpFailed,
   signInFailed,
-  signUpSuccess,
+  // signUpSuccess,
   signOutFailed,
 } = userSlice.actions;
 
@@ -109,11 +109,11 @@ export const signUpStart = (
     displayName,
   });
 
-// export const signUpSuccess = (
-//   user: User,
-//   additionalDetails: AdditionalInformation
-// ): SignUpSuccess =>
-//   createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, { user, additionalDetails });
+export const signUpSuccess = (
+  user: User,
+  additionalDetails: AdditionalInformation
+): SignUpSuccess =>
+  createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, { user, additionalDetails });
 
 export const googleSignInStart = (): GoogleSignInStart =>
   createAction(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START);

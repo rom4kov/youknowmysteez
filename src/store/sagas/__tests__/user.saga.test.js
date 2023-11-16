@@ -2,7 +2,11 @@ import { call } from "typed-redux-saga/macro";
 import { testSaga, expectSaga } from "redux-saga-test-plan";
 import { throwError } from "redux-saga-test-plan/providers";
 
-import { signInSuccess, signInFailed } from "../../reducers/user.reducer";
+import {
+  signInSuccess,
+  signInFailed,
+  signUpSuccess,
+} from "../../reducers/user.reducer";
 
 import { USER_ACTION_TYPES } from "../../redux-types/user.types";
 
@@ -23,7 +27,10 @@ import {
   getSnapshotFromUserAuth,
 } from "../user.saga";
 
-import { getCurrentUser } from "../../../utils/firebase/firebase.utils";
+import {
+  getCurrentUser,
+  createAuthUserWithEmailAndPassword,
+} from "../../../utils/firebase/firebase.utils";
 
 describe("User Saga tests", () => {
   test("userSagas", () => {
@@ -115,7 +122,30 @@ describe("User Saga tests", () => {
       .run();
   });
 
-  test("signUp", () => {
-    const mockUserCredentials = {};
+  test("signUp success", () => {
+    const email = "jason@future.liberation";
+    const passwd = "asdfasdf";
+    const mockUserCredentials = {
+      operationType: "signIn",
+      providerId: null,
+      displayName: "Jason",
+      user: {
+        email: "jason@future.liberation",
+        uid: "dsf98dfu98ud43oiu98fu983ufs98fu9s",
+        accessToken: "spd98fdfPNsdofuf8wSHsd89fJ823",
+      },
+    };
+    const { user } = mockUserCredentials;
+    const { displayName } = mockUserCredentials;
+
+    return expectSaga(signUp, { payload: { email, passwd, displayName } })
+      .provide([
+        [
+          call(createAuthUserWithEmailAndPassword, email, passwd),
+          mockUserCredentials,
+        ],
+      ])
+      .put(signUpSuccess(user, { displayName }))
+      .run(false);
   });
 });
