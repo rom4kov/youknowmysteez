@@ -7,6 +7,7 @@ import {
   signInSuccess,
   signInFailed,
   signUpSuccess,
+  signUpFailed,
 } from "../../reducers/user.reducer";
 
 import { USER_ACTION_TYPES } from "../../redux-types/user.types";
@@ -147,6 +148,34 @@ describe("User Saga tests", () => {
         ],
       ])
       .put(signUpSuccess(user, { displayName }))
+      .run();
+  });
+
+  test("signUp failure", () => {
+    const email = "jason@future.liberation";
+    const password = "asdfasdf";
+    const userCredentials = {
+      operationType: "signIn",
+      providerId: null,
+      displayName: "Jason",
+      user: {
+        email: "jason@future.liberation",
+        uid: "dsf98dfu98ud43oiu98fu983ufs98fu9s",
+        accessToken: "spd98fdfPNsdofuf8wSHsd89fJ823",
+      },
+    };
+    const { displayName } = userCredentials;
+
+    const mockError = new Error("An error occurred");
+
+    return expectSaga(signUp, { payload: { email, password, displayName } })
+      .provide([
+        [
+          call(createAuthUserWithEmailAndPassword, email, password),
+          throwError(mockError),
+        ],
+      ])
+      .put(signUpFailed(mockError))
       .run();
   });
 });
