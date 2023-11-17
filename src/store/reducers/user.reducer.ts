@@ -42,9 +42,9 @@ export const userSlice = createSlice({
     checkUserSession(state, action) {
       state.currentUser = action.payload;
     },
-    // signUpSuccess(state, action) {
-    //   state.currentUser = action.payload;
-    // },
+    signUpSuccess(state, action) {
+      state.currentUser = action.payload;
+    },
     signInSuccess(state, action) {
       state.currentUser = action.payload;
     },

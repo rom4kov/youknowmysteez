@@ -1,6 +1,7 @@
 import { call } from "typed-redux-saga/macro";
 import { testSaga, expectSaga } from "redux-saga-test-plan";
 import { throwError } from "redux-saga-test-plan/providers";
+import { put } from "redux-saga-test-plan/matchers";
 
 import {
   signInSuccess,
@@ -97,7 +98,7 @@ describe("User Saga tests", () => {
   });
 
   test("isUserAuthenticated success", () => {
-    const mockUserAuth = {
+    const userAuth = {
       createdAt: {
         seconds: 1695845178,
         nanoseconds: 91000000,
@@ -108,8 +109,8 @@ describe("User Saga tests", () => {
     };
 
     return expectSaga(isUserAuthenticated)
-      .provide([[call(getCurrentUser), mockUserAuth]])
-      .call(getSnapshotFromUserAuth, mockUserAuth)
+      .provide([[call(getCurrentUser), userAuth]])
+      .call(getSnapshotFromUserAuth, userAuth)
       .run();
   });
 
@@ -124,8 +125,8 @@ describe("User Saga tests", () => {
 
   test("signUp success", () => {
     const email = "jason@future.liberation";
-    const passwd = "asdfasdf";
-    const mockUserCredentials = {
+    const password = "asdfasdf";
+    const userCredentials = {
       operationType: "signIn",
       providerId: null,
       displayName: "Jason",
@@ -135,17 +136,17 @@ describe("User Saga tests", () => {
         accessToken: "spd98fdfPNsdofuf8wSHsd89fJ823",
       },
     };
-    const { user } = mockUserCredentials;
-    const { displayName } = mockUserCredentials;
+    const { user } = userCredentials;
+    const { displayName } = userCredentials;
 
-    return expectSaga(signUp, { payload: { email, passwd, displayName } })
+    return expectSaga(signUp, { payload: { email, password, displayName } })
       .provide([
         [
-          call(createAuthUserWithEmailAndPassword, email, passwd),
-          mockUserCredentials,
+          call(createAuthUserWithEmailAndPassword, email, password),
+          userCredentials,
         ],
       ])
       .put(signUpSuccess(user, { displayName }))
-      .run(false);
+      .run();
   });
 });
