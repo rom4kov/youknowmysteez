@@ -32,6 +32,7 @@ import {
   getCurrentUser,
   createAuthUserWithEmailAndPassword,
   signInAuthUserEmailAndPassword,
+  signInWithGooglePopup,
 } from "../../../utils/firebase/firebase.utils";
 
 describe("User Saga tests", () => {
@@ -195,6 +196,20 @@ describe("User Saga tests", () => {
           throwError(mockError),
         ],
       ])
+      .put(signInFailed(mockError))
+      .run();
+  });
+
+  test("signInWithGoogle success", () => {
+    return expectSaga(signInWithGoogle)
+      .provide([[call(signInWithGooglePopup), { user }]])
+      .call(getSnapshotFromUserAuth, user)
+      .run();
+  });
+
+  test("signInWithGoogle failure", () => {
+    return expectSaga(signInWithGoogle)
+      .provide([[call(signInWithGooglePopup), throwError(mockError)]])
       .put(signInFailed(mockError))
       .run();
   });
