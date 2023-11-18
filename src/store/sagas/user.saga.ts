@@ -134,12 +134,12 @@ export function* onSignUpSuccess() {
   yield* takeLatest(USER_ACTION_TYPES.SIGN_UP_SUCCESS, signInAfterSignUp);
 }
 
-export function* onGoogleSignIn() {
-  yield* takeLatest(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START, signInWithGoogle);
-}
-
 export function* onEmailSignIn() {
   yield* takeLatest(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, signInWithEmail);
+}
+
+export function* onGoogleSignIn() {
+  yield* takeLatest(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START, signInWithGoogle);
 }
 
 export function* onSignOutStart() {

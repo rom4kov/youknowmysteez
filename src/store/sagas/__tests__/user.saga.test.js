@@ -1,7 +1,6 @@
 import { call } from "typed-redux-saga/macro";
 import { testSaga, expectSaga } from "redux-saga-test-plan";
 import { throwError } from "redux-saga-test-plan/providers";
-import { put } from "redux-saga-test-plan/matchers";
 
 import {
   signInSuccess,
@@ -32,9 +31,41 @@ import {
 import {
   getCurrentUser,
   createAuthUserWithEmailAndPassword,
+  signInAuthUserEmailAndPassword,
 } from "../../../utils/firebase/firebase.utils";
 
 describe("User Saga tests", () => {
+  const userAuth = {
+    createdAt: {
+      seconds: 1695845178,
+      nanoseconds: 91000000,
+    },
+    displayName: "John Smith",
+    email: "john@smith.com",
+    id: "vUqKlL3PmwhBJHe2oS0Fyew9r972",
+  };
+
+  const email = "jason@future.liberation";
+  const password = "asdfasdf";
+  const userCredentials = {
+    operationType: "signIn",
+    providerId: null,
+    displayName: "Jason",
+    user: {
+      email: "jason@future.liberation",
+      uid: "dsf98dfu98ud43oiu98fu983ufs98fu9s",
+      accessToken: "spd98fdfPNsdofuf8wSHsd89fJ823",
+    },
+  };
+  const { user } = userCredentials;
+  const { displayName } = userCredentials;
+
+  const additionalDetails = {
+    displayName: displayName,
+  };
+
+  const mockError = new Error("An error occurred");
+
   test("userSagas", () => {
     testSaga(userSagas)
       .next()
@@ -99,16 +130,6 @@ describe("User Saga tests", () => {
   });
 
   test("isUserAuthenticated success", () => {
-    const userAuth = {
-      createdAt: {
-        seconds: 1695845178,
-        nanoseconds: 91000000,
-      },
-      displayName: "John Smith",
-      email: "john@smith.com",
-      id: "vUqKlL3PmwhBJHe2oS0Fyew9r972",
-    };
-
     return expectSaga(isUserAuthenticated)
       .provide([[call(getCurrentUser), userAuth]])
       .call(getSnapshotFromUserAuth, userAuth)
@@ -116,8 +137,6 @@ describe("User Saga tests", () => {
   });
 
   test("isUserAuthenticated failure", () => {
-    const mockError = new Error("An error occurred");
-
     return expectSaga(isUserAuthenticated)
       .provide([[call(getCurrentUser), throwError(mockError)]])
       .put(signInFailed(mockError))
@@ -125,21 +144,6 @@ describe("User Saga tests", () => {
   });
 
   test("signUp success", () => {
-    const email = "jason@future.liberation";
-    const password = "asdfasdf";
-    const userCredentials = {
-      operationType: "signIn",
-      providerId: null,
-      displayName: "Jason",
-      user: {
-        email: "jason@future.liberation",
-        uid: "dsf98dfu98ud43oiu98fu983ufs98fu9s",
-        accessToken: "spd98fdfPNsdofuf8wSHsd89fJ823",
-      },
-    };
-    const { user } = userCredentials;
-    const { displayName } = userCredentials;
-
     return expectSaga(signUp, { payload: { email, password, displayName } })
       .provide([
         [
@@ -152,22 +156,6 @@ describe("User Saga tests", () => {
   });
 
   test("signUp failure", () => {
-    const email = "jason@future.liberation";
-    const password = "asdfasdf";
-    const userCredentials = {
-      operationType: "signIn",
-      providerId: null,
-      displayName: "Jason",
-      user: {
-        email: "jason@future.liberation",
-        uid: "dsf98dfu98ud43oiu98fu983ufs98fu9s",
-        accessToken: "spd98fdfPNsdofuf8wSHsd89fJ823",
-      },
-    };
-    const { displayName } = userCredentials;
-
-    const mockError = new Error("An error occurred");
-
     return expectSaga(signUp, { payload: { email, password, displayName } })
       .provide([
         [
@@ -176,6 +164,38 @@ describe("User Saga tests", () => {
         ],
       ])
       .put(signUpFailed(mockError))
+      .run();
+  });
+
+  test("signInAfterSignUp", () => {
+    testSaga(signInAfterSignUp, { payload: { user, additionalDetails } })
+      .next()
+      .call(getSnapshotFromUserAuth, user, additionalDetails)
+      .next()
+      .isDone();
+  });
+
+  test("signInWithEmail success", () => {
+    return expectSaga(signInWithEmail, { payload: { email, password } })
+      .provide([
+        [
+          call(signInAuthUserEmailAndPassword, email, password),
+          userCredentials,
+        ],
+      ])
+      .call(getSnapshotFromUserAuth, user)
+      .run();
+  });
+
+  test("signInWithEmail failure", () => {
+    return expectSaga(signInWithEmail, { payload: { email, password } })
+      .provide([
+        [
+          call(signInAuthUserEmailAndPassword, email, password),
+          throwError(mockError),
+        ],
+      ])
+      .put(signInFailed(mockError))
       .run();
   });
 });
