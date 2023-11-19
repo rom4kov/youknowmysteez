@@ -7,6 +7,8 @@ import {
   signInFailed,
   signUpSuccess,
   signUpFailed,
+  signOutSuccess,
+  signOutFailed,
 } from "../../reducers/user.reducer";
 
 import { USER_ACTION_TYPES } from "../../redux-types/user.types";
@@ -33,6 +35,7 @@ import {
   createAuthUserWithEmailAndPassword,
   signInAuthUserEmailAndPassword,
   signInWithGooglePopup,
+  signOutUser,
 } from "../../../utils/firebase/firebase.utils";
 
 describe("User Saga tests", () => {
@@ -211,6 +214,17 @@ describe("User Saga tests", () => {
     return expectSaga(signInWithGoogle)
       .provide([[call(signInWithGooglePopup), throwError(mockError)]])
       .put(signInFailed(mockError))
+      .run();
+  });
+
+  test("signOut success", () => {
+    return expectSaga(signOut).call(signOutUser).put(signOutSuccess()).run();
+  });
+
+  test("signOut failure", () => {
+    return expectSaga(signOut)
+      .provide([[call(signOutUser), throwError(mockError)]])
+      .put(signOutFailed(mockError))
       .run();
   });
 });
