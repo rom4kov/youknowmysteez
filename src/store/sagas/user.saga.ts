@@ -77,6 +77,7 @@ export function* signInWithEmail({
 export function* signInWithGoogle() {
   try {
     const { user } = yield* call(signInWithGooglePopup);
+    yield console.log(user);
     yield* call(getSnapshotFromUserAuth, user);
   } catch (error) {
     yield* put(signInFailed(error as Error));

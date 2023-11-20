@@ -39,21 +39,6 @@ import {
   createUserDocumentFromAuth,
 } from "../../../utils/firebase/firebase.utils";
 
-const mockSignOut = jest.fn();
-
-jest.mock("firebase/auth", () => ({
-  ...jest.requireActual("firebase/auth"),
-  signOut: () => mockSignOut,
-}));
-
-const mockSignInWithPopup = jest.fn();
-
-jest.mock("firebase/auth", () => ({
-  ...jest.requireActual("firebase/auth"),
-  signInWithPopup: (auth, googleProvider) =>
-    mockSignInWithPopup(auth, googleProvider),
-}));
-
 describe("User Saga tests", () => {
   const userAuth = {
     createdAt: {
@@ -239,9 +224,15 @@ describe("User Saga tests", () => {
   });
 
   test("signInWithGoogle success", () => {
+    const mockUser = {
+      id: 1,
+      name: "test",
+    };
+    const mockGoogleVal = { user: mockUser };
+
     return expectSaga(signInWithGoogle)
-      .provide([[call(signInWithGooglePopup), { user }]])
-      .call(getSnapshotFromUserAuth, user)
+      .provide([[call(signInWithGooglePopup), mockGoogleVal]])
+      .call(getSnapshotFromUserAuth, mockUser)
       .run();
   });
 
@@ -253,7 +244,10 @@ describe("User Saga tests", () => {
   });
 
   test("signOut success", () => {
-    return expectSaga(signOut).call(signOutUser).put(signOutSuccess()).run();
+    return expectSaga(signOut)
+      .provide([[call(signOutUser)]])
+      .put(signOutSuccess())
+      .run();
   });
 
   test("signOut failure", () => {
