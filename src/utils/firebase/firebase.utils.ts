@@ -43,7 +43,7 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 
-const googleProvider = new GoogleAuthProvider();
+export const googleProvider = new GoogleAuthProvider();
 
 googleProvider.setCustomParameters({
   prompt: "select_account",
@@ -103,8 +103,6 @@ export const createUserDocumentFromAuth = async (
 ): Promise<void | QueryDocumentSnapshot<UserData>> => {
   if (!userAuth) return;
   const userDocRef = doc(db, "user", userAuth.uid);
-
-  console.log(userDocRef);
 
   const userSnapshot = await getDoc(userDocRef);
   // console.log(userSnapshot.exists());

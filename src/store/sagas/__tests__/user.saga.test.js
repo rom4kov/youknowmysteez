@@ -36,7 +36,23 @@ import {
   signInAuthUserEmailAndPassword,
   signInWithGooglePopup,
   signOutUser,
+  createUserDocumentFromAuth,
 } from "../../../utils/firebase/firebase.utils";
+
+const mockSignOut = jest.fn();
+
+jest.mock("firebase/auth", () => ({
+  ...jest.requireActual("firebase/auth"),
+  signOut: () => mockSignOut,
+}));
+
+const mockSignInWithPopup = jest.fn();
+
+jest.mock("firebase/auth", () => ({
+  ...jest.requireActual("firebase/auth"),
+  signInWithPopup: (auth, googleProvider) =>
+    mockSignInWithPopup(auth, googleProvider),
+}));
 
 describe("User Saga tests", () => {
   const userAuth = {
@@ -46,7 +62,16 @@ describe("User Saga tests", () => {
     },
     displayName: "John Smith",
     email: "john@smith.com",
-    id: "vUqKlL3PmwhBJHe2oS0Fyew9r972",
+    id: "dsf98dfu98ud43oiu98fu983ufs98fu9s",
+  };
+
+  const userAuthData = {
+    createdAt: {
+      seconds: 1695845178,
+      nanoseconds: 91000000,
+    },
+    displayName: "John Smith",
+    email: "john@smith.com",
   };
 
   const email = "jason@future.liberation";
@@ -66,6 +91,16 @@ describe("User Saga tests", () => {
 
   const additionalDetails = {
     displayName: displayName,
+  };
+
+  const userSnapshot = {
+    metadata: {
+      fromCache: false,
+      hasPendingWrites: false,
+    },
+    _converter: null,
+    data: () => userAuthData,
+    id: "dsf98dfu98ud43oiu98fu983ufs98fu9s",
   };
 
   const mockError = new Error("An error occurred");
@@ -225,6 +260,40 @@ describe("User Saga tests", () => {
     return expectSaga(signOut)
       .provide([[call(signOutUser), throwError(mockError)]])
       .put(signOutFailed(mockError))
+      .run();
+  });
+
+  test("getSnapshotFromUserAuth success", () => {
+    const userAuth = {
+      createdAt: {
+        seconds: 1695845178,
+        nanoseconds: 91000000,
+      },
+      displayName: "John Smith",
+      email: "john@smith.com",
+      uid: "dsf98dfu98ud43oiu98fu983ufs98fu9s",
+    };
+
+    return expectSaga(getSnapshotFromUserAuth, userAuth, additionalDetails)
+      .provide([
+        [
+          call(createUserDocumentFromAuth, userAuth, additionalDetails),
+          userSnapshot,
+        ],
+      ])
+      .put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }))
+      .run();
+  });
+
+  test("getSnapshotFromUserAuth failure", () => {
+    return expectSaga(getSnapshotFromUserAuth, userAuth, additionalDetails)
+      .provide([
+        [
+          call(createUserDocumentFromAuth, userAuth, additionalDetails),
+          throwError(mockError),
+        ],
+      ])
+      .put(signInFailed(mockError))
       .run();
   });
 });
