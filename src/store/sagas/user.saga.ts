@@ -1,5 +1,3 @@
-import { UserCredential } from "firebase/auth";
-
 import { takeLatest, put, all, call } from "typed-redux-saga/macro";
 
 import { USER_ACTION_TYPES } from "../redux-types/user.types";

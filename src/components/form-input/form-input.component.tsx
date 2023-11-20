@@ -7,7 +7,10 @@ import {
   GrowingUnderline,
 } from "./form-input.styles";
 
-type FormInputProps = { label: string } & InputHTMLAttributes<HTMLInputElement>;
+type FormInputProps = {
+  label: string;
+  value: string;
+} & InputHTMLAttributes<HTMLInputElement>;
 
 const FormInput: FC<FormInputProps> = ({ label, ...otherProps }) => {
   return (
@@ -18,7 +21,7 @@ const FormInput: FC<FormInputProps> = ({ label, ...otherProps }) => {
         <FormInputLabel
           shrink={Boolean(
             otherProps.value &&
-              otherProps.value === "string" &&
+              typeof otherProps.value === "string" &&
               otherProps.value.length
           )}
         >

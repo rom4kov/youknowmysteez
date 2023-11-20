@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 
 const subColor = "hsla(0, 0%, 97%, 0.6)";
 const lightColor = "hsla(0, 0%, 100%, 0.855)";
