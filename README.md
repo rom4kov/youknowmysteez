@@ -2,9 +2,9 @@
 
 youknowmysteez is a fictional e-commerce website, a hip-hop style clothing online shop. The project is based on Andrei Neagoie and Yihua Zhang's 'Complete React Developer' course available on Udemy.
 
-youknowmysteez is build with a tech stack including React, Firebase for Auth and Database functionalies, Redux for state management including Redux Saga for asynchronously updating state. It is entirely written in Typescript.
+youknowmysteez is build with a tech stack including React, Firebase for Auth and Database functionalities, Redux for state management including Redux Saga for asynchronously updating state. It is entirely written in Typescript.
 
-It is deployed via Netlify.
+Deployed via Netlify.
 
 #### Functionalities
 
