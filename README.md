@@ -8,7 +8,7 @@ It is deployed via Netlify.
 
 #### Functionalities
 
-Visitors of the page view clothing items by category, put them in their shopping basket and pay via stripe.
+Visitors of the page can view clothing items by category, put them in their shopping basket and pay via stripe.
 
 #### Technologies that have been used:
 
