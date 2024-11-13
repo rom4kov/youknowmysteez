@@ -13,11 +13,11 @@ export const CartItemContainer = styled.div`
     "one four"
     "one five";
   opacity: 0;
-  transition: opacity 10ms ease-in;
+  transition: opacity 10ms ease;
 
   &.open {
     opacity: 1;
-    transition: opacity 100ms ease-in 200ms;
+    transition: opacity 100ms ease 250ms;
   }
 `;
 
