@@ -13,7 +13,6 @@ public/videos
 /coverage
 
 # production
-/build
 
 .env
 

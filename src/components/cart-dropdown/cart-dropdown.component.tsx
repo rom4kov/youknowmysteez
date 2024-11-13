@@ -38,7 +38,7 @@ const CartDropdown = () => {
 
   useEffect(() => {
     dispatch(setCartIsOpen(false));
-  }, [pathname, dispatch])
+  }, [pathname, dispatch]);
 
   return (
     <CartDropdownContainer
@@ -51,14 +51,19 @@ const CartDropdown = () => {
             <CartItem isCartOpen={isCartOpen} cartItem={item} key={item.id} />
           ))
         ) : (
-          <span style={{ color: "black", textAlign: "center" }}>
+          <span
+            style={{
+              color: "black",
+              textAlign: "center",
+              opacity: `${isCartOpen ? "0.9" : "0"}`,
+              transition: `${isCartOpen ? "opacity 5ms ease 200ms" : "all 20ms ease"}`,
+            }}
+          >
             Keine Artikel im Warenkorb
           </span>
         )}
       </CartItems>
-      <SumTotal
-        isCartOpen={isCartOpen}
-      >
+      <SumTotal isCartOpen={isCartOpen}>
         <span>Gesamtsumme:</span>
         <span data-testid="cart-total">{cartTotal},00 €</span>
       </SumTotal>

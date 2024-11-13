@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.js": "http://localhost:3000/static/js/main.d16f7a7a.js",
+    "static/js/761.24943913.chunk.js": "http://localhost:3000/static/js/761.24943913.chunk.js",
+    "static/css/218.c7ec30d9.chunk.css": "http://localhost:3000/static/css/218.c7ec30d9.chunk.css",
+    "static/js/218.dd211647.chunk.js": "http://localhost:3000/static/js/218.dd211647.chunk.js",
+    "static/js/81.6222f205.chunk.js": "http://localhost:3000/static/js/81.6222f205.chunk.js",
+    "static/js/831.bd7ab944.chunk.js": "http://localhost:3000/static/js/831.bd7ab944.chunk.js",
+    "static/js/314.34867910.chunk.js": "http://localhost:3000/static/js/314.34867910.chunk.js",
+    "static/js/85.60205a7b.chunk.js": "http://localhost:3000/static/js/85.60205a7b.chunk.js",
+    "static/js/833.8b247217.chunk.js": "http://localhost:3000/static/js/833.8b247217.chunk.js",
+    "static/js/38.bd40cffa.chunk.js": "http://localhost:3000/static/js/38.bd40cffa.chunk.js",
+    "static/media/rakim.webm": "http://localhost:3000/static/media/rakim.6977de6cef4a0105e543.webm",
+    "static/media/auth.jpg": "http://localhost:3000/static/media/auth.cdabfc0ab2bc10c6a624.jpg",
+    "static/media/Poppins-Medium.ttf": "http://localhost:3000/static/media/Poppins-Medium.c5eb70982e90502d0d01.ttf",
+    "static/media/Poppins-Bold.ttf": "http://localhost:3000/static/media/Poppins-Bold.300a4da54f1e6258b6f7.ttf",
+    "static/media/mens.jpg": "http://localhost:3000/static/media/mens.f773bd00f3aa35426f04.jpg",
+    "static/media/womens.jpg": "http://localhost:3000/static/media/womens.f5b369c4bb02a634126e.jpg",
+    "static/media/shirts.jpg": "http://localhost:3000/static/media/shirts.7ec2ba981dd014cc516a.jpg",
+    "service-worker.js": "http://localhost:3000/service-worker.js",
+    "static/media/jackets.jpg": "http://localhost:3000/static/media/jackets.7110b58db5ad312a75ef.jpg",
+    "static/media/Urban Starblues Demo.otf": "http://localhost:3000/static/media/Urban Starblues Demo.e43b7077c9ee29d3ba7f.otf",
+    "static/media/sneakers.jpg": "http://localhost:3000/static/media/sneakers.d54503b89140eca74466.jpg",
+    "index.html": "http://localhost:3000/index.html",
+    "static/media/shopping-bag2.svg": "http://localhost:3000/static/media/shopping-bag2.9715b7a4f7df94b4560b3623cdb75978.svg",
+    "static/media/plus.svg": "http://localhost:3000/static/media/plus.84478f1596d8d93aef242201a227b42b.svg",
+    "static/media/minus.svg": "http://localhost:3000/static/media/minus.05e15557607e2536efbf7947e3394ce0.svg",
+    "main.d16f7a7a.js.map": "http://localhost:3000/static/js/main.d16f7a7a.js.map",
+    "761.24943913.chunk.js.map": "http://localhost:3000/static/js/761.24943913.chunk.js.map",
+    "218.c7ec30d9.chunk.css.map": "http://localhost:3000/static/css/218.c7ec30d9.chunk.css.map",
+    "218.dd211647.chunk.js.map": "http://localhost:3000/static/js/218.dd211647.chunk.js.map",
+    "81.6222f205.chunk.js.map": "http://localhost:3000/static/js/81.6222f205.chunk.js.map",
+    "831.bd7ab944.chunk.js.map": "http://localhost:3000/static/js/831.bd7ab944.chunk.js.map",
+    "314.34867910.chunk.js.map": "http://localhost:3000/static/js/314.34867910.chunk.js.map",
+    "85.60205a7b.chunk.js.map": "http://localhost:3000/static/js/85.60205a7b.chunk.js.map",
+    "833.8b247217.chunk.js.map": "http://localhost:3000/static/js/833.8b247217.chunk.js.map",
+    "38.bd40cffa.chunk.js.map": "http://localhost:3000/static/js/38.bd40cffa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.d16f7a7a.js"
+  ]
+}
