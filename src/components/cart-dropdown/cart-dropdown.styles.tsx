@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled from "styled-components";
 
 import Button from "../button/button.component";
 
@@ -34,7 +34,7 @@ export const CartItems = styled.div`
   margin-bottom: 0.75rem;
 `;
 
-export const SumTotal = styled.div`
+export const SumTotal = styled.div<{ isCartOpen: boolean }>`
   display: flex;
   justify-content: space-between;
   padding-right: 0.25rem;
@@ -42,12 +42,15 @@ export const SumTotal = styled.div`
   color: black;
   font-size: 1rem;
   font-weight: 700;
+  opacity: ${props => props.isCartOpen ? "0.9" : "0"};
+  transition: ${props => props.isCartOpen ? "opacity 100ms ease 200ms" : "opacity 10ms ease"};
 `;
 
-export const CartButton = styled(Button)`
+export const CartButton = styled(Button)<{ isCartOpen: boolean }>`
   width: 100%;
   height: 2rem;
   margin-top: auto;
   margin-left: auto;
-  opacity: 0.9;
+  opacity: ${props => props.isCartOpen ? "0.9" : "0"};
+  transition: ${props => props.isCartOpen ? "opacity 100ms ease 200ms" : "opacity 10ms ease"};
 `;

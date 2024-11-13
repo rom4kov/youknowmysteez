@@ -1,6 +1,8 @@
-import { useState, useCallback, useMemo } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+
+import { setCartIsOpen } from "../../store/reducers/cart.reducer";
 
 import {
   selectIsCartOpen,
@@ -23,6 +25,8 @@ import "./cart-dropdown.styles.scss";
 
 const CartDropdown = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const dispatch = useDispatch();
 
   const isCartOpen = useSelector(selectIsCartOpen);
   const cartItems = useSelector(selectCartItems);
@@ -31,6 +35,10 @@ const CartDropdown = () => {
   const goToCheckoutHandler = useCallback(() => {
     navigate("/cart");
   }, [navigate]);
+
+  useEffect(() => {
+    dispatch(setCartIsOpen(false));
+  }, [pathname, dispatch])
 
   return (
     <CartDropdownContainer
@@ -48,13 +56,16 @@ const CartDropdown = () => {
           </span>
         )}
       </CartItems>
-      <SumTotal>
+      <SumTotal
+        isCartOpen={isCartOpen}
+      >
         <span>Gesamtsumme:</span>
         <span data-testid="cart-total">{cartTotal},00 €</span>
       </SumTotal>
       <CartButton
         buttonType={BUTTON_TYPE_CLASSES.base}
         onClick={goToCheckoutHandler}
+        isCartOpen={isCartOpen}
       >
         Zum Warenkorb
       </CartButton>
