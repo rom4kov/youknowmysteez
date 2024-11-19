@@ -1,70 +1,15 @@
-# Getting Started with Create React App
+![ykms](https://github.com/user-attachments/assets/eeece5a5-9142-411c-91d5-1f4818ffa000)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In my Web Development course 'Complete React Developer' by A. Neagoie and Y. Zhang, Youknowmysteez emerged as a dynamic E-Commerce platform dedicated to Hip Hop fashion, blending creativity with cutting-edge tech.
 
-## Available Scripts
+![screenshot_2024-11-12-235234-cRNvTQxd5xkupMf6jDxFsz](https://github.com/user-attachments/assets/47863707-0343-4690-8837-04cd56c185b6)
 
-In the project directory, you can run:
+The site lets users sign up and explore a range of urban clothing, organized by categories for easy browsing. With a click, items can be added to a digital shopping basket, where customers can review selections before heading to the checkout page, which calculates the total cost.
 
-### `npm start`
+![ykms-2TX8XicU8kyRL3JYy7bdcJ](https://github.com/user-attachments/assets/5217e630-b519-47c3-a4bc-75ba53e3d9e3)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Going to the checkout page, the user can change the amount of each item in the shopping cart or remove it altogether. The total of each item and the cart in overall are immediatly reflected on the page.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![ykms_checkout-4sL9gGKUHN9HogwABmgRQG](https://github.com/user-attachments/assets/f9ab3a06-246b-4559-9b4c-c907f4521103)
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The checkout area offers customers a streamlined experience with multiple payment options, allowing them to securely choose their preferred method for completing the purchase.
