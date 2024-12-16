@@ -29,6 +29,10 @@ export const NavLinkLeft = styled(Link)`
     margin-right: 0;
   }
 
+  &:hover {
+    color: #f05c51 !important;
+  }
+
   @media screen and (max-width: 800px) {
     font-size: 0.8rem;
   }
@@ -90,6 +94,10 @@ export const NavLinkRight = styled(Link)`
 
   &:first-child {
     margin-left: 0;
+  }
+
+  &:hover {
+    color: #f05c51 !important;
   }
 
   @media screen and (max-width: 800px) {

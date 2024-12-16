@@ -13,6 +13,7 @@ import {
   Name,
   Price,
   ProductCardButton,
+  DarkGradient,
 } from "./product-card.styles";
 
 type ProductCardProps = {
@@ -34,6 +35,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <Name>{name}</Name>
         <Price>€ {price}</Price>
       </Footer>
+      <DarkGradient />
       <ProductCardButton
         buttonType={BUTTON_TYPE_CLASSES.inverted}
         onClick={addProductToCart}
